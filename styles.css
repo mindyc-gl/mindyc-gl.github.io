@@ -33,52 +33,33 @@ a:hover{ opacity:.9 }
 
 /* ===== Hero (大图背景) ===== */
 .hero{
-  position:relative;
-  min-height:72vh;
-  display:flex; align-items:center; justify-content:center;
-  text-align:center;
+  position:relative; min-height:72vh; display:flex; align-items:center; justify-content:center; text-align:center;
   background:url('assets/img/hero.jpg') center/cover no-repeat fixed;
 }
-.hero .overlay{
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
-}
-.hero-inner{ position:relative; z-index:2; padding:0 16px }
-.hero-inner h1{
-  font-size:56px; font-weight:800; margin:0 0 8px;
-  text-shadow:0 2px 12px rgba(0,0,0,.35);
-}
-.hero-inner p{
-  margin:8px 0 16px; color:#d1d5db;
-  font-weight:600; font-size:18px; letter-spacing:.3px;
-}
+.hero .overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55)); }
+.hero-inner{ position:relative; z-index:2; padding:0 16px; }
+.hero-inner h1{ font-size:56px; font-weight:800; margin:0 0 8px; text-shadow:0 2px 12px rgba(0,0,0,.35); }
+.hero-inner p{ margin:8px 0 16px; color:#d1d5db; font-weight:600; font-size:18px; letter-spacing:.3px; }
 
-/* ===== Nav (磨砂胶囊导航) ===== */
-.nav{
-  position:absolute; top:16px; right:16px;
-  display:flex; gap:14px; flex-wrap:wrap; z-index:2;
-}
+/* 导航做成“磨砂玻璃”丸按钮 */
+.nav{ position:absolute; top:16px; right:16px; display:flex; gap:14px; flex-wrap:wrap; z-index:2; }
 .nav a{
   padding:8px 12px; border-radius:999px; font-size:14px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.14);
-  backdrop-filter:blur(6px);
-  transition:background .15s ease;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(6px);
 }
-.nav a:hover{ background:rgba(255,255,255,.12) }
+.nav a:hover{ background:rgba(255,255,255,.12); }
 
-/* ===== Buttons ===== */
+/* 卡片 & 容器 */
+.wrap{ max-width:960px; margin:0 auto; padding:28px 20px; }
+.card{ background:var(--card); border:1px solid #1f2937; border-radius:16px; padding:20px; margin:18px 0; }
+
+/* 按钮更灵动 */
 .btn{
-  display:inline-block; padding:10px 14px;
-  border:1px solid rgba(255,255,255,.25);
+  display:inline-block; padding:10px 14px; border:1px solid rgba(255,255,255,.25);
   border-radius:12px; background:rgba(255,255,255,.06);
   transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
 }
-.btn:hover{
-  transform:translateY(-1px);
-  background:rgba(255,255,255,.12);
-  box-shadow:0 6px 18px rgba(0,0,0,.3);
-}
+.btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.12); box-shadow:0 6px 18px rgba(0,0,0,.3); }
 
 /* ===== Projects grid ===== */
 .projects-grid{
