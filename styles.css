@@ -109,28 +109,26 @@ a:hover{ opacity:.9 }
 /* =========================================================
    Light theme (可选) —— 在 <body class="light"> 启用
    ========================================================= */
-/* 卡片里的“项目卡片”之前是硬编码深色，这里改成白底+浅边框 */
-body.light .project{
-  background:#ffffff;
-  border-color:#e5e7eb;
+body.light{
+  --bg:#ffffff; --card:#ffffff; --text:#0f172a; --muted:#64748b; --brand:#0f62fe;
+  color:var(--text); background:var(--bg);
 }
-body.light .project:hover{
-  box-shadow:0 8px 24px rgba(0,0,0,.08);
+body.light .card{ border-color:#e5e7eb }
+body.light .nav a{
+  background:rgba(15,98,254,.06); border-color:rgba(15,98,254,.14);
 }
-body.light .project .thumb{
-  background:#f3f4f6; /* 缩略图未加载时的底色 */
+body.light .btn{
+  background:#f8fafc; border-color:#e5e7eb; color:#0f172a;
 }
+body.light .btn:hover{ background:#eef2ff; }
 
-/* Hero 遮罩在白底下稍微变浅，看起来更“清爽” */
-body.light .overlay{
-  background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.15));
+/* =========================================================
+   Black & White theme —— 在 <body class="bw"> 启用
+   ========================================================= */
+body.bw{
+  --bg:#ffffff; --card:#ffffff; --text:#0a0a0a; --muted:#6b7280; --brand:#000000;
+  color:var(--text); background:var(--bg);
 }
-
-/* 导航与按钮在白底下的对比度和颜色 */
-body.light .nav a{ color:#0f172a; }
-body.light .btn{ color:#0f172a; }
-body.light a{ color:#0f62fe; } /* 普通链接颜色 */
-
 
 /* 卡片/边框 */
 body.bw .card{ background:var(--card); border:1px solid #e5e7eb }
@@ -168,4 +166,3 @@ body.bw img.no-gray{ filter:none }
 /* 链接颜色（正文内） */
 body.bw a{ color:#111 }
 body.bw a:hover{ opacity:.85 }
-
