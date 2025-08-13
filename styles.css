@@ -105,6 +105,44 @@ a:hover{ opacity:.9 }
   border-radius:10px; margin-bottom:10px; background:#0b1223;
 }
 .project .meta h3{ margin:0 0 6px }
+/* === Projects list: 左图右文，一行一个 === */
+.projects-list{
+  display: grid;
+  gap: 28px;                 /* 每个项目之间的间距 */
+}
+
+/* 单条项目的容器：用网格分两列（左图 320px，右侧自适应） */
+.project-row{
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 22px;
+  background:#0f172a;                 /* 保持你现在的深色卡片风格 */
+  border:1px solid #1f2937;
+  border-radius:16px;
+  padding:16px;
+  align-items: center;
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+.project-row:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.35); }
+
+/* 左侧缩略图 */
+.project-row .thumb-wrap{ display:block; }
+.project-row .thumb{
+  width:100%; height:180px; object-fit:cover;
+  border-radius:12px; background:#0b1223;
+}
+
+/* 右侧文本 */
+.project-row .content h3{ margin:0 0 10px; }
+.project-row .content p{ margin:0 0 12px; }
+
+/* 窄屏下改为上下结构 */
+@media (max-width: 900px){
+  .project-row{
+    grid-template-columns: 1fr;
+  }
+  .project-row .thumb{ height:200px; }
+}
 
 /* --- Responsive --- */
 @media (max-width:760px){
