@@ -1,15 +1,17 @@
-/* ===== Base variables & fonts ===== */
+/* ===== Mindy Portfolio Styles (dark blue, single-column projects) ===== */
+
+/* --- Base variables & fonts --- */
 :root{
   --bg:#0b0f17;           /* 页面背景（深色） */
   --card:#121826;         /* 卡片背景 */
   --muted:#94a3b8;        /* 次级文字 */
   --text:#e2e8f0;         /* 正文文字 */
-  --brand:#60a5fa;        /* 链接/品牌色 */
+  --brand:#60a5fa;        /* 链接/品牌色（蓝） */
   --font-head:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* ===== Resets & typography ===== */
+/* --- Resets & typography --- */
 *{ box-sizing:border-box }
 html{ scroll-behavior:smooth }
 body{
@@ -20,8 +22,9 @@ body{
 h1,h2,h3{ font-family:var(--font-head); letter-spacing:.2px; margin:0 0 10px }
 a{ color:var(--brand); text-decoration:none }
 a:hover{ opacity:.9 }
+.muted{ color:var(--muted) }
 
-/* ===== Layout ===== */
+/* --- Layout --- */
 .wrap{ max-width:960px; margin:0 auto; padding:28px 20px }
 .card{
   background:var(--card);
@@ -31,40 +34,62 @@ a:hover{ opacity:.9 }
   margin:18px 0;
 }
 
-/* ===== Hero (大图背景) ===== */
+/* --- Hero (大图背景) --- */
 .hero{
-  position:relative; min-height:72vh; display:flex; align-items:center; justify-content:center; text-align:center;
+  position:relative;
+  min-height:72vh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
   background:url('assets/img/hero.jpg') center/cover no-repeat fixed;
 }
-.hero .overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55)); }
-.hero-inner{ position:relative; z-index:2; padding:0 16px; }
-.hero-inner h1{ font-size:56px; font-weight:800; margin:0 0 8px; text-shadow:0 2px 12px rgba(0,0,0,.35); }
-.hero-inner p{ margin:8px 0 16px; color:#d1d5db; font-weight:600; font-size:18px; letter-spacing:.3px; }
-
-/* 导航做成“磨砂玻璃”丸按钮 */
-.nav{ position:absolute; top:16px; right:16px; display:flex; gap:14px; flex-wrap:wrap; z-index:2; }
-.nav a{
-  padding:8px 12px; border-radius:999px; font-size:14px;
-  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(6px);
+.hero .overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
 }
-.nav a:hover{ background:rgba(255,255,255,.12); }
+.hero-inner{ position:relative; z-index:2; padding:0 16px }
+.hero-inner h1{
+  font-size:56px; font-weight:800; margin:0 0 8px;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+/* 英雄区副标题：蓝色文字（你想要的效果） */
+.hero-inner p{
+  margin:8px 0 16px;
+  color:var(--brand);
+  font-weight:600; font-size:18px; letter-spacing:.3px;
+}
 
-/* 卡片 & 容器 */
-.wrap{ max-width:960px; margin:0 auto; padding:28px 20px; }
-.card{ background:var(--card); border:1px solid #1f2937; border-radius:16px; padding:20px; margin:18px 0; }
+/* --- Nav (磨砂胶囊导航，蓝色文字) --- */
+.nav{
+  position:absolute; top:16px; right:16px;
+  display:flex; gap:14px; flex-wrap:wrap; z-index:2;
+}
+.nav a{
+  color:var(--brand);                      /* 恢复为蓝色文字 */
+  padding:8px 12px; border-radius:999px; font-size:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(6px);
+  transition:background .15s ease;
+}
+.nav a:hover{ background:rgba(255,255,255,.12) }
 
-/* 按钮更灵动 */
+/* --- Buttons --- */
 .btn{
-  display:inline-block; padding:10px 14px; border:1px solid rgba(255,255,255,.25);
+  display:inline-block; padding:10px 14px;
+  border:1px solid rgba(255,255,255,.25);
   border-radius:12px; background:rgba(255,255,255,.06);
   transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
 }
-.btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.12); box-shadow:0 6px 18px rgba(0,0,0,.3); }
+.btn:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.12);
+  box-shadow:0 6px 18px rgba(0,0,0,.3);
+}
 
-/* ===== Projects grid ===== */
+/* --- Projects: 单列上下排列 --- */
 .projects-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns:1fr;   /* 单列 */
   gap:16px;
 }
 .project{
@@ -81,69 +106,8 @@ a:hover{ opacity:.9 }
 }
 .project .meta h3{ margin:0 0 6px }
 
-/* ===== Responsive ===== */
+/* --- Responsive --- */
 @media (max-width:760px){
   .hero{ min-height:64vh; background-attachment:scroll }
   .hero-inner h1{ font-size:40px }
 }
-
-/* =========================================================
-   Light theme (可选) —— 在 <body class="light"> 启用
-   ========================================================= */
-body.light{
-  --bg:#ffffff; --card:#ffffff; --text:#0f172a; --muted:#64748b; --brand:#0f62fe;
-  color:var(--text); background:var(--bg);
-}
-body.light .card{ border-color:#e5e7eb }
-body.light .nav a{
-  background:rgba(15,98,254,.06); border-color:rgba(15,98,254,.14);
-}
-body.light .btn{
-  background:#f8fafc; border-color:#e5e7eb; color:#0f172a;
-}
-body.light .btn:hover{ background:#eef2ff; }
-
-/* =========================================================
-   Black & White theme —— 在 <body class="bw"> 启用
-   ========================================================= */
-body.bw{
-  --bg:#ffffff; --card:#ffffff; --text:#0a0a0a; --muted:#6b7280; --brand:#000000;
-  color:var(--text); background:var(--bg);
-}
-
-/* 卡片/边框 */
-body.bw .card{ background:var(--card); border:1px solid #e5e7eb }
-
-/* 导航/按钮：黑白描边，悬停反相 */
-body.bw .nav a,
-body.bw .btn{
-  color:#111; background:#fff;
-  border:1px solid #111; border-radius:12px;
-}
-body.bw .nav a:hover,
-body.bw .btn:hover{
-  color:#fff; background:#111;
-}
-
-/* 英雄区：灰度背景（不影响文字） */
-body.bw .hero{ background:none; position:relative }
-body.bw .hero::before{
-  content:""; position:absolute; inset:0;
-  background:url('assets/img/hero.jpg') center/cover no-repeat fixed;
-  filter:grayscale(100%);
-  z-index:0;
-}
-body.bw .overlay{
-  position:absolute; inset:0; z-index:1;
-  background:linear-gradient(180deg, rgba(255,255,255,0.0), rgba(0,0,0,0.20));
-}
-body.bw .hero-inner,
-body.bw .nav{ position:relative; z-index:2 }
-
-/* 页面内图片统一灰度（给需要彩色的图片加 .no-gray 类即可） */
-body.bw img{ filter:grayscale(100%) }
-body.bw img.no-gray{ filter:none }
-
-/* 链接颜色（正文内） */
-body.bw a{ color:#111 }
-body.bw a:hover{ opacity:.85 }
