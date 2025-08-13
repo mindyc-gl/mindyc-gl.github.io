@@ -1,67 +1,169 @@
+/* ===== Base variables & fonts ===== */
 :root{
-  --bg:#0b0f17; --card:#121826; --muted:#94a3b8; --text:#e2e8f0; --brand:#60a5fa;
-  --font-head: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  --font-body: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --bg:#0b0f17;           /* 页面背景（深色） */
+  --card:#121826;         /* 卡片背景 */
+  --muted:#94a3b8;        /* 次级文字 */
+  --text:#e2e8f0;         /* 正文文字 */
+  --brand:#60a5fa;        /* 链接/品牌色 */
+  --font-head:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-body:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
-body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65; }
-h1,h2,h3 { font-family:var(--font-head); letter-spacing:.2px; }
+/* ===== Resets & typography ===== */
+*{ box-sizing:border-box }
+html{ scroll-behavior:smooth }
+body{
+  margin:0; padding:0;
+  background:var(--bg); color:var(--text);
+  font-family:var(--font-body); line-height:1.65;
+}
+h1,h2,h3{ font-family:var(--font-head); letter-spacing:.2px; margin:0 0 10px }
+a{ color:var(--brand); text-decoration:none }
+a:hover{ opacity:.9 }
 
+/* ===== Layout ===== */
+.wrap{ max-width:960px; margin:0 auto; padding:28px 20px }
+.card{
+  background:var(--card);
+  border:1px solid #1f2937;
+  border-radius:16px;
+  padding:20px;
+  margin:18px 0;
+}
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
-a{color:var(--brand);text-decoration:none}
-a:hover{opacity:.9}
-.wrap{max-width:960px;margin:0 auto;padding:28px 20px}
-h1,h2,h3{margin:0 0 10px}
-.muted{color:var(--muted)}
-.btn{display:inline-block;padding:8px 12px;border:1px solid #1f2937;border-radius:10px;background:#0f172a}
-
-/* 英雄区：让背景更清晰，标题更有存在感 */
+/* ===== Hero (大图背景) ===== */
 .hero{
-  position:relative; min-height:72vh; display:flex; align-items:center; justify-content:center; text-align:center;
+  position:relative;
+  min-height:72vh;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
   background:url('assets/img/hero.jpg') center/cover no-repeat fixed;
 }
-.hero .overlay{ position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55)); }
-.hero-inner{ position:relative; z-index:2; padding:0 16px; }
-.hero-inner h1{ font-size:56px; font-weight:800; margin:0 0 8px; text-shadow:0 2px 12px rgba(0,0,0,.35); }
-.hero-inner p{ margin:8px 0 16px; color:#d1d5db; font-weight:600; font-size:18px; letter-spacing:.3px; }
+.hero .overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+}
+.hero-inner{ position:relative; z-index:2; padding:0 16px }
+.hero-inner h1{
+  font-size:56px; font-weight:800; margin:0 0 8px;
+  text-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+.hero-inner p{
+  margin:8px 0 16px; color:#d1d5db;
+  font-weight:600; font-size:18px; letter-spacing:.3px;
+}
 
-/* 导航做成“磨砂玻璃”丸按钮 */
-.nav{ position:absolute; top:16px; right:16px; display:flex; gap:14px; flex-wrap:wrap; z-index:2; }
+/* ===== Nav (磨砂胶囊导航) ===== */
+.nav{
+  position:absolute; top:16px; right:16px;
+  display:flex; gap:14px; flex-wrap:wrap; z-index:2;
+}
 .nav a{
   padding:8px 12px; border-radius:999px; font-size:14px;
-  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(6px);
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(6px);
+  transition:background .15s ease;
 }
-.nav a:hover{ background:rgba(255,255,255,.12); }
+.nav a:hover{ background:rgba(255,255,255,.12) }
 
-/* 卡片 & 容器 */
-.wrap{ max-width:960px; margin:0 auto; padding:28px 20px; }
-.card{ background:var(--card); border:1px solid #1f2937; border-radius:16px; padding:20px; margin:18px 0; }
-
-/* 按钮更灵动 */
+/* ===== Buttons ===== */
 .btn{
-  display:inline-block; padding:10px 14px; border:1px solid rgba(255,255,255,.25);
+  display:inline-block; padding:10px 14px;
+  border:1px solid rgba(255,255,255,.25);
   border-radius:12px; background:rgba(255,255,255,.06);
   transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
 }
-.btn:hover{ transform:translateY(-1px); background:rgba(255,255,255,.12); box-shadow:0 6px 18px rgba(0,0,0,.3); }
+.btn:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.12);
+  box-shadow:0 6px 18px rgba(0,0,0,.3);
+}
 
+/* ===== Projects grid ===== */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+  gap:16px;
+}
+.project{
+  background:#0f172a;
+  border:1px solid #1f2937;
+  border-radius:14px;
+  padding:14px;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.project:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.35) }
+.project .thumb{
+  width:100%; height:160px; object-fit:cover;
+  border-radius:10px; margin-bottom:10px; background:#0b1223;
+}
+.project .meta h3{ margin:0 0 6px }
+
+/* ===== Responsive ===== */
 @media (max-width:760px){
   .hero{ min-height:64vh; background-attachment:scroll }
-  .hero-inner h1{ font-size:40px; }
+  .hero-inner h1{ font-size:40px }
 }
-.projects-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:16px; }
-.project{ background:#0f172a; border:1px solid #1f2937; border-radius:14px; padding:14px; transition:transform .15s ease, box-shadow .15s ease; }
-.project:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.35); }
-.project .thumb{ width:100%; height:160px; object-fit:cover; border-radius:10px; margin-bottom:10px; background:#0b1223; }
-.project .meta h3{ margin:0 0 6px; }
 
+/* =========================================================
+   Light theme (可选) —— 在 <body class="light"> 启用
+   ========================================================= */
 body.light{
   --bg:#ffffff; --card:#ffffff; --text:#0f172a; --muted:#64748b; --brand:#0f62fe;
+  color:var(--text); background:var(--bg);
 }
-body.light .card{ border-color:#e5e7eb; }
-body.light .nav a{ background:rgba(15,98,254,.06); border-color:rgba(15,98,254,.14); }
-body.light .btn{ background:#f8fafc; border-color:#e5e7eb; }
-<body class="light">
+body.light .card{ border-color:#e5e7eb }
+body.light .nav a{
+  background:rgba(15,98,254,.06); border-color:rgba(15,98,254,.14);
+}
+body.light .btn{
+  background:#f8fafc; border-color:#e5e7eb; color:#0f172a;
+}
+body.light .btn:hover{ background:#eef2ff; }
+
+/* =========================================================
+   Black & White theme —— 在 <body class="bw"> 启用
+   ========================================================= */
+body.bw{
+  --bg:#ffffff; --card:#ffffff; --text:#0a0a0a; --muted:#6b7280; --brand:#000000;
+  color:var(--text); background:var(--bg);
+}
+
+/* 卡片/边框 */
+body.bw .card{ background:var(--card); border:1px solid #e5e7eb }
+
+/* 导航/按钮：黑白描边，悬停反相 */
+body.bw .nav a,
+body.bw .btn{
+  color:#111; background:#fff;
+  border:1px solid #111; border-radius:12px;
+}
+body.bw .nav a:hover,
+body.bw .btn:hover{
+  color:#fff; background:#111;
+}
+
+/* 英雄区：灰度背景（不影响文字） */
+body.bw .hero{ background:none; position:relative }
+body.bw .hero::before{
+  content:""; position:absolute; inset:0;
+  background:url('assets/img/hero.jpg') center/cover no-repeat fixed;
+  filter:grayscale(100%);
+  z-index:0;
+}
+body.bw .overlay{
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(180deg, rgba(255,255,255,0.0), rgba(0,0,0,0.20));
+}
+body.bw .hero-inner,
+body.bw .nav{ position:relative; z-index:2 }
+
+/* 页面内图片统一灰度（给需要彩色的图片加 .no-gray 类即可） */
+body.bw img{ filter:grayscale(100%) }
+body.bw img.no-gray{ filter:none }
+
+/* 链接颜色（正文内） */
+body.bw a{ color:#111 }
+body.bw a:hover{ opacity:.85 }
+
