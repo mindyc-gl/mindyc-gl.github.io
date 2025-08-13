@@ -1,12 +1,67 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>Mindy's Portfolio</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mindy Chen · Data Analyst Portfolio</title>
+  <meta name="description" content="Mindy Chen 的数据分析作品集：SQL、Python、Tableau。">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Hello World</h1>
-  <p>网站搭建中...</p>
+  <!-- 顶部全屏背景：使用 assets/img/hero.jpg -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <nav class="nav">
+      <a href="#about">关于我</a>
+      <a href="#projects">项目</a>
+      <a href="#contact">联系</a>
+      <a href="resume.pdf" target="_blank">简历 PDF</a>
+    </nav>
+    <div class="hero-inner">
+      <h1>Mindy Chen</h1>
+      <p>Data Analyst · SQL · Python · Tableau</p>
+      <a class="btn" href="#projects">查看项目</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="about" class="card">
+      <h2>关于我</h2>
+      <p>我专注于数据清洗、特征工程、建模与可视化，擅长将分析结果转化为业务决策。
+         技术：<b>SQL</b>、<b>Python</b>（pandas / scikit-learn）、<b>Tableau</b>。</p>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>项目</h2>
+
+      <article class="project">
+        <div class="meta">
+          <h3>Telco Customer Churn（用户流失预测）</h3>
+          <p class="muted">SQL 汇总 → Python 训练（LogReg / XGBoost）→ 特征重要性 → Tableau 可视化。AUC 0.86。</p>
+          <p><a class="btn" href="#" target="_blank">代码/报告</a>
+             <a class="btn" href="#" target="_blank">Dashboard</a></p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta">
+          <h3>Job Market Analysis（招聘市场分析）</h3>
+          <p class="muted">爬取岗位 → 清洗标准化 → 城市/关键词分布 → 薪资区间对比。</p>
+          <p><a class="btn" href="#" target="_blank">代码/报告</a></p>
+        </div>
+      </article>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>联系我</h2>
+      <p>📧 michen10@bu.edu · 💼 <a href="https://www.linkedin.com/in/mincong-mindy10/" target="_blank">LinkedIn</a> ·
+         🧰 <a href="https://github.com/mindyc-gl" target="_blank">GitHub</a></p>
+    </section>
+  </main>
+
+  <footer class="foot">© <span id="y"></span> Mindy Chen · Hosted on GitHub Pages</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
 </html>
-
