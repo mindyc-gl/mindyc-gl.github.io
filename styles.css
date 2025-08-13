@@ -1,0 +1,35 @@
+:root{
+  --bg:#0b0f17; --card:#121826; --muted:#94a3b8; --text:#e2e8f0; --brand:#60a5fa;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
+a{color:var(--brand);text-decoration:none}
+a:hover{opacity:.9}
+.wrap{max-width:960px;margin:0 auto;padding:28px 20px}
+h1,h2,h3{margin:0 0 10px}
+.muted{color:var(--muted)}
+.btn{display:inline-block;padding:8px 12px;border:1px solid #1f2937;border-radius:10px;background:#0f172a}
+
+/* 顶部大图背景：使用你上传的 assets/img/hero.jpg */
+.hero{
+  position:relative;min-height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  background:url('assets/img/hero.jpg') center/cover no-repeat fixed;
+}
+.hero .overlay{
+  position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.55));
+}
+.nav{
+  position:absolute;top:16px;right:16px;display:flex;gap:14px;flex-wrap:wrap;z-index:2
+}
+.nav a{padding:8px 12px;border-radius:999px;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);font-size:14px}
+.hero-inner{position:relative;z-index:2}
+.hero-inner h1{font-size:44px;letter-spacing:.3px}
+.hero-inner p{margin:8px 0 16px;color:#d1d5db}
+
+.card{background:var(--card);border:1px solid #1f2937;border-radius:16px;padding:18px;margin:18px 0}
+.project{margin:18px 0}
+.foot{padding:24px 12px;color:var(--muted);text-align:center;font-size:13px}
+
+@media (max-width:760px){
+  .hero{min-height:64vh;background-attachment:scroll}
+}
