@@ -34,28 +34,45 @@ a:hover{ opacity:.9 }
   margin:18px 0;
 }
 
-/* --- Hero (大图背景) --- */
+/* === Hero 覆盖（推荐：铺满一屏 + 焦点上移）=== */
+/* 放在 styles.css 最后，覆盖你之前的 .hero 设置 */
 .hero{
-  position:relative;
-  min-height:72vh;
-  display:flex; align-items:center; justify-content:center;
-  text-align:center;
-  background:url('assets/img/hero.jpg') center/cover no-repeat fixed;
+  /* 布局 */
+  position: relative;
+  min-height: 100vh;                 /* 占满一屏，高度更大就不会只露一半 */
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+
+  /* 背景图 */
+  background-image: url('assets/img/hero.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;            /* 铺满容器（会有少量裁切） */
+  background-position: 50% 18%;      /* 焦点上移：18% 视效果可调 10%~25% */
+  background-attachment: fixed;      /* 桌面端保留视差感 */
 }
+
+/* 覆盖层保持原样（可略微变浅/变深按需调整） */
 .hero .overlay{
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
 }
-.hero-inner{ position:relative; z-index:2; padding:0 16px }
+
+/* 内容保持原样 */
+.hero-inner{ position: relative; z-index: 2; padding: 0 16px; }
 .hero-inner h1{
-  font-size:56px; font-weight:800; margin:0 0 8px;
-  text-shadow:0 2px 12px rgba(0,0,0,.35);
+  font-size: 56px; font-weight: 800; margin: 0 0 8px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
 }
-/* 英雄区副标题：蓝色文字（你想要的效果） */
-.hero-inner p{
-  margin:8px 0 16px;
-  color:var(--brand);
-  font-weight:600; font-size:18px; letter-spacing:.3px;
+
+/* 移动端兼容：禁用 fixed，避免抖动；微调焦点 */
+@media (max-width: 1024px){
+  .hero{ background-attachment: scroll; }
+}
+@media (max-width: 760px){
+  .hero{
+    min-height: 100svh;              /* 移动端更准确的视口高度 */
+    background-position: 50% 25%;    /* 小屏再往上移一点点 */
+  }
 }
 
 /* --- Nav (磨砂胶囊导航，蓝色文字) --- */
