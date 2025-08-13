@@ -153,16 +153,4 @@ a:hover{ opacity:.9 }
 .project-row .content h3{ margin:0 0 10px; }
 .project-row .content p{ margin:0 0 12px; }
 
-/* 窄屏下改为上下结构 */
-@media (max-width: 900px){
-  .project-row{
-    grid-template-columns: 1fr;
-  }
-  .project-row .thumb{ height:200px; }
-}
 
-/* --- Responsive --- */
-@media (max-width:760px){
-  .hero{ min-height:64vh; background-attachment:scroll }
-  .hero-inner h1{ font-size:40px }
-}
