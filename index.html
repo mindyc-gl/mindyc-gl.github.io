@@ -2073,7 +2073,7 @@ document.getElementById('result').addEventListener('click',e=>{const a=e.target.
 })();
 
 /* ---------- v8: Mindyverse band ---------- */
-const MV_URL='';  // set to the Mindyverse site URL when it is live
+const MV_URL='https://mindyc-gl.github.io/mindyverse/';  // set to the Mindyverse site URL when it is live
 (function(){
   document.getElementById('mvGo').innerHTML=MV_URL?`<a class="mvb-btn" href="${MV_URL}" target="_blank" rel="noopener">Enter Mindyverse ↗</a>`:`<span class="mvb-btn" aria-disabled="true">Enter Mindyverse ↗</span><span class="mvb-soon">Coming soon</span>`;
   const card=document.getElementById('mvCard'),moon=card.querySelector('.mvb-moon'),cv=document.getElementById('mvCanvas'),x=cv.getContext('2d');
