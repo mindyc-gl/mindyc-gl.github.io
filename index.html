@@ -1,95 +1,2094 @@
-<!-- refresh -->
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mindy Chen · Web Portfolio</title>
-  <meta name="description" content="Mindy Chen 的数据分析作品集：SQL、Python、Tableau。">
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mindy Chen: data, analytics, engineering and AI projects. Open to work in Boston, hybrid or remote.">
+<style>[hidden]{display:none!important}</style>
+<title>Mindy Chen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  --ink:#070F14; --ink-2:#0C1A21; --panel:#10232C; --line:#1E3A45;
+  --text:#E6F1F2; --soft:#C4D6D9; --muted:#86A3AA;
+  --aqua:#5CE1D6; --peach:#FFB38A; --good:#7BE39A;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding-inline:20px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--aqua)}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.05}
+section{padding-block:88px;border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:14px;margin-bottom:40px;max-width:700px}
+.sec-head p{color:var(--muted);margin:0}
+:focus-visible{outline:2px solid var(--aqua);outline-offset:3px;border-radius:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:12px var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font:600 14px var(--body);text-decoration:none;border:1px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer;transition:border-color .2s,transform .2s}
+.btn:hover{border-color:var(--aqua);transform:translateY(-1px)}
+.btn.primary{background:var(--aqua);color:var(--ink);border-color:var(--aqua)}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ink) 84%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:58px}
+.logo{font:600 14px var(--mono);letter-spacing:.04em;text-decoration:none}
+.logo b{color:var(--aqua);font-weight:500}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--muted)}
+nav ul a{text-decoration:none} nav ul a:hover{color:var(--text)}
+@media (max-width:640px){nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-top:0;padding-block:80px 64px}
+#field{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:2;display:grid;gap:26px}
+.hero h1{font-size:clamp(48px,9.5vw,116px);font-weight:800;line-height:.9;letter-spacing:-.045em}
+.role-line{font:600 clamp(20px,3vw,30px)/1.2 var(--display);letter-spacing:-.01em;min-height:1.2em}
+.role-line em{font-style:normal;background:linear-gradient(90deg,var(--aqua),var(--peach));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:600px;font-size:clamp(17px,2vw,20px);color:var(--soft);margin:0;min-height:3.2em}
+
+.role-line .five{color:var(--soft);font-weight:400}
+.roles-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media (max-width:1000px){.roles-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:640px){.roles-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:400px){.roles-grid{grid-template-columns:1fr}}
+.rcard{display:grid;gap:8px;align-content:start;text-align:left;padding:16px;border-radius:14px;border:1px solid var(--line);background:rgba(12,26,33,.82);color:var(--text);cursor:pointer;font:inherit;position:relative;transition:border-color .25s,transform .25s,background .25s}
+.rcard:hover{border-color:var(--aqua);transform:translateY(-3px)}
+.rcard .num{font:11px var(--mono);color:var(--muted);letter-spacing:.1em}
+.rcard .rt{font:700 19px/1.15 var(--display);letter-spacing:-.01em}
+.rcard .rd{font-size:13.5px;color:var(--soft);line-height:1.45}
+.rcard .rtools{font:11.5px/1.5 var(--mono);color:var(--muted)}
+.rcard .go{font:500 12px var(--mono);color:var(--aqua);margin-top:4px}
+.rcard[aria-pressed="true"]{background:rgba(92,225,214,.1);border-color:var(--aqua);box-shadow:0 0 0 1px var(--aqua),0 18px 50px -24px rgba(92,225,214,.6)}
+.rcard[aria-pressed="true"] .rt{color:var(--aqua)}
+.reset-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;font:12.5px var(--mono);color:var(--muted);min-height:20px}
+.linkish{background:none;border:0;padding:0;color:var(--muted);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.linkish:hover{color:var(--text)}
+.switch{display:grid;gap:12px}
+.switch .lbl{font:12px var(--mono);color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font:500 14px var(--body);padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(16,35,44,.7);color:var(--soft);cursor:pointer;transition:all .2s}
+.pill:hover{border-color:var(--aqua);color:var(--text)}
+.pill[aria-pressed="true"]{background:var(--aqua);border-color:var(--aqua);color:var(--ink)}
+
+.stack-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(12,26,33,.8);max-width:900px}
+.stage{padding:14px 16px;border-right:1px solid var(--line);position:relative;transition:background .35s}
+.stage:last-child{border-right:0}
+.stage .n{font:11px var(--mono);color:var(--muted);letter-spacing:.1em}
+.stage .t{font:600 17px var(--display);margin-top:2px;color:var(--muted);transition:color .35s}
+.stage .d{font-size:12.5px;color:var(--muted);margin-top:2px}
+.stage.on{background:rgba(92,225,214,.09)}
+.stage.on .t{color:var(--aqua)}
+.stage.on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--aqua)}
+@media (max-width:720px){.stack-flow{grid-template-columns:1fr 1fr}.stage{border-bottom:1px solid var(--line)}.stage:last-child{grid-column:1/-1}}
+
+/* projects */
+.projects{display:grid;gap:28px}
+.proj{display:grid;grid-template-columns:1fr 1.2fr;gap:32px;align-items:start;padding:28px;border:1px solid var(--line);border-radius:18px;background:var(--ink-2);transition:border-color .3s,opacity .3s}
+.proj.match{border-color:color-mix(in srgb,var(--aqua) 55%,var(--line))}
+.proj.dim{opacity:.62}
+.proj:hover{opacity:1}
+@media (max-width:900px){.proj{grid-template-columns:1fr;padding:20px}}
+.proj-copy{display:grid;gap:16px;align-content:start}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.status{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid}
+.status.live{color:var(--good);border-color:color-mix(in srgb,var(--good) 45%,transparent)}
+.status.wip{color:var(--peach);border-color:color-mix(in srgb,var(--peach) 45%,transparent)}
+.status.done{color:var(--aqua);border-color:color-mix(in srgb,var(--aqua) 45%,transparent)}
+.best{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--aqua);padding:4px 9px;border-radius:999px}
+.proj h3{font-size:clamp(22px,2.6vw,28px);font-weight:600;letter-spacing:-.01em;line-height:1.15}
+.pad{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.pad li{display:grid;grid-template-columns:82px 1fr;gap:12px;font-size:15px;color:var(--soft)}
+.pad li span{font:500 11px/1.9 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.roles{font:12px var(--mono);color:var(--muted)}
+.roles b{color:var(--soft);font-weight:500}
+
+.viz{background:var(--ink);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.viz-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font:12px var(--mono);color:var(--muted)}
+.dots{display:flex;gap:6px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.viz-body{padding:16px;display:grid;gap:14px}
+.note{font:11.5px var(--mono);color:var(--muted);margin:0}
+svg text{font-family:var(--mono)}
+.svgbox{overflow-x:auto}
+
+/* agent demo */
+.chat{display:grid;gap:10px;font-size:14px;min-height:300px;align-content:start}
+.q{justify-self:end;background:var(--panel);border:1px solid var(--line);padding:9px 13px;border-radius:12px 12px 2px 12px;max-width:88%}
+.step{font:12px var(--mono);color:var(--muted);display:flex;gap:8px;align-items:center}
+.step i{width:7px;height:7px;border-radius:50%;background:var(--aqua);flex:none}
+.step.ok i{background:var(--good)}
+.sql{font:12px/1.6 var(--mono);background:var(--ink-2);border:1px solid var(--line);border-radius:8px;padding:10px 12px;color:var(--soft);white-space:pre;overflow-x:auto}
+.sql .k{color:var(--peach)}
+.ans{border-left:2px solid var(--aqua);padding-left:12px;color:var(--soft)}
+.mini{width:100%;border-collapse:collapse;font:12px var(--mono);font-variant-numeric:tabular-nums}
+.mini th,.mini td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line)}
+.mini th{color:var(--muted);font-weight:500}
+.mini td.neg{color:var(--peach)}
+
+/* pricing */
+.skus{display:flex;flex-wrap:wrap;gap:8px}
+.sku{font:500 12px var(--mono);padding:7px 11px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.sku[aria-pressed="true"]{border-color:var(--aqua);color:var(--text);background:rgba(92,225,214,.08)}
+.sku .flag{width:6px;height:6px;border-radius:50%;background:var(--peach)}
+.ctrl{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;font:13px var(--mono);color:var(--muted)}
+input[type=range]{width:100%;accent-color:var(--aqua)}
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ro{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.ro .k{font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ro .v{font:600 19px var(--display);font-variant-numeric:tabular-nums;margin-top:2px}
+.ro .v.up{color:var(--good)} .ro .v.down{color:var(--peach)}
+
+/* skills */
+.layers{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media (max-width:980px){.layers{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.layers{grid-template-columns:1fr}}
+.layer{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--ink-2);display:grid;gap:12px;align-content:start;transition:border-color .3s}
+.layer.on{border-color:var(--aqua)}
+.layer h3{font-size:18px;font-weight:600}
+.layer p{margin:0;color:var(--muted);font-size:14px}
+.layer .tag{transition:all .3s}
+.layer.on .tag{color:var(--text);border-color:color-mix(in srgb,var(--aqua) 50%,var(--line))}
+
+/* education */
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:820px){.edu{grid-template-columns:1fr}}
+.deg{padding:22px 0;border-top:2px solid var(--line);display:grid;gap:6px}
+.deg.now{border-top-color:var(--aqua)}
+.deg .lvl{font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.deg h3{font-size:20px;font-weight:600}
+.deg .school{color:var(--soft)}
+
+.contact{display:grid;gap:24px}
+.contact h2{font-size:clamp(38px,7vw,84px);letter-spacing:-.04em;line-height:.95}
+.contact .cta{display:flex;flex-wrap:wrap;gap:12px}
+footer{padding-block:28px;border-top:1px solid var(--line);font:12px var(--mono);color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.pill,.proj,.stage{transition:none}}
+
+/* ===== v2 hero ===== */
+.hero{padding-block:72px 56px}
+.hero h1{font-size:clamp(44px,8.4vw,104px)}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--aqua),var(--peach));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hire{font:600 clamp(22px,3.4vw,38px)/1.15 var(--display);letter-spacing:-.015em;min-height:1.2em}
+.hire .who{color:var(--aqua)}
+.hire .cur{display:inline-block;width:.09em;height:.9em;background:var(--aqua);margin-left:3px;vertical-align:-.08em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.rail{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:8px}
+.rail .wire{position:absolute;left:10%;right:10%;top:27px;height:2px;background:var(--line);overflow:hidden;border-radius:2px}
+.rail .wire::after{content:"";position:absolute;top:0;bottom:0;width:30%;background:linear-gradient(90deg,transparent,var(--aqua),var(--peach),transparent);animation:flow 2.6s linear infinite}
+@keyframes flow{from{left:-30%}to{left:100%}}
+.st{position:relative;text-align:left;display:grid;gap:8px;align-content:start;padding:0 14px 16px;border:1px solid var(--line);border-radius:16px;background:rgba(12,26,33,.86);color:var(--text);font:inherit;cursor:pointer;transition:border-color .3s,box-shadow .3s,transform .3s}
+.st:hover{border-color:color-mix(in srgb,var(--aqua) 60%,var(--line));transform:translateY(-2px)}
+.st .node{width:22px;height:22px;border-radius:50%;margin:16px 0 4px;background:var(--ink);border:2px solid var(--muted);position:relative;z-index:1;transition:all .3s}
+.st .layer-n{font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.st .role{font:700 clamp(17px,1.7vw,21px)/1.1 var(--display);letter-spacing:-.01em}
+.st .does{font-size:13.5px;color:var(--soft);line-height:1.45}
+.st .tl{display:flex;flex-wrap:wrap;gap:5px}
+.st .tl span{font:11px var(--mono);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:2px 6px}
+.st .cnt{font:12px var(--mono);color:var(--muted);margin-top:2px}
+.st .cnt b{color:var(--text);font-weight:500}
+.st.on{border-color:var(--aqua);box-shadow:0 18px 50px -28px rgba(92,225,214,.7)}
+.st.on .node{background:var(--aqua);border-color:var(--aqua);box-shadow:0 0 0 6px rgba(92,225,214,.16)}
+.st.on .role{color:var(--aqua)}
+.st[aria-pressed="true"]{background:rgba(92,225,214,.08)}
+.rail-foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;font:12.5px var(--mono);color:var(--muted)}
+.rail-foot button{font:inherit;color:var(--aqua);background:none;border:0;cursor:pointer;padding:4px 0;text-decoration:underline;text-underline-offset:3px}
+@media (max-width:860px){
+  .rail{grid-template-columns:1fr;gap:10px}
+  .rail .wire{left:25px;right:auto;top:28px;bottom:28px;width:2px;height:auto}
+  .rail .wire::after{width:auto;left:0;right:0;height:30%;background:linear-gradient(180deg,transparent,var(--aqua),var(--peach),transparent);animation:flowv 2.6s linear infinite}
+  .st{grid-template-columns:22px 1fr;column-gap:14px;padding:14px}
+  .st .node{grid-row:1/span 5;margin:2px 0 0}
+}
+@keyframes flowv{from{top:-30%}to{top:100%}}
+
+/* coverage matrix */
+.cov-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--ink-2)}
+.cov{width:100%;min-width:680px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.cov th,.cov td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:center}
+.cov tr:last-child td{border-bottom:0}
+.cov thead th{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .2s}
+.cov thead th.on{color:var(--aqua)}
+.cov th[scope=row]{text-align:left;font:600 15px var(--display);color:var(--text);cursor:default}
+.cov td.on{background:rgba(92,225,214,.06)}
+.mk{display:inline-block;width:14px;height:14px;border-radius:50%}
+.mk.p{background:var(--aqua);box-shadow:0 0 0 5px rgba(92,225,214,.14)}
+.mk.s{border:2px solid var(--aqua);opacity:.7}
+.mk.n{width:6px;height:6px;background:var(--line)}
+.cov tfoot td{font:12px var(--mono);color:var(--muted);text-align:center}
+.cov tfoot td:first-child{text-align:left}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font:12px var(--mono);color:var(--muted);margin-top:14px}
+.legend span{display:inline-flex;gap:8px;align-items:center}
+@media (prefers-reduced-motion:reduce){.rail .wire::after,.hire .cur{animation:none}.st{transition:none}}
+
+
+/* ===== v3 ===== */
+.openbar{background:linear-gradient(90deg,rgba(92,225,214,.14),rgba(255,179,138,.10));border-bottom:1px solid var(--line);font:12.5px var(--mono);color:var(--soft)}
+.openbar .wrap{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;padding-block:9px}
+.openbar .live{display:inline-flex;align-items:center;gap:8px;color:var(--good);font-weight:500}
+.openbar .live i{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 0 rgba(123,227,154,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(123,227,154,0)}100%{box-shadow:0 0 0 0 rgba(123,227,154,0)}}
+.openbar .sep{color:var(--line)}
+.v3hero{padding-block:64px 64px}
+.v3grid{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:start}
+@media (max-width:980px){.v3grid{grid-template-columns:1fr}}
+.v3hero h1{font-size:clamp(40px,6.4vw,82px);line-height:.95}
+.v3hero h1 .dim{color:var(--muted);font-weight:600}
+.intro{display:grid;gap:22px;align-content:start}
+.hire{font-size:clamp(20px,2.6vw,30px)}
+.mini-roles{display:flex;flex-wrap:wrap;gap:8px}
+.mini-roles button{font:500 13px var(--body);padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(16,35,44,.7);color:var(--soft);cursor:pointer}
+.mini-roles button:hover{border-color:var(--aqua);color:var(--text)}
+.mini-roles button[aria-pressed="true"]{background:var(--aqua);color:var(--ink);border-color:var(--aqua)}
+
+.matcher{background:rgba(12,26,33,.92);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 40px 90px -50px rgba(92,225,214,.55)}
+.m-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);font:12px var(--mono);color:var(--muted)}
+.m-body{padding:18px;display:grid;gap:14px}
+.m-body h2{font-size:clamp(20px,2.2vw,26px);font-weight:700;letter-spacing:-.01em;line-height:1.15}
+.m-body label{font:12px var(--mono);color:var(--muted)}
+.samples{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.samples span{font:12px var(--mono);color:var(--muted);margin-right:2px}
+.samples button{font:12px var(--mono);padding:5px 9px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--soft);cursor:pointer}
+.samples button:hover,.samples button.on{border-color:var(--aqua);color:var(--aqua)}
+#jd{width:100%;min-height:118px;resize:vertical;background:var(--ink);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;font:13.5px/1.55 var(--body)}
+#jd:focus{outline:none;border-color:var(--aqua)}
+.m-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.m-actions .hintx{font:12px var(--mono);color:var(--muted)}
+.result{display:grid;gap:14px;border-top:1px solid var(--line);padding-top:16px}
+.score{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.ring{position:relative;width:92px;height:92px}
+.ring svg{transform:rotate(-90deg)}
+.ring .pct{position:absolute;inset:0;display:grid;place-items:center;font:800 19px var(--display);font-variant-numeric:tabular-nums}
+.score .sum{font-size:15px;color:var(--soft)}
+.score .sum b{color:var(--text)}
+.lean{display:grid;gap:6px}
+.lean-row{display:grid;grid-template-columns:110px 1fr 38px;gap:10px;align-items:center;font:12px var(--mono);color:var(--muted)}
+.lean-row .bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.lean-row .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--aqua),var(--peach));border-radius:4px;transition:width .6s}
+.lean-row .v{text-align:right;color:var(--soft);font-variant-numeric:tabular-nums}
+.grp{display:grid;gap:7px}
+.grp .gl{font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:12px var(--mono);padding:4px 9px;border-radius:999px;border:1px solid var(--line)}
+.chip.pr{border-color:color-mix(in srgb,var(--aqua) 55%,transparent);color:var(--aqua);background:rgba(92,225,214,.07)}
+.chip.tk{color:var(--soft)}
+.chip.gp{color:var(--muted);border-style:dashed}
+.proof{display:flex;flex-wrap:wrap;gap:8px}
+.proof a{font:13px var(--body);text-decoration:none;padding:7px 12px;border-radius:10px;border:1px solid var(--line);background:var(--ink);color:var(--text)}
+.proof a:hover{border-color:var(--aqua)}
+.proof a b{color:var(--aqua);font:500 11px var(--mono);margin-left:6px}
+.empty{font:13px var(--mono);color:var(--muted)}
+
+/* constellation */
+.const-wrap{position:relative;border:1px solid var(--line);border-radius:18px;background:radial-gradient(ellipse at center,#0E2129 0,var(--ink-2) 70%);overflow:hidden}
+#constel{display:block;width:100%;height:540px;cursor:crosshair}
+@media (max-width:700px){#constel{height:460px}}
+.const-legend{position:absolute;left:16px;bottom:14px;display:flex;flex-wrap:wrap;gap:14px;font:11.5px var(--mono);color:var(--muted);pointer-events:none}
+.const-legend span{display:inline-flex;align-items:center;gap:6px}
+.const-legend i{width:9px;height:9px;border-radius:50%}
+@media (prefers-reduced-motion:reduce){.openbar .live i{animation:none}}
+
+
+/* ===== v4: SQL console ===== */
+.sqlgrid{display:grid;grid-template-columns:240px 1fr;gap:16px;align-items:start}
+@media (max-width:860px){.sqlgrid{grid-template-columns:1fr}}
+.schema{border:1px solid var(--line);border-radius:14px;background:var(--ink-2);padding:14px;display:grid;gap:12px;font:12px var(--mono)}
+.schema .tn{color:var(--aqua);font-weight:500;cursor:pointer;background:none;border:0;padding:0;font:inherit;text-align:left}
+.schema .tn:hover{text-decoration:underline}
+.schema .cols{color:var(--muted);line-height:1.6;padding-left:10px;border-left:1px solid var(--line);margin-top:4px}
+.console2{border:1px solid var(--line);border-radius:16px;background:var(--ink);overflow:hidden}
+.c-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font:12px var(--mono);color:var(--muted)}
+.presets{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px 0}
+.presets button{font:12px var(--mono);padding:5px 9px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--soft);cursor:pointer}
+.presets button:hover,.presets button.on{border-color:var(--aqua);color:var(--aqua)}
+.editor{position:relative;margin:12px 14px 0}
+#sqlIn{width:100%;min-height:110px;resize:vertical;background:var(--ink-2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px 12px 12px 34px;font:13px/1.6 var(--mono);tab-size:2}
+#sqlIn:focus{outline:none;border-color:var(--aqua)}
+.editor::before{content:"sql>";position:absolute;left:10px;top:12px;font:11px/1.9 var(--mono);color:var(--peach);writing-mode:vertical-rl;transform:rotate(180deg);opacity:.7}
+.run-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 14px}
+.run-row .kbd{font:12px var(--mono);color:var(--muted)}
+.out{border-top:1px solid var(--line);padding:12px 14px 16px;display:grid;gap:8px}
+.out .msg{font:12px var(--mono);color:var(--muted)}
+.out .msg.err{color:var(--peach)}
+.tbl-wrap{overflow-x:auto;max-height:340px;overflow-y:auto;border:1px solid var(--line);border-radius:10px}
+.qt{width:100%;border-collapse:collapse;font:12.5px var(--mono);font-variant-numeric:tabular-nums}
+.qt th{position:sticky;top:0;background:var(--panel);color:var(--aqua);font-weight:500;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.qt td{padding:7px 10px;border-bottom:1px solid var(--line);color:var(--soft);vertical-align:top}
+.qt tr:last-child td{border-bottom:0}
+.qt td.num{text-align:right;color:var(--text)}
+.qt tbody tr{animation:rowin .35s both}
+@keyframes rowin{from{opacity:0;transform:translateY(4px)}}
+
+/* ===== v4: 30-second view ===== */
+.quick-btn{font:500 13px var(--mono);padding:7px 12px;border-radius:999px;border:1px solid var(--aqua);color:var(--aqua);background:rgba(92,225,214,.08);cursor:pointer;white-space:nowrap}
+.quick-btn:hover{background:var(--aqua);color:var(--ink)}
+nav .right{display:flex;align-items:center;gap:22px}
+.qv[hidden]{display:none!important}
+.qv{position:fixed;inset:0;z-index:50;background:rgba(4,9,12,.78);backdrop-filter:blur(8px);display:grid;place-items:center;padding:calc(20px + env(safe-area-inset-top,0px)) 16px calc(20px + env(safe-area-inset-bottom,0px));overflow-y:auto}
+.qv-card{width:min(860px,100%);background:var(--ink-2);border:1px solid var(--aqua);border-radius:20px;padding:28px;display:grid;gap:22px;box-shadow:0 40px 120px -40px rgba(92,225,214,.5);animation:qvin .35s ease both}
+@keyframes qvin{from{opacity:0;transform:translateY(12px) scale(.98)}}
+.qv-top{display:flex;justify-content:space-between;gap:16px;align-items:start}
+.qv-top h2{font-size:clamp(28px,4vw,40px)}
+.qv-top .sub{color:var(--soft);margin-top:6px}
+.qv-close{font:12px var(--mono);background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px 10px;cursor:pointer}
+.qv-close:hover{color:var(--text);border-color:var(--aqua)}
+.qv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:760px){.qv-grid{grid-template-columns:1fr}}
+.qv-box{border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:10px;align-content:start}
+.qv-box .gl{font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.qv-box ul{margin:0;padding-left:18px;display:grid;gap:6px;color:var(--soft);font-size:14.5px}
+.qv-box a{color:var(--aqua)}
+.qv-roles{display:flex;flex-wrap:wrap;gap:6px}
+.qv-roles span{font:12px var(--mono);padding:4px 9px;border-radius:999px;background:rgba(92,225,214,.1);color:var(--aqua)}
+.qv-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+@media (prefers-reduced-motion:reduce){.qt tbody tr,.qv-card{animation:none}}
+
+
+/* ===== v5: case study ===== */
+.cs{position:fixed;inset:0;z-index:60;background:rgba(4,9,12,.82);backdrop-filter:blur(8px);overflow-y:auto;padding:calc(24px + env(safe-area-inset-top,0px)) 16px calc(40px + env(safe-area-inset-bottom,0px))}
+.cs[hidden]{display:none!important}
+.cs-card{max-width:980px;margin:0 auto;background:var(--ink-2);border:1px solid var(--line);border-radius:22px;overflow:hidden;animation:qvin .35s ease both}
+.cs-hero{position:relative;padding:28px 28px 22px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 90% 0,rgba(92,225,214,.14),transparent 60%),radial-gradient(ellipse at 0 100%,rgba(255,179,138,.09),transparent 55%)}
+.cs-hero h2{font-size:clamp(26px,3.6vw,40px);letter-spacing:-.02em;line-height:1.05;margin-top:10px}
+.cs-hero p{color:var(--soft);max-width:66ch;margin:12px 0 0}
+.cs-x{position:absolute;right:18px;top:18px}
+.cs-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.cs-body{padding:28px;display:grid;gap:36px}
+.cs-sec{display:grid;gap:14px}
+.cs-sec>h3{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--aqua)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.tile{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--ink)}
+.tile .n{font:800 clamp(26px,3vw,34px)/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--text)}
+.tile .l{font-size:13px;color:var(--muted);margin-top:8px}
+.steps2{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.steps2::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.steps2 li{position:relative;display:grid;grid-template-columns:32px 1fr;gap:16px;padding:0 0 18px;opacity:0;transform:translateX(-8px);transition:opacity .45s,transform .45s}
+.steps2 li.in{opacity:1;transform:none}
+.steps2 .k{width:32px;height:32px;border-radius:50%;border:2px solid var(--aqua);background:var(--ink);display:grid;place-items:center;font:500 12px var(--mono);color:var(--aqua);z-index:1}
+.steps2 b{display:block;font:600 16px var(--display);color:var(--text)}
+.steps2 span{display:block;color:var(--soft);font-size:15px;margin-top:3px}
+.steps2 .tl2{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.cs-viz{border:1px solid var(--line);border-radius:14px;background:var(--ink);padding:16px;display:grid;gap:10px}
+.cs-viz .cap{font:12px var(--mono);color:var(--muted)}
+.cs-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.cs-2{grid-template-columns:1fr}.cs-hero,.cs-body{padding:20px}}
+.code{font:12.5px/1.65 var(--mono);background:var(--ink);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto;white-space:pre;color:var(--soft)}
+.code .c{color:var(--muted)} .code .k{color:var(--peach)} .code .s{color:var(--aqua)}
+.res{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.res li{display:grid;grid-template-columns:18px 1fr;gap:10px;color:var(--soft)}
+.res li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--aqua);margin-top:9px}
+.honest{font:12.5px/1.6 var(--mono);color:var(--muted);border-left:2px solid var(--peach);padding-left:12px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow .fn{font:13px var(--mono);padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--ink-2);color:var(--muted);transition:all .4s}
+.flow .fn.on{border-color:var(--aqua);color:var(--text);background:rgba(92,225,214,.08);box-shadow:0 0 0 4px rgba(92,225,214,.08)}
+.flow .ar{color:var(--line);font:14px var(--mono);transition:color .4s}
+.flow .ar.on{color:var(--aqua)}
+.hm{display:grid;gap:2px}
+.hm .row{display:grid;grid-template-columns:78px repeat(30,1fr);gap:2px;align-items:center}
+.hm .rl{font:10px var(--mono);color:var(--muted)}
+.hm .cell{aspect-ratio:1;border-radius:2px;background:var(--line);transition:background .3s}
+.hm .ax{font:10px var(--mono);color:var(--muted)}
+.cs-foot{padding:0 28px 28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media (prefers-reduced-motion:reduce){.steps2 li{opacity:1;transform:none;transition:none}.cs-card{animation:none}}
+
+
+/* ===== v7: ribbon hero ===== */
+.rib{padding-block:clamp(56px,9vw,110px) clamp(56px,8vw,96px);min-height:min(92vh,860px);display:flex;align-items:center}
+.rib .wrap{width:100%}
+.ribgrid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center}
+.rib .intro{max-width:640px;gap:24px}
+.rib h1{font-size:clamp(40px,5.6vw,76px);line-height:.95}
+.xline{font:500 clamp(12px,1.3vw,14px) var(--mono);letter-spacing:.14em}
+.rib .lede{min-height:0}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.rib .btn{min-height:48px;padding:12px 22px;border-radius:12px;font-size:15.5px}
+.hstats{display:flex;gap:0;margin:8px 0 0;flex-wrap:wrap}
+.hstats div{padding:0 28px 0 0;margin-right:28px;border-right:1px solid var(--line)}
+.hstats div:last-child{border-right:0;margin-right:0}
+.hstats dt{font:500 clamp(26px,3vw,34px)/1 var(--display);letter-spacing:-.02em;color:var(--text);font-variant-numeric:tabular-nums}
+.hstats dd{margin:6px 0 0;font-size:13.5px;color:var(--muted)}
+.sidecard{align-self:center;justify-self:end;width:230px;display:grid;gap:8px;text-align:left;padding:18px;border-radius:16px;border:1px solid rgba(92,225,214,.28);background:rgba(10,20,24,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--text);font:inherit;cursor:pointer;transition:border-color .3s,transform .25s cubic-bezier(.2,.8,.2,1)}
+.sidecard:hover{border-color:var(--aqua)}
+.sidecard .k{font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--aqua)}
+.sidecard b{font:600 17px/1.2 var(--display)}
+.sidecard span:not(.k){font-size:13px;color:var(--muted)}
+.sidecard i{font-style:normal;font-size:13.5px;color:var(--aqua)}
+@media (max-width:980px){.ribgrid{grid-template-columns:1fr}.sidecard{justify-self:start}}
+@media (max-width:980px){.rib #field{opacity:.45}}
+.rib::after{background:linear-gradient(90deg,var(--ink) 0,rgba(7,15,20,.9) 32%,rgba(7,15,20,0) 58%)}
+@media (max-width:980px){.rib::after{background:linear-gradient(180deg,rgba(7,15,20,.3),var(--ink) 92%)}}
+/* matcher section */
+.match-sec{border-top:1px solid var(--line)}
+.mgrid2{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:980px){.mgrid2{grid-template-columns:1fr}}
+.intro2{display:grid;gap:18px;align-content:start}
+.h2x{font-size:clamp(32px,4.4vw,52px);font-weight:800;letter-spacing:-.025em;line-height:1.02}
+/* cursor follower */
+.cur-dot,.cur-ring{position:fixed;left:0;top:0;z-index:100;pointer-events:none;border-radius:50%;opacity:0;transition:opacity .3s}
+.cur-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--aqua)}
+.cur-ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid rgba(92,225,214,.7);display:grid;place-items:center;font:500 10px var(--mono);letter-spacing:.1em;color:var(--ink);text-transform:uppercase;transition:opacity .3s,width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1),margin .35s cubic-bezier(.2,.8,.2,1),background .35s}
+.cur-ring.big{width:74px;height:74px;margin:-37px 0 0 -37px;background:var(--aqua);border-color:var(--aqua)}
+.cur-ring span{opacity:0;transition:opacity .2s}.cur-ring.big span{opacity:1}
+
+.mag{transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s,border-color .2s}
+@media (prefers-reduced-motion:reduce){.cur-dot,.cur-ring{display:none}}
+
+
+/* ===== v8 ===== */
+/* SQL collapse */
+.sql-teaser{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--ink-2)}
+.tz-term{font:13.5px var(--mono);color:var(--soft);min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;flex:1}
+.tz-term .p{color:var(--peach)}
+.tz-cur{display:inline-block;width:8px;height:15px;background:var(--aqua);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+.sql-collapsed .sqlgrid{display:none}
+.sql-collapsed .sec-head p{display:none}
+#sql:not(.sql-collapsed) .sqlgrid{animation:sqlIn .45s ease both}
+@keyframes sqlIn{from{opacity:0;transform:translateY(10px)}}
+#sql:not(.sql-collapsed) .sql-teaser{margin-bottom:16px}
+/* project tilt + glare */
+.proj{position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .3s,opacity .3s;will-change:transform}
+.proj::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--gx,50%) var(--gy,50%),rgba(92,225,214,.10),transparent 60%)}
+.proj:hover::after{opacity:1}
+/* scroll-in animations for project charts */
+.proj.pre{opacity:0;transform:translateY(30px)}
+.proj.in{opacity:1}
+.anim-path{transition:stroke-dashoffset 1.6s cubic-bezier(.3,.7,.2,1)}
+.anim-bar{transform-box:fill-box;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.anim-fade{transition:opacity .6s ease}
+/* mindyverse band */
+.mvb{border-top:1px solid var(--line)}
+.mvb-card{position:relative;border-radius:24px;overflow:hidden;min-height:clamp(440px,48vw,560px);display:grid;align-items:end;isolation:isolate;color:#221D16;
+  background:radial-gradient(ellipse 60% 70% at 78% 22%,#FFFDF8 0,rgba(255,253,248,0) 60%),radial-gradient(ellipse 80% 90% at 10% 100%,#D9C3A0 0,rgba(217,195,160,0) 60%),linear-gradient(160deg,#F4EEE4 0%,#E6D8C3 55%,#C9B08A 100%);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+#mvCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.mvb-moon{position:absolute;right:9%;top:12%;width:clamp(90px,12vw,150px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 38% 35%,#fff 0,#F6EFE2 45%,#E5D5BC 100%);box-shadow:0 0 80px 20px rgba(255,248,232,.7);z-index:-1;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.mvb-in{padding:clamp(24px,5vw,56px);display:grid;gap:14px;max-width:660px}
+.mvb-cat{font:500 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#8A6A3E}
+.mvb h2{font:800 clamp(44px,7.5vw,92px)/.9 var(--display);letter-spacing:-.04em;color:#1E1A14;margin:0}
+.mvb-sub{font:italic 400 clamp(22px,2.6vw,32px)/1.15 "Instrument Serif",Georgia,serif;color:#5B4630}
+.mvb p{margin:0;color:#4A3D2E;max-width:52ch}
+.mvb-tags{display:flex;flex-wrap:wrap;gap:6px}
+.mvb-tags span{font:12.5px var(--mono);padding:4px 9px;border-radius:6px;background:rgba(255,255,255,.55);color:#4A3D2E}
+.mvb-go{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:4px}
+.mvb-btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:11px 20px;border-radius:999px;background:#1E1A14;color:#F6EFE2;font:500 15px var(--body);text-decoration:none;border:0}
+.mvb-soon{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#8A6A3E;border:1px solid rgba(138,106,62,.4);border-radius:6px;padding:4px 8px}
+/* hero reactive headline */
+.rib .intro{transition:transform .6s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+@media (prefers-reduced-motion:reduce){.proj,.mvb-card,.rib .intro{transition:none;transform:none!important}.proj.pre{opacity:1;transform:none}.tz-cur{animation:none}}
+
+
+/* ===== v10: refined glowing cursor ===== */
+html.cc,html.cc *{cursor:none!important}
+html.cc textarea,html.cc input,html.cc [contenteditable]{cursor:text!important}
+#curTrail{position:fixed;inset:0;width:100vw;height:100vh;z-index:99;pointer-events:none}
+.cur-dot,.cur-halo,.cur-tag{position:fixed;left:0;top:0;z-index:100;pointer-events:none;opacity:0;transition:opacity .35s}
+.cur-dot{width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:#F4FFFE;box-shadow:0 0 6px 1px #fff,0 0 14px 4px rgba(92,225,214,.85),0 0 32px 10px rgba(92,225,214,.28);transition:opacity .35s,width .3s,height .3s,margin .3s,border-radius .3s}
+.cur-halo{width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:radial-gradient(circle,rgba(92,225,214,.16) 0,rgba(92,225,214,.06) 38%,rgba(92,225,214,0) 70%);mix-blend-mode:screen;transform-origin:center;transition:opacity .35s,background .35s}
+.cur-halo .s{display:block}
+.cur-tag{padding:6px 10px 6px 9px;border-radius:999px;background:rgba(12,24,28,.72);border:1px solid rgba(92,225,214,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:500 11.5px var(--mono);letter-spacing:.04em;color:#DFFBF8;white-space:nowrap;box-shadow:0 8px 24px -8px rgba(0,0,0,.6);transition:opacity .25s,transform .08s linear}
+.cur-dot.text{width:2px;height:22px;margin:-11px 0 0 -1px;border-radius:2px}
+.cur-dot.gold{background:#FFF8EA;box-shadow:0 0 6px 1px #fff,0 0 14px 4px rgba(212,176,112,.9),0 0 32px 10px rgba(212,176,112,.3)}
+.cur-halo.gold{background:radial-gradient(circle,rgba(212,176,112,.24) 0,rgba(212,176,112,.08) 38%,rgba(212,176,112,0) 70%);mix-blend-mode:multiply}
+.cur-tag.gold{background:rgba(30,26,20,.85);border-color:rgba(212,176,112,.5);color:#F6EFE2}
+@media (prefers-reduced-motion:reduce){#curTrail{display:none}}
+
+/* ===== v15 hero: particle ribbons (reference image) ===== */
+.rib{background:#03080B;min-height:min(94vh,900px)}
+.rib .intro{max-width:780px;display:grid;gap:26px}
+.rib::after{background:linear-gradient(90deg,rgba(3,8,11,.92) 0,rgba(3,8,11,.72) 30%,rgba(3,8,11,.12) 50%,rgba(3,8,11,0) 62%),linear-gradient(0deg,rgba(3,8,11,.9),rgba(3,8,11,0) 22%)}
+.rib #field{opacity:1}
+.h-eyebrow{display:flex;align-items:center;gap:12px;font:500 13px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:rgba(200,220,226,.8)}
+.h-eyebrow i{font-style:normal;color:#3FE0D0}
+.h-eyebrow::after{content:"";width:110px;height:1px;background:linear-gradient(90deg,rgba(200,220,226,.5),transparent)}
+.rib h1{font-size:clamp(42px,6.2vw,86px);line-height:.95;letter-spacing:-.04em;font-weight:800}
+.rib h1 .l2{background:linear-gradient(90deg,#3FE0D0 0%,#6FF0DD 55%,#E9C98F 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rib h1 .l3{background:linear-gradient(90deg,#3FE0D0 0%,#8FE6C6 45%,#E9C98F 72%,#F4A45F 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rib .lede{max-width:48ch;font-size:clamp(17px,1.5vw,20px)}
+.rib .btn.primary{padding-inline:28px}
+.rib .hire{font-size:clamp(20px,2.4vw,30px);margin-top:-4px}
+.rib .hire .who{color:#3FE0D0}
+.scrollcue{position:absolute;left:max(20px,calc((100vw - 1120px)/2));bottom:28px;z-index:2;font:11.5px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:12px}
+.scrollcue::before{content:"";width:1px;height:34px;background:linear-gradient(#3FE0D0,transparent);animation:cue 2s ease-in-out infinite;transform-origin:top}
+.scrollcue span{font-size:15px;letter-spacing:0;animation:bob 1.8s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes bob{50%{transform:translateY(4px)}}
+@media (max-width:980px){.rib #field{opacity:1}.rib::after{background:linear-gradient(180deg,rgba(3,8,11,.35),rgba(3,8,11,.88) 62%)}}
+@media (prefers-reduced-motion:reduce){.scrollcue::before,.scrollcue span{animation:none}}
+@media (max-width:440px){.rib .btn{padding:12px 16px;font-size:15px}.rib .btn.primary{padding-inline:18px}.h-eyebrow::after{width:40px}.h-eyebrow{letter-spacing:.18em}}
+.rib .lede{max-width:44ch}
+.h-rule{height:1px;max-width:560px;background:linear-gradient(90deg,rgba(92,225,214,.45),rgba(92,225,214,.12) 70%,transparent)}
+.rib .hire{margin-top:-6px}
+/* agent visual demo */
+.ag{display:grid;gap:12px;min-height:420px;align-content:start}
+.ag-q{display:flex;gap:10px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);padding:11px 14px;border-radius:12px;font-size:14.5px;color:#EEF4F6;min-height:46px}
+.ag-ic{color:#A48BFF;flex:none}
+.ag-caret{width:2px;height:1.1em;background:#5CE1D6;align-self:center;opacity:0}
+.ag.typing .ag-caret{opacity:1;animation:blink .8s steps(1) infinite}
+.ag-steps{display:flex;flex-wrap:wrap;gap:6px}
+.ag-steps span{font:11.5px var(--mono);padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);transition:all .25s}
+.ag-steps span.on{border-color:#5CE1D6;color:#5CE1D6;box-shadow:0 0 14px -4px #5CE1D6}
+.ag-steps span.done{border-color:rgba(95,227,161,.5);color:#8FF0BE}
+.ag-steps span.done::before{content:"✓ "}
+.ag-ans{border:1px solid var(--line);border-radius:12px;padding:12px 14px 6px;background:linear-gradient(180deg,rgba(92,225,214,.05),transparent);opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.ag-ans.in{opacity:1;transform:none}
+.ag-kpi{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.ag-kpi b{font:800 30px/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:#EEF4F6}
+.ag-kpi span{font-size:13px;color:var(--muted)}
+.ag-say{margin:0;border-left:2px solid #5CE1D6;padding-left:12px;color:var(--soft);font-size:14px;opacity:0;transition:opacity .6s}
+.ag-say.in{opacity:1}
+.ag-pick{display:flex;flex-wrap:wrap;gap:6px}
+.ag-pick button{font:12px var(--mono);padding:5px 10px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--soft);cursor:pointer}
+.ag-pick button:hover,.ag-pick button.on{border-color:#5CE1D6;color:#5CE1D6}
+svg .ag-bar{transform:scaleX(0)}
+svg .ag-col{transform:scaleY(0)}
+svg .ag-t,svg .ag-fade{opacity:0}
+svg .ag-draw{stroke-dasharray:1;stroke-dashoffset:1}
+svg.go .ag-bar{animation:agx .8s cubic-bezier(.2,.8,.2,1) forwards}
+svg.go .ag-col{animation:agy .8s cubic-bezier(.2,.8,.2,1) forwards}
+svg.go .ag-t,svg.go .ag-fade{animation:agf .5s ease forwards}
+svg.go .ag-draw{animation:agd 1.2s ease forwards}
+@keyframes agx{to{transform:scaleX(1)}}@keyframes agy{to{transform:scaleY(1)}}@keyframes agf{to{opacity:1}}@keyframes agd{to{stroke-dashoffset:0}}
+.cs-viz .ag-kpi{margin:6px 0 4px}.cs-viz .ag-kpi b{font-size:24px}
+/* a live dot on every chart window */
+.viz-bar .dots i:first-child{background:#5FE3A1;box-shadow:0 0 0 0 rgba(95,227,161,.6);animation:ping 2.2s infinite}
+@media (prefers-reduced-motion:reduce){svg .ag-bar,svg .ag-col{transform:none}svg .ag-t,svg .ag-fade{opacity:1}svg .ag-draw{stroke-dashoffset:0}.viz-bar .dots i:first-child{animation:none}}
+.proj.flash{animation:flash 1.8s ease}@keyframes flash{0%,60%{box-shadow:0 0 0 2px #5CE1D6,0 0 60px -10px #5CE1D6}100%{box-shadow:none}}
+/* 30-second view v16 */
+.qv-card.qv2{width:min(1080px,100%);gap:18px;max-height:calc(100vh - 40px);overflow:auto;background:radial-gradient(700px 300px at 85% 0%,rgba(92,225,214,.10),transparent 70%),var(--ink-2)}
+.qv-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.qv-kpis div{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:rgba(7,15,20,.6);display:grid;gap:4px}
+.qv-kpis b{font:800 clamp(28px,3.4vw,40px)/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;background:linear-gradient(90deg,#3FE0D0,#E9C98F);-webkit-background-clip:text;background-clip:text;color:transparent}
+.qv-kpis span{font-size:13px;color:var(--muted)}
+.qv-main{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.qv-panel{border:1px solid var(--line);border-radius:16px;padding:16px;background:rgba(7,15,20,.55);display:grid;gap:10px;align-content:start}
+.qv2 .gl{font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.qv-gl{margin-bottom:-6px}
+.qv-bars{display:grid;gap:9px;padding-top:4px}
+.qb{display:grid;grid-template-columns:130px 1fr 22px;gap:10px;align-items:center;font-size:13.5px}
+.qn{color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qt{height:10px;border-radius:5px;background:rgba(255,255,255,.06);overflow:hidden}
+.qt i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,#2CC4B6,#5CE1D6 70%,#E9C98F);box-shadow:0 0 12px -2px rgba(92,225,214,.7)}
+.qv2n{font:600 13px var(--mono);color:#EEF4F6;text-align:right}
+.qv-projs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.qvp{border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:5px;text-decoration:none;color:var(--text);background:rgba(7,15,20,.55);transition:border-color .2s,transform .2s}
+.qvp:hover{border-color:#5CE1D6;transform:translateY(-2px)}
+.qvp .qr{font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#5CE1D6}
+.qvp b{font:700 16px/1.25 var(--display)}
+.qvp .qs{font-size:12.5px;color:var(--muted)}
+.qvp .qgo{font-size:13px;color:#5CE1D6}
+.qv-spark{margin:4px 0}
+.qv-bottom{display:grid;gap:8px}
+.qv-edu{font-size:13px;color:var(--muted)}
+#qvRoles2{display:flex;flex-wrap:wrap;gap:6px}#qvRoles2 span{font:12px var(--mono);padding:4px 9px;border-radius:999px;background:rgba(92,225,214,.1);color:var(--aqua)}
+.qv-poly{transform:scale(0)}.qv-dot,.qv-lbl{opacity:0}
+.qv2.play .qv-poly{animation:qvGrow 1s cubic-bezier(.2,.8,.2,1) .3s forwards}
+.qv2.play .qv-dot,.qv2.play .qv-lbl{animation:agf .5s ease forwards}
+.qv2.play .qt i{animation:qvW .9s cubic-bezier(.2,.8,.2,1) forwards}
+.qv-sweep{transform-origin:230px 140px;animation:qvSpin 6s linear infinite}
+.qv-spark path{stroke-dasharray:1;stroke-dashoffset:1}.qv2.play .qv-spark path{animation:agd 1.4s ease .4s forwards}
+.qvb{transform:scaleX(0)}.qv2.play .qvb{animation:agx .7s cubic-bezier(.2,.8,.2,1) forwards}
+.qvc{stroke-dasharray:1;stroke-dashoffset:1}.qv2.play .qvc{animation:agd .8s ease forwards}
+@keyframes qvGrow{to{transform:scale(1)}}@keyframes qvW{to{width:var(--w)}}@keyframes qvSpin{to{transform:rotate(360deg)}}
+@media (max-width:760px){.qv-main,.qv-projs{grid-template-columns:1fr}.qv-kpis{grid-template-columns:1fr 1fr}.qb{grid-template-columns:110px 1fr 22px}}
+@media (prefers-reduced-motion:reduce){.qv-poly{transform:none}.qv-dot,.qv-lbl{opacity:1}.qt i{width:var(--w)}.qv-sweep{animation:none}.qv-spark path,.qvc{stroke-dashoffset:0}.qvb{transform:none}}
+/* projects never grey out */
+.proj.dim{opacity:1}
+</style>
 </head>
 <body>
-  <!-- 顶部全屏背景：使用 assets/img/hero.jpg -->
-  <header class="hero" role="banner" aria-label="Hero section">
-    <div class="overlay" aria-hidden="true"></div>
 
-    <nav class="nav" aria-label="Primary">
-      <a href="#about">ABOUT ME</a>
-      <a href="#projects">PROJECTS</a>
-      <a href="#contact">CONTACT ME</a>
-      <a href="https://github.com/mindyc-gl" target="_blank" rel="noopener">GITHUB</a>
-    </nav>
 
-    <div class="hero-inner">
-      <h1>Mindy Chen</h1>
-      <p>Welcome to my web portfolio</p>
-      <a class="btn" href="#projects">PROJECTS</a>
-    </div>
-  </header>
-
-  <main class="wrap" role="main">
-    <section id="about" class="card" aria-labelledby="about-title">
-      <h2 id="about-title">ABOUT ME</h2>
-      <p>
-        Hi, I’m Mindy — a data storyteller who knows that numbers have their own magic. I’ve got a Master’s in
-        Computer Information Systems from Boston University and a Bachelor’s in Economics from Syracuse University,
-        which means I speak both “tech” and “business” fluently. Whether it’s SQL sorcery, Python problem-solving,
-        or crafting interactive dashboards, I turn messy datasets into stories that get teams excited and decisions moving.
-      </p>
-    </section>
-Skills: Data Analytics, Data Visualization, Product Analytics,A/B Testing, Data Modeling
-<section id="projects" class="card">
-  <h2>RECENT PROJECTS</h2>
-
-  <div class="projects-list">
-
-   <!-- Customer Segmentation & Retention -->
-<article class="project-row">
-  <!-- 缩略图：直接跳到 Tableau -->
-  <a class="thumb-wrap"
-     href="https://public.tableau.com/app/profile/mindy.chen3731/viz/CustomerSegmentationRetentionDashboard/Story1"
-     target="_blank" rel="noopener">
-    <img class="thumb"
-         src="assets/img/projects/churn.jpeg?v=1"
-         alt="Customer segmentation & retention dashboard"
-         loading="lazy" decoding="async">
-  </a>
-
-  <div class="content">
-    <h3>
-      <a href="https://public.tableau.com/app/profile/mindy.chen3731/viz/CustomerSegmentationRetentionDashboard/Story1"
-         target="_blank" rel="noopener">
-        Customer Segmentation &amp; Retention Dashboard
-      </a>
-    </h3>
-    <p class="muted">
-      RFM segmentation to analyze customer behavior, highlighting revenue contribution,
-      retention trends, and churn risks to guide loyalty and growth strategies.
-    </p>
-    <p>
-      <a class="btn"
-         href="https://public.tableau.com/app/profile/mindy.chen3731/viz/CustomerSegmentationRetentionDashboard/Story1"
-         target="_blank" rel="noopener">View on Tableau</a>
-    </p>
+<div class="openbar" role="note">
+  <div class="wrap">
+    <span class="live"><i aria-hidden="true"></i>Open to work</span>
+    <span>Data · BI · Analytics · Engineering · Science · AI roles, and titles in between</span>
+    <span class="sep">/</span>
+    <span>Based in Boston, MA</span>
   </div>
-</article>
+</div>
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">mindy<b>.chen</b></a>
+    <div class="right"><ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#mindyverse">Mindyverse</a></li>
+      <li><a href="#match">Match</a></li>
+      <li><a href="#constellation">Skill map</a></li>
+      <li><a href="#sql">SQL</a></li>
+      <li><a href="#coverage">Coverage</a></li>
+      <li><a href="#skills">Toolkit</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul><button class="quick-btn" type="button" id="quickOpen">⚡ 30-sec view</button></div>
+  </div>
+</nav>
+
+<canvas id="curTrail" aria-hidden="true"></canvas><div class="cur-halo" id="curHalo" aria-hidden="true"></div><div class="cur-dot" id="curDot" aria-hidden="true"></div><div class="cur-tag" id="curTag" aria-hidden="true"></div>
+<header class="hero rib" id="top">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap ribgrid">
+    <div class="intro">
+      <div class="h-eyebrow">Mindy Chen <i>·</i> Data &amp; AI</div>
+      <h1>Beyond a single title.<br><span class="l2">Built for what's next.</span></h1>
+      <p class="lede">I work at the intersection of data analytics, engineering, machine learning, and AI-powered applications.</p>
+      <div class="h-rule" aria-hidden="true"></div>
+      <div class="hire" aria-live="polite">Hire me as a <span class="who" id="who">Data Engineer</span><span class="cur" aria-hidden="true"></span></div>
+      <div class="cta-row"><a class="btn primary mag" href="#projects">Explore projects →</a><button class="btn mag" type="button" data-q>⚡ 30-sec view</button></div>
+    </div>
+  </div>
+  <a class="scrollcue" href="#projects">Scroll to explore <span aria-hidden="true">↓</span></a>
+</header>
+
+
+<section id="match" class="match-sec">
+  <div class="wrap mgrid2">
+    <div class="intro2">
+      <div class="eyebrow">JD matcher</div>
+      <h2 class="h2x">Don't just read my resume. Test it.</h2>
+      <p class="lede">Paste any job posting, whatever the title. You'll see which of its skills I've shown in projects and which I list in my toolkit.</p>
+      <div class="mini-roles" id="miniRoles" role="group" aria-label="Highlight projects for a role"></div>
+    </div>
+    <div class="matcher" id="matcher">
+      <div class="m-head"><span>jd_match.js</span><span>runs in your browser · nothing is sent</span></div>
+      <div class="m-body">
+        <h2>Hiring for a data role? Paste the job description.</h2>
+        <div class="samples" id="samples"><span>Or try:</span></div>
+        <label for="jd">Job description</label>
+        <textarea id="jd" placeholder="Paste any job posting: Analytics Engineer, Product Analyst, ML Engineer…"></textarea>
+        <div class="m-actions"><button class="btn primary" type="button" id="runMatch">Match my skills</button><span class="hintx">Skills are matched by keyword against my projects and toolkit.</span></div>
+        <div class="result" id="result" aria-live="polite"></div>
+      </div>
+    
+  </div>
+</section>
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Projects</div>
+      <h2 id="projHead">Selected work, ordered for every role</h2>
+      <p id="projSub">Pick a role above and the most relevant projects move to the top.</p>
+    </div>
+    <div class="projects" id="projList">
+
+      <article class="proj" data-id="agent" data-roles="ai,engineer,analyst">
+        <div class="proj-copy">
+          <div class="meta"></div>
+          <h3>AI-Powered E-Commerce Agentic Analytics Platform</h3>
+          <ul class="pad">
+            <li><span>Problem</span>Business users wait days for analysts to answer simple questions about customers, products and orders.</li>
+            <li><span>Build</span>A pipeline lands e-commerce data in BigQuery and models it with dbt. Product and customer text becomes retrieval-ready context for an LLM.</li>
+            <li><span>Agent</span>Turns a plain-English question into retrieval plus SQL, grounds the answer in validated tables, and routes low-confidence answers to a human check.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">BigQuery</span><span class="tag">dbt</span><span class="tag">GCP</span><span class="tag">LangChain</span><span class="tag">LLM</span><span class="tag">Git</span></div>
+          <div class="roles">Best for: <b>AI Engineer · AI Data Engineer · Data Engineer</b></div>
+          <div><button class="btn primary cs-open" type="button">View case study →</button></div>
+        </div>
+        <div class="viz">
+          <div class="viz-bar"><div class="dots"><i></i><i></i><i></i></div><span>ask the data · live demo</span></div>
+          <div class="viz-body">
+            <div class="ag" id="ag">
+              <div class="ag-q"><span class="ag-ic" aria-hidden="true">✦</span><span id="agQ"></span><span class="ag-caret" aria-hidden="true"></span></div>
+              <div class="ag-steps" id="agSteps"><span>Understand</span><span>Retrieve data</span><span>Analyze</span><span>Quality check</span></div>
+              <div class="ag-ans" id="agAns">
+                <div class="ag-kpi"><b id="agK">&nbsp;</b><span id="agKl"></span></div>
+                <svg id="agSvg" viewBox="0 0 380 176" width="100%" role="img"></svg>
+              </div>
+              <p class="ag-say" id="agSay"></p>
+              <div class="ag-pick" id="agPick" role="group" aria-label="Pick a question"></div>
+              <p class="note">Illustrative output · demo data</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj" data-id="pipeline" data-roles="engineer,ai,bi">
+        <div class="proj-copy">
+          <div class="meta"></div>
+          <h3>Multi-Source Data Integration Platform</h3>
+          <ul class="pad">
+            <li><span>Problem</span>Operational data lives in APIs, databases and flat files that never agree with each other.</li>
+            <li><span>Build</span>Python and SQL ETL into a central warehouse, with an automated data-quality layer that blocks bad rows before they reach reporting.</li>
+            <li><span>Serve</span>A star-schema model feeds a self-serve Power BI layer, with pipeline architecture and lineage documented for the next engineer.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">ETL/ELT</span><span class="tag">data quality</span><span class="tag">star schema</span><span class="tag">Power BI</span></div>
+          <div class="roles">Best for: <b>Data Engineer · AI Data Engineer · BI Analyst</b></div>
+          <div><button class="btn primary cs-open" type="button">View case study →</button></div>
+        </div>
+        <div class="viz">
+          <div class="viz-bar"><div class="dots"><i></i><i></i><i></i></div><span>architecture</span></div>
+          <div class="viz-body"><div class="svgbox"><svg id="archSvg" viewBox="0 0 560 250" width="100%" role="img" aria-label="Pipeline architecture from sources through ETL and quality checks to a warehouse and dashboards"></svg></div>
+          <p class="note">Target architecture · code coming soon</p></div>
+        </div>
+      </article>
+
+      <article class="proj" data-id="retail" data-roles="analyst,scientist">
+        <div class="proj-copy">
+          <div class="meta"></div>
+          <h3>Retail Analytics &amp; Pricing Insights</h3>
+          <ul class="pad">
+            <li><span>Problem</span>Which products can take a price increase, and which will lose too much volume?</li>
+            <li><span>Method</span>SQL window functions for trend analysis on simulated POS data, Python for cleaning, and price-response modeling by product line.</li>
+            <li><span>Result</span>3 pricing optimization opportunities, all 3 recommendations approved, and reusable templates that cut future analysis time by 50%.</li>
+          </ul>
+          <div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">price elasticity</span><span class="tag">storytelling</span></div>
+          <div class="roles">Best for: <b>Data Analyst · Data Scientist</b></div>
+          <div><button class="btn primary cs-open" type="button">View case study →</button></div>
+        </div>
+        <div class="viz">
+          <div class="viz-bar"><div class="dots"><i></i><i></i><i></i></div><span>pricing_model.py · live</span></div>
+          <div class="viz-body">
+            <div class="skus" id="skus"></div>
+            <div class="svgbox"><svg id="priceSvg" viewBox="0 0 560 230" width="100%" role="img" aria-label="Revenue response to price change"></svg></div>
+            <div class="ctrl"><label for="price">Price change</label><input id="price" type="range" min="-20" max="20" step="1" value="0"><span id="pv">+0%</span></div>
+            <div class="readout">
+              <div class="ro"><div class="k">Units</div><div class="v" id="ru">—</div></div>
+              <div class="ro"><div class="k">Revenue Δ</div><div class="v" id="rr">—</div></div>
+              <div class="ro"><div class="k">Best move</div><div class="v" id="rb">—</div></div>
+            </div>
+            <p class="note">● flagged opportunity · illustrative numbers</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj" data-id="segment" data-roles="analyst,bi,scientist">
+        <div class="proj-copy">
+          <div class="meta"></div>
+          <h3>E-Commerce Segmentation &amp; Retention</h3>
+          <ul class="pad">
+            <li><span>Problem</span>Marketing treated every customer the same and could not see who was about to leave.</li>
+            <li><span>Method</span>Cleaned 74,817 clickstream events from 1,000 users in Python, then built funnel, DAU/WAU/MAU and 30-day cohort retention, plus RFM segments in Tableau.</li>
+            <li><span>Result</span>Average Day-1 retention of 30.4% and Day-30 of 24.2%, and a Tableau story showing which segments carry revenue.</li>
+          </ul>
+          <div class="tags"><span class="tag">RFM</span><span class="tag">segmentation</span><span class="tag">churn risk</span><span class="tag">Tableau</span></div>
+          <div class="roles">Best for: <b>Data Analyst · BI Analyst · Data Scientist</b></div>
+          <div><button class="btn primary cs-open" type="button">View case study →</button></div>
+          <div><a class="btn" href="https://public.tableau.com/app/profile/mindy.chen3731/viz/CustomerSegmentationRetentionDashboard/Story1" target="_blank" rel="noopener">Dashboard ↗</a> <a class="btn" href="https://github.com/mindyc-gl/segmentation-uplift-retention-2025" target="_blank" rel="noopener">Code ↗</a></div>
+        </div>
+        <div class="viz">
+          <div class="viz-bar"><div class="dots"><i></i><i></i><i></i></div><span>rfm_segments</span></div>
+          <div class="viz-body"><div class="svgbox"><svg id="rfmSvg" viewBox="0 0 560 230" width="100%" role="img" aria-label="Customer share versus revenue share by RFM segment"></svg></div>
+          <p class="note">Illustrative shape · see the live dashboard for the real data</p></div>
+        </div>
+      </article>
+
+      <article class="proj" data-id="cohort" data-roles="bi,analyst,scientist">
+        <div class="proj-copy">
+          <div class="meta"></div>
+          <h3>Resident Experience Analytics &amp; Retention Dashboard</h3>
+          <ul class="pad">
+            <li><span>Problem</span>Raw usage data, but no shared view of where residents drop off.</li>
+            <li><span>Method</span>Cohort analysis of the activation → engagement → retention funnel, with metric definitions validated with product stakeholders.</li>
+            <li><span>Result</span>Top 3 churn risk factors identified, and 100% of the logic documented in a playbook with a data dictionary and validation checklist.</li>
+          </ul>
+          <div class="tags"><span class="tag">cohort analysis</span><span class="tag">funnels</span><span class="tag">SQL</span><span class="tag">data dictionary</span></div>
+          <div class="roles">Best for: <b>BI Analyst · Data Analyst</b></div>
+          <div><button class="btn primary cs-open" type="button">View case study →</button></div>
+        </div>
+        <div class="viz">
+          <div class="viz-bar"><div class="dots"><i></i><i></i><i></i></div><span>cohort_funnel</span></div>
+          <div class="viz-body"><div class="svgbox"><svg id="funnelSvg" viewBox="0 0 560 230" width="100%" role="img" aria-label="Retention curves by signup cohort"></svg></div>
+          <p class="note">Illustrative numbers</p></div>
+        </div>
+      </article>
+
+      <article class="proj" data-id="pharma" data-roles="bi,engineer,scientist">
+        <div class="proj-copy">
+          <div class="meta"></div>
+          <h3>Pharmaceutical BI &amp; Forecasting Analytics</h3>
+          <ul class="pad">
+            <li><span>Problem</span>Clinical operations needed one view of enrollment, safety and site performance, plus a forward look for planning.</li>
+            <li><span>Method</span>A star-schema model for clinical trial data with ETL feeding the dashboards, and predictive indicators built in SQL.</li>
+            <li><span>Result</span>A Power BI forecasting dashboard used for quarterly planning and resource allocation.</li>
+          </ul>
+          <div class="tags"><span class="tag">star schema</span><span class="tag">ETL</span><span class="tag">forecasting</span><span class="tag">Power BI</span><span class="tag">SQL</span></div>
+          <div class="roles">Best for: <b>BI Analyst · Data Engineer · Data Scientist</b></div>
+          <div><button class="btn primary cs-open" type="button">View case study →</button></div>
+        </div>
+        <div class="viz">
+          <div class="viz-bar"><div class="dots"><i></i><i></i><i></i></div><span>enrollment_forecast</span></div>
+          <div class="viz-body"><div class="svgbox"><svg id="fcSvg" viewBox="0 0 560 230" width="100%" role="img" aria-label="Actual enrollment and forecast with confidence band"></svg></div>
+          <p class="note">Illustrative numbers</p></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<section id="mindyverse" class="mvb" aria-labelledby="mvTitle">
+  <div class="wrap">
+    <div class="mvb-card" id="mvCard">
+      <canvas id="mvCanvas" aria-hidden="true"></canvas><div class="mvb-moon" aria-hidden="true"></div>
+      <div class="mvb-in">
+        <div class="mvb-cat">Creative AI · Generative media</div>
+        <h2 id="mvTitle">MINDYVERSE</h2>
+        <div class="mvb-sub">When the Dream Remembers You.</div>
+        <p>An original AI-powered cinematic universe combining generative visuals, character development, short-form animation, storytelling and creative production workflows.</p>
+        <div class="mvb-tags"><span>Generative AI</span><span>AI Animation</span><span>Creative Production</span><span>Storytelling</span><span>Web Development</span></div>
+        <div class="mvb-go" id="mvGo"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="constellation">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Skill map</div>
+      <h2>Five roles, one shared core</h2>
+      <p>SQL, Python, data quality and clear communication sit at the center of every data job. Hover a role to see what it adds on top. Skills from the job description you pasted glow.</p>
+    </div>
+    <div class="const-wrap">
+      <canvas id="constel" aria-label="Network of skills connected to five data roles" role="img"></canvas>
+      <div class="const-legend"><span><i style="background:var(--aqua)"></i>shown in a project</span><span><i style="background:var(--soft)"></i>in my toolkit</span><span><i style="background:var(--peach)"></i>matches your posting</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="sql" class="sql-collapsed">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Query my portfolio</div>
+      <h2>Don't take my word for it. Run the SQL.</h2>
+      <p>My projects, skills and roles live in five tables below. Pick a preset or write your own SELECT. It runs on a small SQL engine I built into this page, right in your browser.</p>
+    </div>
+    <div class="sql-teaser" id="sqlTeaser">
+      <div class="tz-term"><span class="p">sql&gt;</span> <span id="tzType"></span><span class="tz-cur"></span></div>
+      <button class="btn primary" type="button" id="sqlToggle" aria-expanded="false" aria-controls="sqlPanel">Open SQL playground ↓</button>
+    </div>
+    <div class="sqlgrid" id="sqlPanel">
+      <aside class="schema" id="schema" aria-label="Database schema"></aside>
+      <div class="console2">
+        <div class="c-head"><span>portfolio.db</span><span>SELECT · JOIN · WHERE · GROUP BY · ORDER BY · LIMIT</span></div>
+        <div class="presets" id="presets"></div>
+        <div class="editor"><label for="sqlIn" class="sr-only" style="position:absolute;left:-9999px">SQL query</label><textarea id="sqlIn" spellcheck="false" autocomplete="off"></textarea></div>
+        <div class="run-row"><button class="btn primary" type="button" id="sqlRun">▶ Run query</button><span class="kbd">or press Ctrl / ⌘ + Enter</span></div>
+        <div class="out" id="sqlOut" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="qv" id="qv" hidden role="dialog" aria-modal="true" aria-labelledby="qvTitle">
+  <div class="qv-card qv2">
+    <div class="qv-top">
+      <div><div class="eyebrow">30-second view</div><h2 id="qvTitle">Mindy Chen</h2><div class="sub">Data &amp; AI · analytics, engineering, machine learning and AI applications · Boston · open to work</div></div>
+      <button class="qv-close" type="button" id="quickClose">Close ✕</button>
+    </div>
+    <div class="qv-kpis" id="qvKpis"></div>
+    <div class="qv-main">
+      <div class="qv-panel"><div class="gl">Where my skills sit · skills per role</div><svg id="qvRadar" viewBox="0 0 460 270" width="100%" role="img"></svg></div>
+      <div class="qv-panel"><div class="gl">Most-used skills · projects that use each one</div><div class="qv-bars" id="qvBars"></div></div>
+    </div>
+    <div class="gl qv-gl">Strongest projects</div>
+    <div class="qv-projs" id="qvProjs"></div>
+    <div class="qv-bottom">
+      <div class="qv-roles" id="qvRoles2"></div>
+      <div class="qv-edu">Doctorate, Information Technology, Trine (in progress) · M.S. Computer Information Systems, Boston University · B.S. Economics, Syracuse University</div>
+    </div>
+    <div class="qv-foot">
+      <a class="btn primary" href="https://www.linkedin.com/in/mincong-mindy10/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/mindyc-gl" target="_blank" rel="noopener">GitHub ↗</a>
+      <button class="btn" type="button" id="qvMail">mindy.ygj@gmail.com · copy</button>
+    </div>
+  </div>
+</div>
+
+<div class="cs" id="cs" hidden role="dialog" aria-modal="true" aria-labelledby="csTitle"><div class="cs-card" id="csCard"></div></div>
+<section id="coverage">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Coverage</div>
+      <h2>Every project, mapped to every role</h2>
+      <p>Each row is a real project. Each column is a job I apply for. No gaps across the stack.</p>
+    </div>
+    <div class="cov-wrap"><table class="cov" id="cov"></table></div>
+    <div class="legend"><span><i class="mk p"></i>core fit</span><span><i class="mk s"></i>also relevant</span></div>
+  </div>
+</section>
 
 
 
-    <section id="contact" class="card" aria-labelledby="contact-title">
-      <h2 id="contact-title">CONTACT</h2>
-      <p>
-        📧 mindy.ygj@gmail.com · 💼
-        <a href="https://www.linkedin.com/in/mincong-mindy10/" target="_blank" rel="noopener">LinkedIn</a> · 🧰
-        <a href="https://github.com/mindyc-gl" target="_blank" rel="noopener">GitHub</a>
-      </p>
-    </section>
-  </main>
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Toolkit</div>
+      <h2>Tools for every layer of the stack</h2>
+      <p>The layers light up for the role you picked.</p>
+    </div>
+    <div class="layers">
+      <div class="layer" data-roles="engineer,ai">
+        <h3>Data engineering</h3>
+        <p>Pipelines and models the rest of the stack can trust.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">SQL (CTEs, window functions)</span><span class="tag">dbt</span><span class="tag">Snowflake</span><span class="tag">BigQuery</span><span class="tag">Azure Data Factory</span><span class="tag">ETL/ELT</span><span class="tag">star schema</span><span class="tag">Git</span><span class="tag">data quality</span></div>
+      </div>
+      <div class="layer" data-roles="analyst,bi">
+        <h3>Analytics &amp; BI</h3>
+        <p>Metrics with one definition, and dashboards people open.</p>
+        <div class="tags"><span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Looker</span><span class="tag">KPI design</span><span class="tag">cohort analysis</span><span class="tag">A/B testing</span><span class="tag">Excel</span><span class="tag">Jira / Confluence</span></div>
+      </div>
+      <div class="layer" data-roles="scientist">
+        <h3>Data science</h3>
+        <p>Models that explain behavior and predict demand.</p>
+        <div class="tags"><span class="tag">pandas</span><span class="tag">forecasting</span><span class="tag">price elasticity</span><span class="tag">segmentation</span><span class="tag">statistical process control</span><span class="tag">R</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span></div>
+      </div>
+      <div class="layer" data-roles="ai">
+        <h3>AI engineering</h3>
+        <p>LLM systems grounded in validated data.</p>
+        <div class="tags"><span class="tag">LLMs</span><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">agentic workflows</span><span class="tag">prompt engineering</span><span class="tag">Claude</span><span class="tag">OpenAI</span><span class="tag">Gemini</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <footer class="foot">© <span id="y"></span> Mindy Chen · Hosted on GitHub Pages</footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-<body>
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Education</div>
+      <h2>Economics, then information systems, then research</h2>
+    </div>
+    <div class="edu">
+      <div class="deg now"><div class="lvl">Doctorate · 2026 – present</div><h3>Information Technology</h3><div class="school">Trine University</div></div>
+      <div class="deg"><div class="lvl">M.S. · 2022 · STEM</div><h3>Computer Information Systems, Data Analytics</h3><div class="school">Boston University</div></div>
+      <div class="deg"><div class="lvl">B.S. · 2019</div><h3>Economics</h3><div class="school">Syracuse University</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div class="eyebrow">Open to data, BI, engineering and AI roles</div>
+    <h2>Let's find the<br><span style="color:var(--aqua)">signal</span> together.</h2>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/mincong-mindy10/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/mindyc-gl" target="_blank" rel="noopener">GitHub ↗</a>
+      <button class="btn" type="button" id="copyMail">mindy.ygj@gmail.com · copy</button>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Mindy Chen</span><span>Deep links: #engineer · #bi · #analyst · #scientist · #ai</span></div></footer>
+
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const C = {aqua:'#5CE1D6', peach:'#FFB38A', muted:'#86A3AA', line:'#1E3A45', soft:'#C4D6D9', ink:'#070F14', good:'#7BE39A'};
+
+/* ---------- roles (v3) ---------- */
+const ROLES = {
+  engineer: {label:'Data Engineer', head:'Projects for a Data Engineer'},
+  bi:       {label:'BI Analyst', head:'Projects for a BI Analyst'},
+  analyst:  {label:'Data Analyst', head:'Projects for a Data Analyst'},
+  scientist:{label:'Data Scientist', head:'Projects for a Data Scientist'},
+  ai:       {label:'AI Engineer', head:'Projects for an AI Engineer'}
+};
+const KEYS = Object.keys(ROLES);
+const projList = document.getElementById('projList');
+const cards = [...projList.children];
+const count = k => cards.filter(c=>c.dataset.roles.split(',').includes(k)).length;
+const PNAME = {}; cards.forEach(c=>{PNAME[c.dataset.id]=c.querySelector('h3').textContent; c.id='p-'+c.dataset.id;});
+
+/* ticker */
+const who=document.getElementById('who');let tick=0,tickTimer=null,typeTimer=null,locked=null;
+function typeWho(text){clearTimeout(typeTimer);if(reduce){who.textContent=text;return;}let cur=who.textContent;
+  (function step(){if(!text.startsWith(cur)){cur=cur.slice(0,-1);who.textContent=cur;typeTimer=setTimeout(step,28);}else if(cur.length<text.length){cur=text.slice(0,cur.length+1);who.textContent=cur;typeTimer=setTimeout(step,55);}})();}
+function startTicker(){clearInterval(tickTimer);typeWho(ROLES[KEYS[tick%5]].label);if(reduce)return;tickTimer=setInterval(()=>{tick++;typeWho(ROLES[KEYS[tick%5]].label);},2600);}
+
+const mini=document.getElementById('miniRoles');
+KEYS.forEach(k=>{const b=document.createElement('button');b.type='button';b.dataset.role=k;b.textContent=ROLES[k].label;b.setAttribute('aria-pressed','false');
+  b.addEventListener('click',()=>{locked===k?clearRole():lockRole(k);});mini.appendChild(b);});
+
+function lockRole(k,fromHash){
+  locked=k;clearInterval(tickTimer);typeWho(ROLES[k].label);
+  mini.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.role===k));
+  applyFilter(k); window.constelFocus&&window.constelFocus(k);
+  if(!fromHash){try{history.replaceState(null,'','#'+k);}catch(_){}}
+}
+function clearRole(){
+  locked=null;mini.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'));
+  applyFilter(null);startTicker();window.constelFocus&&window.constelFocus(null);
+  try{history.replaceState(null,'',location.pathname);}catch(_){}
+}
+function applyFilter(k){
+  document.getElementById('projHead').textContent=k?ROLES[k].head:'Selected work across the stack';
+  document.getElementById('projSub').textContent=k?'Best matches first. Other projects stay below.':'Pick a role in the header or the table above to reorder these.';
+  document.querySelectorAll('.layer').forEach(l=>l.classList.toggle('on',!!k&&l.dataset.roles.split(',').includes(k)));
+  document.querySelectorAll('#cov thead th[data-role]').forEach(th=>th.classList.toggle('on',th.dataset.role===k));
+  document.querySelectorAll('#cov td[data-role]').forEach(td=>td.classList.toggle('on',td.dataset.role===k));
+  const ranked=cards.map((c,i)=>{const idx=c.dataset.roles.split(',').indexOf(k);return {c,score:!k?i:(idx<0?100+i:idx*10+i)};}).sort((a,b)=>a.score-b.score);
+  ranked.forEach(({c,score},i)=>{projList.appendChild(c);const m=!!k&&score<100;c.classList.toggle('match',m);c.classList.remove('dim');
+    let badge=c.querySelector('.best');if(k&&i===0){if(!badge){badge=document.createElement('span');badge.className='best';badge.textContent='Best match';c.querySelector('.meta').prepend(badge);}}else if(badge)badge.remove();});
+}
+
+/* ---------- skill dictionary ---------- */
+// p = projects that show it; roles = roles it serves; t = in toolkit only
+const SK = [
+ {n:'SQL',re:/\bsql\b|window function|\bctes?\b/,roles:['engineer','bi','analyst','scientist','ai'],p:['agent','pipeline','retail','cohort','pharma']},
+ {n:'Python',re:/\bpython\b/,roles:['engineer','analyst','scientist','ai'],p:['agent','pipeline','retail']},
+ {n:'Data quality',re:/data quality|data validation|validation|data integrity|data accuracy/,roles:['engineer','bi','ai'],p:['pipeline','cohort','agent']},
+ {n:'Communication',re:/stakeholder|communicat|present|storytell|cross-functional|non-technical/,roles:['bi','analyst','scientist'],p:['retail','cohort']},
+ {n:'ETL / ELT',re:/\betl\b|\belt\b|data pipeline|pipelines?|ingest/,roles:['engineer','ai'],p:['pipeline','agent','pharma']},
+ {n:'dbt',re:/\bdbt\b/,roles:['engineer','bi'],p:['agent']},
+ {n:'Data modeling',re:/data model|dimensional|star schema|data warehouse|warehous/,roles:['engineer','bi'],p:['pipeline','pharma']},
+ {n:'BigQuery',re:/bigquery/,roles:['engineer','ai'],p:['agent']},
+ {n:'GCP',re:/\bgcp\b|google cloud/,roles:['engineer','ai'],p:['agent']},
+ {n:'Snowflake',re:/snowflake/,roles:['engineer','bi'],t:1},
+ {n:'Azure',re:/azure|data factory|synapse/,roles:['engineer'],t:1},
+ {n:'AWS',re:/\baws\b|amazon web services|redshift/,roles:['engineer'],t:1},
+ {n:'Databricks',re:/databricks/,roles:['engineer'],t:1},
+ {n:'Spark',re:/\bspark\b|pyspark|hadoop/,roles:['engineer'],t:1},
+ {n:'Git',re:/\bgit\b|github|version control/,roles:['engineer','ai'],p:['agent']},
+ {n:'Tableau',re:/tableau/,roles:['bi','analyst'],p:['segment']},
+ {n:'Power BI',re:/power ?bi/,roles:['bi','analyst'],p:['pipeline','pharma']},
+ {n:'Looker',re:/looker/,roles:['bi'],t:1},
+ {n:'Dashboards',re:/dashboard|visuali[sz]|reporting|data viz/,roles:['bi','analyst'],p:['segment','cohort','pharma','pipeline']},
+ {n:'KPIs & metrics',re:/\bkpis?\b|metrics?/,roles:['bi','analyst'],p:['cohort','segment']},
+ {n:'Excel',re:/excel|spreadsheet/,roles:['analyst','bi'],t:1},
+ {n:'A/B testing',re:/a\/b|ab test|experiment/,roles:['analyst','scientist'],t:1},
+ {n:'Cohort & retention',re:/cohort|retention|funnel|churn/,roles:['analyst','bi','scientist'],p:['cohort','segment']},
+ {n:'Segmentation',re:/segment|cluster|\brfm\b/,roles:['analyst','scientist'],p:['segment']},
+ {n:'Forecasting',re:/forecast|time series|predictive/,roles:['scientist','bi'],p:['pharma']},
+ {n:'Statistics',re:/statistic|regression|hypothesis|elasticity/,roles:['scientist','analyst'],p:['retail']},
+ {n:'Pricing analytics',re:/pricing|price/,roles:['analyst','scientist'],p:['retail']},
+ {n:'pandas',re:/pandas/,roles:['analyst','scientist','engineer'],t:1},
+ {n:'R',re:/\bR\b(?!&)/i,roles:['scientist'],t:1,cs:1},
+ {n:'Machine learning',re:/machine learning|\bml\b|scikit|sklearn|model training/,roles:['scientist','ai'],t:1},
+ {n:'PyTorch',re:/pytorch/,roles:['scientist','ai'],t:1},
+ {n:'TensorFlow',re:/tensorflow/,roles:['scientist','ai'],t:1},
+ {n:'LLMs',re:/\bllms?\b|large language|genai|generative ai|\bgpt/,roles:['ai'],p:['agent']},
+ {n:'LangChain',re:/langchain/,roles:['ai'],p:['agent']},
+ {n:'RAG',re:/\brag\b|retrieval/,roles:['ai'],p:['agent']},
+ {n:'AI agents',re:/\bagents?\b|agentic/,roles:['ai'],p:['agent']},
+ {n:'Prompt engineering',re:/prompt/,roles:['ai'],t:1},
+ {n:'Embeddings',re:/embeddings?/,roles:['ai'],p:['agent']},
+ {n:'Vector search',re:/vector (search|databases?|stores?|db)|semantic search|pgvector|pinecone|faiss|chroma/,roles:['ai'],p:['agent']},
+ {n:'Tool / function calling',re:/tool (use|calling)|function calling/,roles:['ai'],p:['agent']},
+ {n:'LLM evaluation',re:/llm eval|\bevals?\b|evaluations?|hallucination/,roles:['ai'],p:['agent']},
+ {n:'API integration',re:/\bapis?\b|rest api|fastapi|flask/,roles:['engineer','ai'],p:['pipeline','agent']},
+ {n:'Predictive modeling',re:/predictive model|classification|propensity|churn (model|prediction)/,roles:['scientist','ai'],p:['agent']},
+ {n:'Feature engineering',re:/feature engineering/,roles:['scientist','ai'],p:['agent']},
+ {n:'Model evaluation',re:/model evaluation|cross-validation|precision|recall|\bauc\b/,roles:['scientist','ai'],p:['agent']},
+ {n:'Docker',re:/docker|containeri[sz]|containers?\b/,roles:['engineer','ai'],t:1},
+ {n:'Kubernetes',re:/kubernetes|\bk8s\b/,roles:['engineer','ai'],t:1},
+ {n:'Airflow',re:/airflow|orchestrat/,roles:['engineer'],t:1},
+ {n:'MLOps',re:/mlops|model deployment|model serving|mlflow/,roles:['scientist','ai'],t:1},
+ {n:'CI/CD',re:/ci\/cd|continuous integration|github actions/,roles:['engineer','ai'],t:1},
+ {n:'AI workflow automation',re:/n8n|workflow automation|zapier/,roles:['ai'],t:1},
+ {n:'Documentation',re:/documentation|data dictionary|lineage/,roles:['engineer','bi'],p:['cohort','pipeline']},
+ {n:'Jira / Confluence',re:/jira|confluence|agile|scrum/,roles:['bi','analyst'],t:1}
+];
+const GAPS=[['Kafka',/kafka|streaming/],['Java / Scala',/\bjava\b|scala/],['Terraform',/terraform|infrastructure as code/],['Computer vision',/computer vision/],['SAS',/\bsas\b/]];
+
+const SAMPLES = {
+ 'Analytics Engineer':'We are hiring an Analytics Engineer to own our dbt project and Snowflake warehouse. You will build reliable ELT pipelines, design dimensional data models, write advanced SQL with window functions, add data quality tests, and partner with stakeholders to define KPIs and metrics. Experience with Git, Looker or Tableau dashboards, and Airflow orchestration is a plus.',
+ 'Data Scientist':'Data Scientist, Growth. Use Python (pandas, scikit-learn) and SQL to build forecasting and churn models, run A/B tests and experiments, segment customers, and present findings to non-technical stakeholders. Strong statistics required. Familiarity with PyTorch or TensorFlow and MLOps is a bonus.',
+ 'AI Engineer':'AI Engineer to build LLM applications on top of our data platform. You will design RAG pipelines with embeddings and vector search, build agentic workflows with LangChain, write prompt engineering evaluations, and integrate with BigQuery on GCP. Python and SQL required; Docker and Kubernetes experience preferred.',
+ 'AI Data Engineer':'AI Data Engineer to build the data foundation for our LLM products. You will design ELT pipelines into BigQuery and Snowflake with dbt, manage embeddings and vector search for retrieval, orchestrate jobs with Airflow, expose data through APIs, containerize services with Docker, and monitor data quality. Python and SQL required; experience with LLM applications and CI/CD preferred.',
+ 'BI Developer':'BI Developer to build Power BI and Tableau dashboards for finance and operations. Define KPIs, write complex SQL, model data in a star schema warehouse, validate data accuracy, maintain documentation in Confluence, and translate business requirements from stakeholders into reporting.'
+};
+const sampBox=document.getElementById('samples'),jd=document.getElementById('jd'),res=document.getElementById('result');
+Object.keys(SAMPLES).forEach(k=>{const b=document.createElement('button');b.type='button';b.textContent=k;b.addEventListener('click',()=>{jd.value=SAMPLES[k];sampBox.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));runMatch();});sampBox.appendChild(b);});
+jd.addEventListener('input',()=>sampBox.querySelectorAll('button').forEach(x=>x.classList.remove('on')));
+
+function runMatch(){
+  const raw=jd.value, txt=raw.toLowerCase();
+  if(txt.trim().length<20){res.innerHTML='<div class="empty">Paste a job description (a few sentences is enough) and press Match.</div>';window.constelMatch&&window.constelMatch([]);return;}
+  const found=SK.filter(s=>s.cs?/\bR\b/.test(raw.replace(/R&D/g,'')):s.re.test(txt));
+  const gaps=GAPS.filter(g=>g[1].test(txt)).map(g=>g[0]);
+  const proj=found.filter(s=>s.p), tool=found.filter(s=>s.t);
+  const total=found.length+gaps.length;
+  const pct=total?Math.round(found.length/total*100):0;
+  const lean={};KEYS.forEach(k=>lean[k]=0);found.forEach(s=>s.roles.forEach(r=>lean[r]+=1/s.roles.length));
+  const lsum=Object.values(lean).reduce((a,b)=>a+b,0)||1;
+  const pc={};proj.forEach(s=>s.p.forEach(id=>pc[id]=(pc[id]||0)+1));
+  const topP=Object.entries(pc).sort((a,b)=>b[1]-a[1]).slice(0,4);
+  const best=KEYS.slice().sort((a,b)=>lean[b]-lean[a])[0];
+  const C2=2*Math.PI*40;
+  let h=`<div class="score"><div class="ring"><svg width="92" height="92" viewBox="0 0 92 92"><circle cx="46" cy="46" r="40" fill="none" stroke="${C.line}" stroke-width="8"/><circle id="arc" cx="46" cy="46" r="40" fill="none" stroke="${C.aqua}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${C2}" stroke-dashoffset="${C2}" style="transition:stroke-dashoffset .9s ease"/></svg><div class="pct">${pct}%</div></div>
+    <div class="sum"><b>${found.length} of ${total}</b> skills in this posting appear in my work. <b>${proj.length}</b> are shown in real projects${topP.length?`, led by <b>${PNAME[topP[0][0]]}</b>`:''}.</div></div>`;
+  h+='<div class="lean">'+KEYS.map(k=>{const v=Math.round(lean[k]/lsum*100);return `<div class="lean-row"><span>${ROLES[k].label}</span><span class="bar"><i style="width:${v}%"></i></span><span class="v">${v}%</span></div>`;}).join('')+'</div>';
+  if(proj.length)h+=`<div class="grp"><div class="gl">Shown in projects</div><div class="chips">${proj.map(s=>`<span class="chip pr">${s.n}</span>`).join('')}</div></div>`;
+  if(tool.length)h+=`<div class="grp"><div class="gl">In my toolkit</div><div class="chips">${tool.map(s=>`<span class="chip tk">${s.n}</span>`).join('')}</div></div>`;
+  if(gaps.length)h+=`<div class="grp"><div class="gl">Not in my portfolio yet</div><div class="chips">${gaps.map(g=>`<span class="chip gp">${g}</span>`).join('')}</div></div>`;
+  if(topP.length)h+=`<div class="grp"><div class="gl">See the proof</div><div class="proof">${topP.map(([id,n])=>`<a href="#p-${id}">${PNAME[id]}<b>${n} skills</b></a>`).join('')}</div></div>`;
+  if(!found.length)h+='<div class="empty">No familiar data skills found. Try pasting the requirements section of the posting.</div>';
+  res.innerHTML=h;
+  requestAnimationFrame(()=>{const a=document.getElementById('arc');if(a)a.style.strokeDashoffset=C2*(1-pct/100);});
+  if(found.length){lockRole(best,true);}
+  window.constelMatch&&window.constelMatch(found.map(s=>s.n));
+}
+document.getElementById('runMatch').addEventListener('click',()=>{runMatch();});
+
+/* ---------- hero: flowing particle ribbons (WebGL, cursor-reactive) ---------- */
+(function(){
+  const cv=document.getElementById('field'),hero=cv.parentElement,intro=hero.querySelector('.intro');
+  const gl=cv.getContext('webgl',{alpha:true,antialias:false,premultipliedAlpha:true});
+  if(!gl){cv.remove();return;}
+  const small=matchMedia('(max-width: 760px)').matches;
+  // ribbons: 4 bezier control points in screen space (x 0..1 left→right, y 0..1 top→bottom)
+  // [p0,p1,p2,p3], width (share of height), twist (turns), spin speed, gold amount, grid u, grid v
+  const RIB=[
+    [[.46,.16],[.66,.26],[.74,.70],[1.08,.84], .250,1.05, .20,.06,520,110],
+    [[.62,-.10],[.68,.36],[.72,.74],[.90,1.12], .110,.75,-.16,.18,380,48],
+    [[1.12,.06],[.90,.14],[.80,.42],[.62,.54], .140,.85, .14,.55,380,50],
+    [[.36,.30],[.50,.20],[.60,.36],[.78,.44], .050,.6, .26,.95,320,18],
+    [[.52,1.10],[.70,.86],[.92,.70],[1.12,.54], .170,.9,-.18,.10,420,64],
+    [[1.14,.30],[.96,.56],[.92,.88],[1.04,1.12], .140,.7, .12,.35,340,44]];
+  const K=small?.5:1;
+  const VS=`
+  attribute vec4 aP; attribute vec2 aR;
+  uniform vec2 uRes; uniform float uT; uniform vec3 uM; uniform float uDpr; uniform float uNarrow; uniform float uGlow;
+  uniform vec2 uC[24]; uniform vec4 uRb[6];
+  varying vec3 vCol; varying float vA;
+  vec2 bz(vec2 a,vec2 b,vec2 c,vec2 d,float t){float s=1.-t;return s*s*s*a+3.*s*s*t*b+3.*s*t*t*c+t*t*t*d;}
+  vec2 dbz(vec2 a,vec2 b,vec2 c,vec2 d,float t){float s=1.-t;return 3.*s*s*(b-a)+6.*s*t*(c-b)+3.*t*t*(d-c);}
+  void main(){
+    int i=int(aP.z+.5); float fi=aP.z; float asp=uRes.x/uRes.y;
+    vec2 c[4];
+    for(int k=0;k<4;k++){vec2 p=uC[i*4+k]; float fk=float(k);
+      p+=.022*vec2(sin(uT*.23+fi*1.7+fk*1.1),cos(uT*.19+fi*2.3+fk*1.3));
+      if(uNarrow>.5){p.x=.5+(p.x-.62)*1.25;p.y=.1+p.y*.8;}
+      c[k]=vec2(p.x*asp,p.y);}
+    vec4 rb=uRb[i];
+    float dust=aP.w;
+    float u=dust>.5?fract(aP.x+uT*.012*(.4+aR.x)):aP.x;
+    vec2 P=bz(c[0],c[1],c[2],c[3],u);
+    vec2 T=normalize(dbz(c[0],c[1],c[2],c[3],u)+1e-5); vec2 N=vec2(-T.y,T.x);
+    float taper=pow(max(sin(3.14159*u),0.),.65);
+    P+=N*.018*sin(u*8.-uT*.7+fi*1.9);
+    float th=u*rb.y*6.2832+uT*rb.z+fi*1.3;
+    float pr=cos(th), dp=sin(th);
+    float w=rb.x*taper*(.85+.15*sin(u*5.+uT*.4+fi));
+    float v=aP.y;
+    vec2 pos=P+N*v*w*pr;
+    if(dust>.5){pos+=N*(aR.y-.5)*(.10+.25*aR.x)*taper+T*(aR.x-.5)*.02;}
+    // cursor: push points away and light them up
+    vec2 mq=vec2(uM.x*asp,uM.y); vec2 d=pos-mq; float dist2=dot(d,d);
+    float f=uM.z*exp(-dist2/.010);
+    pos+=normalize(d+1e-5)*f*.055;
+    pos+=(mq-vec2(asp*.5,.5))*uM.z*.012*(1.+dp);
+    gl_Position=vec4(pos.x/asp*2.-1.,1.-2.*pos.y,0.,1.);
+    float edge=smoothstep(.72,1.,abs(v));
+    float fold=1.-abs(pr);
+    vec3 teal=vec3(.10,.88,.80), white=vec3(.90,.97,1.), gold=vec3(1.,.80,.52);
+    vec3 base=mix(teal,gold,rb.w);
+    if(aR.x>.955) base=gold;
+    vec3 hi=mix(white,gold,.35*fold);
+    vec3 col=mix(base,hi,clamp(edge*.5+fold*fold*.55,0.,1.));
+    float a;
+    if(dust>.5){a=(.25+.6*aR.x)*taper+.8*pow(.5+.5*sin(uT*1.7+aR.y*40.),10.);col=mix(base,white,.35);}
+    else{a=(.20+.75*edge+.65*fold*fold)*taper*(.7+.3*dp);}
+    a*=1.+f*2.2;
+    vCol=col; vA=a*(uGlow>.5?.045:1.);
+    gl_PointSize=uDpr*(dust>.5?(1.2+2.4*aR.x):(1.2+1.1*edge+.6*max(dp,0.)))*(1.+f*1.2)*(uGlow>.5?7.:1.);
+  }`;
+  const FS=`precision mediump float; varying vec3 vCol; varying float vA;
+  void main(){vec2 p=gl_PointCoord-.5;float d=length(p);float a=smoothstep(.5,.05,d)*vA;gl_FragColor=vec4(vCol*a,a);}`;
+  const BVS=`attribute vec4 aB; uniform vec2 uRes; uniform float uT; uniform float uDpr; uniform vec3 uM; varying float vA; varying vec3 vCol;
+  void main(){float asp=uRes.x/uRes.y;
+    vec2 p=vec2(aB.x+sin(uT*.07+aB.w*9.)*.02, fract(aB.y-uT*.006*(.3+aB.w)));
+    p+= (uM.xy-.5)*uM.z*.02*(aB.z/40.);
+    gl_Position=vec4(p.x*2.-1.,1.-2.*p.y,0.,1.);
+    gl_PointSize=aB.z*uDpr;
+    vA=(.05+.16*fract(aB.w*7.3))*(.6+.4*sin(uT*.6+aB.w*20.));
+    vCol=mix(vec3(.25,.88,.82),vec3(1.,.80,.52),step(.55,fract(aB.w*3.7)));}`;
+  const BFS=`precision mediump float; varying float vA; varying vec3 vCol;
+  void main(){vec2 p=gl_PointCoord-.5;float d=length(p);float a=(smoothstep(.5,.40,d)*.55+smoothstep(.5,.0,d)*.45)*vA;gl_FragColor=vec4(vCol*a,a);}`;
+  function prog(vs,fs){const p=gl.createProgram();[[gl.VERTEX_SHADER,vs],[gl.FRAGMENT_SHADER,fs]].forEach(([t,s])=>{const sh=gl.createShader(t);gl.shaderSource(sh,s);gl.compileShader(sh);if(!gl.getShaderParameter(sh,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(sh));gl.attachShader(p,sh);});gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));return p;}
+  let P1,P2;
+  try{P1=prog(VS,FS);P2=prog(BVS,BFS);}catch(err){console.warn('hero shader',err);cv.remove();return;}
+  // ribbon + dust points
+  const pts=[];
+  RIB.forEach((r,i)=>{const nu=Math.round(r[8]*K),nv=Math.max(8,Math.round(r[9]*K));
+    for(let a=0;a<nu;a++)for(let b=0;b<nv;b++){pts.push(a/(nu-1)+(Math.random()-.5)*.002,-1+2*b/(nv-1),i,0,Math.random(),Math.random());}
+    const nd=Math.round(nu*nv*.10);for(let k=0;k<nd;k++)pts.push(Math.random(),0,i,1,Math.random(),Math.random());});
+  const NP=pts.length/6;
+  const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(pts),gl.STATIC_DRAW);
+  const bk=[];const NB=small?50:110;for(let k=0;k<NB;k++){const big=Math.random()<.25;bk.push(.38+Math.random()*.68,Math.random(),big?18+Math.random()*34:3+Math.random()*7,Math.random());}
+  const bbuf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bbuf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(bk),gl.STATIC_DRAW);
+  const U=(p,n)=>gl.getUniformLocation(p,n);
+  const u1={res:U(P1,'uRes'),t:U(P1,'uT'),m:U(P1,'uM'),dpr:U(P1,'uDpr'),nar:U(P1,'uNarrow'),c:U(P1,'uC'),rb:U(P1,'uRb'),glow:U(P1,'uGlow')};
+  const u2={res:U(P2,'uRes'),t:U(P2,'uT'),m:U(P2,'uM'),dpr:U(P2,'uDpr')};
+  const aP=gl.getAttribLocation(P1,'aP'),aR=gl.getAttribLocation(P1,'aR'),aB=gl.getAttribLocation(P2,'aB');
+  const CT=new Float32Array(RIB.flatMap(r=>[...r[0],...r[1],...r[2],...r[3]])),RB=new Float32Array(RIB.flatMap(r=>[r[4],r[5],r[6],r[7]]));
+  let W=0,H=0,dpr=1,t=0,last=performance.now(),vis=true,mx=.5,my=.5,tx=.5,ty=.5,ma=0,tma=0;
+  function size(){const r=cv.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,1.75);W=r.width;H=r.height;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);gl.viewport(0,0,cv.width,cv.height);}
+  function frame(now){
+    const dt=Math.min(.05,((now||performance.now())-last)/1000);last=now||performance.now();t+=dt;
+    mx+=(tx-mx)*.08;my+=(ty-my)*.08;ma+=(tma-ma)*.06;
+    gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.enable(gl.BLEND);gl.blendFunc(gl.ONE,gl.ONE);
+    gl.useProgram(P2);gl.bindBuffer(gl.ARRAY_BUFFER,bbuf);gl.enableVertexAttribArray(aB);gl.vertexAttribPointer(aB,4,gl.FLOAT,false,16,0);
+    gl.uniform2f(u2.res,W,H);gl.uniform1f(u2.t,t);gl.uniform1f(u2.dpr,dpr);gl.uniform3f(u2.m,mx,my,ma);gl.drawArrays(gl.POINTS,0,NB);gl.disableVertexAttribArray(aB);
+    gl.useProgram(P1);gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+    gl.enableVertexAttribArray(aP);gl.vertexAttribPointer(aP,4,gl.FLOAT,false,24,0);gl.enableVertexAttribArray(aR);gl.vertexAttribPointer(aR,2,gl.FLOAT,false,24,16);
+    gl.uniform2f(u1.res,W,H);gl.uniform1f(u1.t,t);gl.uniform3f(u1.m,mx,my,ma);gl.uniform1f(u1.dpr,dpr);gl.uniform1f(u1.nar,W<900?1:0);
+    gl.uniform2fv(u1.c,CT);gl.uniform4fv(u1.rb,RB);if(!small){gl.uniform1f(u1.glow,1);gl.drawArrays(gl.POINTS,0,NP);}gl.uniform1f(u1.glow,0);gl.drawArrays(gl.POINTS,0,NP);
+    gl.disableVertexAttribArray(aP);gl.disableVertexAttribArray(aR);
+    if(intro&&!small)intro.style.transform=`translate3d(${(mx-.5)*-10*ma}px,${(my-.5)*-6*ma}px,0)`;
+    if(vis&&!reduce)requestAnimationFrame(frame);
+  }
+  size();addEventListener('resize',()=>{size();if(reduce){t=9;frame();}});
+  hero.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();tx=(e.clientX-r.left)/r.width;ty=(e.clientY-r.top)/r.height;tma=1;});
+  hero.addEventListener('pointerleave',()=>{tma=0;});
+  new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!vis&&!reduce){vis=true;last=performance.now();requestAnimationFrame(frame);}vis=v;}).observe(cv);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&vis&&!reduce){last=performance.now();}});
+  if(reduce)t=9;
+  requestAnimationFrame(frame);
+})();
+
+/* ---------- refined glowing cursor: light point, soft halo, comet trail, context tag ---------- */
+(function(){
+  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;if(!fine||reduce)return;
+  document.documentElement.classList.add('cc');
+  const dot=document.getElementById('curDot'),halo=document.getElementById('curHalo'),tag=document.getElementById('curTag'),cv=document.getElementById('curTrail'),x=cv.getContext('2d');
+  let W,H,mx=-300,my=-300,hx=-300,hy=-300,hs=1,hsT=1,shown=false,gold=false,tagOn=false,press=0;
+  const trail=[],sparks=[];
+  function size(){const d=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;x.setTransform(d,0,0,d,0,0);}
+  size();addEventListener('resize',size);
+  const show=v=>{if(v!==shown){shown=v;dot.style.opacity=halo.style.opacity=v?1:0;if(!v)tag.style.opacity=0;}};
+  const LABEL=el=>{const p=el.closest('.proj,.ep');if(p)return 'View case study →';if(el.closest('#sideCard'))return 'Read the case study →';if(el.closest('.mvb-card'))return 'Enter the Mindyverse ✦';if(el.closest('a[target=_blank]'))return 'Opens in a new tab ↗';return '';};
+  addEventListener('pointermove',e=>{if(e.pointerType!=='mouse')return;mx=e.clientX;my=e.clientY;show(true);
+    trail.push({x:mx,y:my,l:1});if(trail.length>34)trail.shift();
+    const t=e.target,isGold=!!t.closest('.mvb-card');
+    if(isGold!==gold){gold=isGold;[dot,halo,tag].forEach(el=>el.classList.toggle('gold',gold));}
+    const txt=!!t.closest('textarea,input');dot.classList.toggle('text',txt);
+    const inter=t.closest('a,button,[role=tab],summary,label,select,.sku,.pill');
+    const L=txt?'':LABEL(t);
+    if(L){if(tag.textContent!==L)tag.textContent=L;tag.style.opacity=1;tagOn=true;}else if(tagOn){tag.style.opacity=0;tagOn=false;}
+    hsT=txt?.4:(inter||L)?1.9:1;
+  },{passive:true});
+  document.addEventListener('pointerleave',()=>show(false));addEventListener('blur',()=>show(false));
+  addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;press=1;
+    for(let k=0;k<22;k++){const a=Math.random()*6.283,s=1.2+Math.random()*3.8;sparks.push({x:mx,y:my,vx:Math.cos(a)*s,vy:Math.sin(a)*s,l:1,r:Math.random()*1.6+.6,g:gold||Math.random()<.35});}});
+  (function loop(){
+    hx+=(mx-hx)*.12;hy+=(my-hy)*.12;hs+=(hsT-hs)*.14;press*=.88;
+    dot.style.transform=`translate(${mx}px,${my}px) scale(${1+press*.8})`;
+    halo.style.transform=`translate(${hx}px,${hy}px) scale(${hs*(1+press*.5)})`;
+    tag.style.transform=`translate(${mx+18}px,${my+16}px)`;
+    x.clearRect(0,0,W,H);
+    for(const p of trail)p.l-=.038;while(trail.length&&trail[0].l<=0)trail.shift();
+    if(trail.length>3){
+      x.globalCompositeOperation='lighter';x.lineCap='round';x.lineJoin='round';
+      const col=gold?'212,176,112':'92,225,214';
+      for(let pass=0;pass<2;pass++){
+        for(let i=2;i<trail.length;i++){const a=trail[i-2],b=trail[i-1],c=trail[i],k=i/trail.length;
+          const m1x=(a.x+b.x)/2,m1y=(a.y+b.y)/2,m2x=(b.x+c.x)/2,m2y=(b.y+c.y)/2;
+          x.beginPath();x.moveTo(m1x,m1y);x.quadraticCurveTo(b.x,b.y,m2x,m2y);
+          if(pass===0){x.strokeStyle=`rgba(${col},${(c.l*k*.18).toFixed(3)})`;x.lineWidth=2+k*12;}
+          else{x.strokeStyle=`rgba(235,255,252,${(c.l*k*.7).toFixed(3)})`;x.lineWidth=.6+k*1.8;}
+          x.stroke();}
+      }
+      x.globalCompositeOperation='source-over';}
+    for(let i=sparks.length-1;i>=0;i--){const s=sparks[i];s.x+=s.vx;s.y+=s.vy;s.vx*=.94;s.vy=s.vy*.94+.03;s.l-=.024;if(s.l<=0){sparks.splice(i,1);continue;}
+      x.fillStyle=s.g?`rgba(236,205,155,${s.l.toFixed(2)})`:`rgba(175,250,243,${s.l.toFixed(2)})`;x.beginPath();x.arc(s.x,s.y,s.r*s.l+.3,0,7);x.fill();}
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('.rib .mag').forEach(b=>{
+    b.addEventListener('pointerleave',()=>{b.style.transform='';});
+    b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();const k=b.id==='sideCard'?.08:.28;b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*k}px,${(e.clientY-r.top-r.height/2)*k*1.2}px)`;});
+  });
+})();
+
+/* ---------- agent demo (old chat, replaced) ---------- */
+if(false)
+(function(){
+  const chat=document.getElementById('chat');
+  const convos=[
+    {q:'Which product categories lost the most repeat customers last quarter?',
+     sql:'<span class="k">SELECT</span> category,\n  repeat_rate_q2 - repeat_rate_q1 <span class="k">AS</span> change\n<span class="k">FROM</span> marts.category_retention\n<span class="k">ORDER BY</span> change <span class="k">LIMIT</span> 3;',
+     cols:['category','repeat Δ'],rows:[['Home décor','−6.1 pts'],['Kitchen','−3.4 pts'],['Outdoor','−2.2 pts']],
+     a:'Home décor lost the most repeat buyers. Reviews mention late deliveries, so shipping times are the first thing to check.'},
+    {q:'What share of revenue comes from our top 10% of customers?',
+     sql:'<span class="k">WITH</span> ranked <span class="k">AS</span> (\n  <span class="k">SELECT</span> customer_id, revenue,\n  NTILE(10) <span class="k">OVER</span> (<span class="k">ORDER BY</span> revenue <span class="k">DESC</span>) d\n  <span class="k">FROM</span> marts.customer_ltv)\n<span class="k">SELECT</span> SUM(IF(d=1,revenue,0))/SUM(revenue)\n<span class="k">FROM</span> ranked;',
+     cols:['segment','revenue share'],rows:[['Top 10%','41.8%'],['Next 40%','44.5%'],['Bottom 50%','13.7%']],
+     a:'The top 10% of customers bring in about 42% of revenue, so a loyalty program aimed at them has the biggest upside.'}
+  ];
+  let i=0,timers=[];
+  const wait=ms=>new Promise(r=>timers.push(setTimeout(r,reduce?0:ms)));
+  function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;chat.appendChild(e);return e;}
+  async function run(){
+    timers.forEach(clearTimeout);timers=[];chat.innerHTML='';
+    const c=convos[i++%convos.length];
+    el('div','q').textContent=c.q;
+    await wait(700); el('div','step','<i></i>retrieve · schema + metric definitions');
+    await wait(700); el('div','step','<i></i>generate · SQL');
+    await wait(400); el('div','sql',c.sql);
+    await wait(900); el('div','step ok','<i></i>validate · row counts and nulls pass');
+    await wait(600);
+    el('table','mini','<thead><tr><th>'+c.cols[0]+'</th><th>'+c.cols[1]+'</th></tr></thead><tbody>'+c.rows.map(r=>'<tr><td>'+r[0]+'</td><td'+(r[1].startsWith('−')?' class="neg"':'')+'>'+r[1]+'</td></tr>').join('')+'</tbody>');
+    await wait(600); el('div','ans').textContent=c.a;
+  }
+  document.getElementById('askNext').addEventListener('click',run);
+  run();
+})();
+
+
+/* ---------- agent demo: question in, visual answer out ---------- */
+(function(){
+  const TEAL='#2CC4B6',ORNG='#E68E47',INK2='#C4D6D9',MUT='#86A3AA',GRID='rgba(255,255,255,.07)';
+  const Q=[
+   {short:'Losing repeat buyers?',q:'Which product categories are losing repeat buyers?',k:'−6.1 pts',kl:'Home décor repeat rate, quarter over quarter',
+    say:'Home décor lost the most repeat buyers. Reviews mention late deliveries, so shipping time is the first thing to fix.',
+    kind:'div',data:[['Home décor',-6.1],['Kitchen',-3.4],['Outdoor',-2.2],['Beauty',1.8],['Apparel',2.9]]},
+   {short:'Where does revenue come from?',q:'How much revenue comes from our best customers?',k:'42%',kl:'of revenue from the top 10% of customers',
+    say:'Revenue is concentrated: the top 10% of customers bring in 42%. A loyalty offer for them has the biggest upside.',
+    kind:'stack',data:[['Top 10%',41.8],['Next 40%',44.5],['Bottom 50%',13.7]]},
+   {short:'Who might churn?',q:'Which customers are likely to churn next month?',k:'12%',kl:'of active customers at high churn risk',
+    say:'The churn model flags 12% of customers as high risk, mostly one-time buyers with no visit in 45 days. They get a win-back email first.',
+    kind:'col',data:[['High risk',12],['Medium',23],['Low',65]]},
+   {short:'Next month revenue?',q:'What will weekly revenue look like next month?',k:'+9%',kl:'forecast vs the last 4 weeks',
+    say:'Revenue keeps climbing: the forecast is about 9% above the last four weeks, with the range shown as the shaded band.',
+    kind:'line',data:[96,101,99,104,108,106,111,115,113,118,121,124],fc:[126,129,131,134]}];
+  const T=(x,y,s,o={})=>`<text x="${x}" y="${y}" fill="${o.f||INK2}" font-size="${o.s||11}" text-anchor="${o.a||'start'}" ${o.w?`font-weight="${o.w}"`:''} class="ag-t" style="animation-delay:${o.d||0}ms">${s}</text>`;
+  function chart(c,W=380,H=176){
+    let g='';
+    if(c.kind==='div'){const L=92,R=W-14,mid=L+(R-L)*.62,sc=(R-L)*.62/7,rh=(H-16)/c.data.length;
+      g+=`<line x1="${mid}" x2="${mid}" y1="4" y2="${H-8}" stroke="rgba(255,255,255,.22)"/>`;
+      c.data.forEach(([n,v],i)=>{const y=8+i*rh,w=Math.abs(v)*sc,x=v<0?mid-w:mid,col=v<0?ORNG:TEAL;
+        g+=T(L-10,y+rh/2+4,n,{a:'end',d:i*90});
+        g+=`<rect class="ag-bar" x="${x}" y="${y+rh*.2}" width="${w}" height="${rh*.6}" rx="3" fill="${col}" style="transform-origin:${v<0?mid:mid}px 0;animation-delay:${200+i*110}ms"><title>${n}: ${v>0?'+':''}${v} pts</title></rect>`;
+        g+=T(v<0?x-6:x+w+6,y+rh/2+4,(v>0?'+':'')+v,{a:v<0?'end':'start',f:INK2,d:500+i*110});});
+      g+=T(mid-6,H-1,'losing',{a:'end',f:MUT,s:10})+T(mid+6,H-1,'growing',{f:MUT,s:10});}
+    if(c.kind==='stack'){const L=10,R=W-10,y=56,h=34;let x=L;const cols=['#2CC4B6','#1E8C83','#155E59'];
+      c.data.forEach(([n,v],i)=>{const w=(R-L-4)*v/100;
+        g+=`<rect class="ag-bar" x="${x}" y="${y}" width="${Math.max(0,w-2)}" height="${h}" rx="4" fill="${cols[i]}" style="transform-origin:${L}px 0;animation-delay:${200+i*160}ms"><title>${n}: ${v}% of revenue</title></rect>`;
+        const last=i===c.data.length-1,tx=last?R:x+2,an=last?'end':'start';g+=T(tx,y-10,n,{a:an,f:MUT,d:300+i*160})+T(tx,y+h+22,v+'%',{a:an,s:15,w:600,f:'#EEF4F6',d:500+i*160});x+=w+2;});
+      g+=T(10,150,'share of total revenue by customer group',{f:MUT,s:10.5,d:900});}
+    if(c.kind==='col'){const B=H-22,top=10,cw=62,gap=(W-3*cw)/4;
+      c.data.forEach(([n,v],i)=>{const h=(B-top)*v/70,x=gap+i*(cw+gap),col=i===0?ORNG:TEAL;
+        g+=`<rect class="ag-col" x="${x}" y="${B-h}" width="${cw}" height="${h}" rx="4" fill="${col}" fill-opacity="${i===0?1:.55+.2*i}" style="transform-origin:0 ${B}px;animation-delay:${200+i*140}ms"><title>${n}: ${v}% of customers</title></rect>`;
+        g+=T(x+cw/2,B-h-7,v+'%',{a:'middle',s:13,w:600,f:'#EEF4F6',d:600+i*140})+T(x+cw/2,H-5,n,{a:'middle',f:MUT,d:300+i*140});});
+      g+=`<line x1="10" x2="${W-10}" y1="${B}" y2="${B}" stroke="rgba(255,255,255,.18)"/>`;}
+    if(c.kind==='line'){const L=34,R=W-10,top=12,B=H-24,all=c.data.concat(c.fc.slice()),n=all.length-1,lo=88,hi=142;
+      const X=i=>L+i/n*(R-L),Y=v=>top+(1-(v-lo)/(hi-lo))*(B-top);
+      [100,120,140].forEach(v=>g+=`<line x1="${L}" x2="${R}" y1="${Y(v)}" y2="${Y(v)}" stroke="${GRID}"/>`+T(L-6,Y(v)+4,'$'+v+'k',{a:'end',f:MUT,s:10}));
+      const off=c.data.length-1,up=[[X(off),Y(c.data[off])]].concat(c.fc.map((v,i)=>[X(off+1+i),Y(v+(i+1)*2.4)])),dn=[[X(off),Y(c.data[off])]].concat(c.fc.map((v,i)=>[X(off+1+i),Y(v-(i+1)*2.4)])).reverse();
+      g+=`<path d="M${up.map(p=>p.join(' ')).join(' L')} L${dn.map(p=>p.join(' ')).join(' L')} Z" fill="${ORNG}" fill-opacity=".16" class="ag-fade" style="animation-delay:900ms"/>`;
+      const pa=c.data.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)).join(' ');
+      const pf='M'+X(off)+' '+Y(c.data[off])+' '+c.fc.map((v,i)=>'L'+X(off+1+i).toFixed(1)+' '+Y(v).toFixed(1)).join(' ');
+      g+=`<path d="${pa}" fill="none" stroke="${TEAL}" stroke-width="2.5" class="ag-draw" pathLength="1"/>`;
+      g+=`<path d="${pf}" fill="none" stroke="${ORNG}" stroke-width="2.2" stroke-dasharray="5 5" class="ag-fade" style="animation-delay:1000ms"/>`;
+      c.data.forEach((v,i)=>g+=`<circle cx="${X(i)}" cy="${Y(v)}" r="9" fill="transparent"><title>Week ${i+1}: $${v}k</title></circle>`);
+      c.fc.forEach((v,i)=>g+=`<circle cx="${X(off+1+i)}" cy="${Y(v)}" r="9" fill="transparent"><title>Forecast week ${off+2+i}: $${v}k</title></circle>`);
+      g+=`<circle r="4.5" fill="#fff" class="ag-fade" style="animation-delay:1200ms"><animateMotion dur="4.5s" repeatCount="indefinite" path="${pa} ${pf.replace(/^M[^L]*/,'')}"/></circle>`;
+      g+=T(L,H-6,'actual',{f:TEAL,s:10.5,d:700})+T(R,H-6,'forecast',{a:'end',f:ORNG,s:10.5,d:1000});}
+    return g;}
+  window.agentChart=(svg,i)=>{const c=Q[i];svg.innerHTML=chart(c);svg.setAttribute('aria-label',c.q+' '+c.kl+': '+c.k);svg.classList.remove('go');void svg.getBoundingClientRect();svg.classList.add('go');};
+  window.agentQs=Q;
+  const root=document.getElementById('ag');if(!root)return;
+  const qEl=document.getElementById('agQ'),steps=[...document.querySelectorAll('#agSteps span')],ans=document.getElementById('agAns'),svg=document.getElementById('agSvg'),
+        kEl=document.getElementById('agK'),klEl=document.getElementById('agKl'),say=document.getElementById('agSay'),pick=document.getElementById('agPick');
+  let cur=-1,timers=[],auto=null,vis=true,hover=false;
+  const later=(fn,ms)=>timers.push(setTimeout(fn,reduce?0:ms));
+  Q.forEach((c,i)=>{const b=document.createElement('button');b.type='button';b.textContent=c.short;b.addEventListener('click',()=>{show(i);});pick.appendChild(b);});
+  function countUp(el,txt){const m=txt.match(/^([^\d]*)([\d.]+)(.*)$/);if(!m||reduce){el.textContent=txt;return;}const to=parseFloat(m[2]),dec=(m[2].split('.')[1]||'').length,t0=performance.now();
+    (function f(t){const p=Math.min(1,(t-t0)/900),e=1-Math.pow(1-p,3);el.textContent=m[1]+(to*e).toFixed(dec)+m[3];if(p<1)requestAnimationFrame(f);})(t0);}
+  function show(i){
+    timers.forEach(clearTimeout);timers=[];cur=i;const c=Q[i];
+    [...pick.children].forEach((b,j)=>b.classList.toggle('on',j===i));
+    steps.forEach(s=>s.className='');ans.classList.remove('in');say.classList.remove('in');qEl.textContent='';root.classList.add('typing');
+    let k=0;const type=()=>{qEl.textContent=c.q.slice(0,++k);if(k<c.q.length)later(type,22);else{root.classList.remove('typing');run();}};
+    if(reduce){qEl.textContent=c.q;run();}else type();
+    function run(){steps.forEach((s,j)=>{later(()=>s.className='on',200+j*330);later(()=>s.className='done',200+j*330+300);});
+      later(()=>{ans.classList.add('in');klEl.textContent=c.kl;countUp(kEl,c.k);window.agentChart(svg,i);},200+steps.length*330+100);
+      later(()=>say.classList.add('in'),200+steps.length*330+900);
+      later(()=>{if(!hover&&vis)show((cur+1)%Q.length);},200+steps.length*330+7200);}
+  }
+  root.closest('.proj').addEventListener('pointerenter',()=>hover=true);
+  root.closest('.proj').addEventListener('pointerleave',()=>{hover=false;later(()=>{if(!hover&&vis)show((cur+1)%Q.length);},4000);});
+  new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!vis){vis=true;show((cur+1)%Q.length);}vis=v;}).observe(root);
+  show(0);
+})();
+
+/* ---------- architecture diagram ---------- */
+(function(){
+  const s=document.getElementById('archSvg');
+  const box=(x,y,w,h,t,sub,hl)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${hl?'rgba(92,225,214,.08)':'#0C1A21'}" stroke="${hl?C.aqua:C.line}"/><text x="${x+w/2}" y="${y+h/2-(sub?3:-4)}" fill="${hl?C.aqua:'#E6F1F2'}" font-size="12" text-anchor="middle">${t}</text>${sub?`<text x="${x+w/2}" y="${y+h/2+13}" fill="${C.muted}" font-size="10" text-anchor="middle">${sub}</text>`:''}`;
+  const srcs=['POS API','Payroll API','Vendor CSV','Postgres'];
+  let g='';
+  srcs.forEach((t,k)=>{const y=14+k*58;g+=box(8,y,100,40,t);g+=`<path id="p${k}" d="M108 ${y+20} C150 ${y+20},150 125,190 125" fill="none" stroke="${C.line}" stroke-width="1.5"/>`;});
+  g+=box(190,100,100,50,'ETL','Python + SQL');
+  g+=`<path id="p4" d="M290 125 L320 125" stroke="${C.line}" stroke-width="1.5"/>`;
+  g+=box(320,100,100,50,'Quality gate','validation',true);
+  g+=`<path id="p5" d="M420 125 C440 125,440 70,460 70" fill="none" stroke="${C.line}" stroke-width="1.5"/><path id="p6" d="M420 125 C440 125,440 180,460 180" fill="none" stroke="${C.line}" stroke-width="1.5"/>`;
+  g+=box(460,48,92,44,'Warehouse','star schema');
+  g+=box(460,158,92,44,'Power BI','self-serve');
+  g+=`<text x="370" y="176" fill="${C.peach}" font-size="10" text-anchor="middle">bad rows → quarantine</text>`;
+  if(!reduce){for(let k=0;k<7;k++){g+=`<circle r="3" fill="${k<4?C.aqua:C.peach}"><animateMotion dur="${2.2+k*.3}s" repeatCount="indefinite" begin="${k*.4}s"><mpath href="#p${k}"/></animateMotion></circle>`;}}
+  s.innerHTML=g;
+})();
+
+/* ---------- pricing model ---------- */
+(function(){
+  const skus=[{id:'Skincare',p:38,q:1200,e:-0.45,flag:true},{id:'Snacks',p:4.5,q:9800,e:-1.6},{id:'Home décor',p:52,q:640,e:-0.6,flag:true},{id:'Apparel',p:29,q:2100,e:-1.25},{id:'Gift sets',p:44,q:780,e:-0.5,flag:true}];
+  let cur=0;const box=document.getElementById('skus'),svg=document.getElementById('priceSvg'),range=document.getElementById('price');
+  skus.forEach((s,i)=>{const b=document.createElement('button');b.className='sku';b.type='button';b.innerHTML=(s.flag?'<i class="flag"></i>':'')+s.id;b.setAttribute('aria-pressed',i===0);b.onclick=()=>{cur=i;[...box.children].forEach((c,j)=>c.setAttribute('aria-pressed',j===i));draw();};box.appendChild(b);});
+  const rev=(s,p)=>{const k=1+p/100;return s.p*k*s.q*Math.pow(k,s.e);},units=(s,p)=>s.q*Math.pow(1+p/100,s.e);
+  function draw(){
+    const s=skus[cur],pct=+range.value,W=560,H=230,L=58,R=14,T=14,B=30;
+    const xs=[];for(let p=-20;p<=20;p++)xs.push([p,rev(s,p)]);
+    const base=rev(s,0),ys=xs.map(d=>d[1]);let lo=Math.min(...ys),hi=Math.max(...ys);const pad=(hi-lo)*.15||base*.05;lo-=pad;hi+=pad;
+    const X=p=>L+(p+20)/40*(W-L-R),Y=v=>T+(1-(v-lo)/(hi-lo))*(H-T-B);
+    let g=`<defs><linearGradient id="ga" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="${C.aqua}" stop-opacity=".28"/><stop offset="1" stop-color="${C.aqua}" stop-opacity="0"/></linearGradient></defs>`;
+    for(let i=0;i<=4;i++){const v=lo+(hi-lo)*i/4,y=Y(v);g+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="${C.line}"/><text x="${L-8}" y="${y+4}" fill="${C.muted}" font-size="11" text-anchor="end">$${(v/1000).toFixed(1)}k</text>`;}
+    [-20,-10,0,10,20].forEach(p=>g+=`<text x="${X(p)}" y="${H-10}" fill="${C.muted}" font-size="11" text-anchor="middle">${p>0?'+':''}${p}%</text>`);
+    const path=xs.map((d,i)=>(i?'L':'M')+X(d[0]).toFixed(1)+' '+Y(d[1]).toFixed(1)).join(' ');
+    g+=`<path d="${path} L${X(20)} ${H-B} L${X(-20)} ${H-B} Z" fill="url(#ga)"/><path d="${path}" fill="none" stroke="${C.aqua}" stroke-width="2.5"/>`;
+    const cx=X(pct),cy=Y(rev(s,pct));
+    g+=`<line x1="${cx}" x2="${cx}" y1="${T}" y2="${H-B}" stroke="${C.peach}" opacity=".5"/><circle cx="${cx}" cy="${cy}" r="6" fill="${C.peach}" stroke="${C.ink}" stroke-width="2"/>`;
+    svg.innerHTML=g;
+    document.getElementById('pv').textContent=(pct>0?'+':'')+pct+'%';
+    const du=units(s,pct)-s.q,dr=rev(s,pct)-base,ru=document.getElementById('ru'),rr=document.getElementById('rr');
+    ru.textContent=Math.round(units(s,pct)).toLocaleString('en-US');ru.className='v'+(du>.5?' up':du<-.5?' down':'');
+    rr.textContent=(dr>=0?'+$':'−$')+Math.round(Math.abs(dr)).toLocaleString('en-US');rr.className='v'+(dr>1?' up':dr<-1?' down':'');
+    const best=xs.reduce((a,b)=>b[1]>a[1]?b:a);
+    document.getElementById('rb').textContent=best[0]>0?'Raise '+best[0]+'%':best[0]<0?'Cut '+(-best[0])+'%':'Hold';
+  }
+  range.addEventListener('input',draw);draw();
+})();
+
+/* ---------- RFM segments ---------- */
+(function(){
+  const d=[['Champions',12,38],['Loyal',18,27],['New',15,8],['At risk',21,19],['Hibernating',34,8]];
+  const W=560,L=100,R=46,T=26,rowH=38,max=40,X=v=>L+v/max*(W-L-R);
+  let g=`<text x="${L}" y="14" fill="${C.muted}" font-size="11">■ customers</text><text x="${L+100}" y="14" fill="${C.aqua}" font-size="11">■ revenue</text>`;
+  d.forEach(([n,c,r],i)=>{const y=T+i*rowH;
+    g+=`<text x="${L-10}" y="${y+18}" fill="${n==='At risk'?C.peach:'#E6F1F2'}" font-size="12" text-anchor="end">${n}</text>`;
+    g+=`<rect x="${L}" y="${y+3}" width="${X(c)-L}" height="11" rx="3" fill="${C.line}"/><text x="${X(c)+6}" y="${y+13}" fill="${C.muted}" font-size="10">${c}%</text>`;
+    g+=`<rect x="${L}" y="${y+17}" width="${X(r)-L}" height="11" rx="3" fill="${n==='At risk'?C.peach:C.aqua}"/><text x="${X(r)+6}" y="${y+27}" fill="${C.soft}" font-size="10">${r}%</text>`;});
+  document.getElementById('rfmSvg').innerHTML=g;
+})();
+
+/* ---------- cohort retention ---------- */
+(function(){
+  const cohorts=[['Jan',[100,62,48,41,37,34]],['Feb',[100,58,44,37,33,30]],['Mar',[100,66,53,47,43,40]]];
+  const cols=[C.muted,C.peach,C.aqua],W=560,H=230,L=46,R=70,T=14,B=30,X=i=>L+i/5*(W-L-R),Y=v=>T+(1-v/100)*(H-T-B);
+  let g='';
+  [0,25,50,75,100].forEach(v=>g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="${C.line}"/><text x="${L-8}" y="${Y(v)+4}" fill="${C.muted}" font-size="11" text-anchor="end">${v}%</text>`);
+  ['Signup','M1','M2','M3','M4','M5'].forEach((t,i)=>g+=`<text x="${X(i)}" y="${H-10}" fill="${C.muted}" font-size="11" text-anchor="middle">${t}</text>`);
+  g+=`<rect x="${X(0.6)}" y="${T}" width="${X(1.4)-X(0.6)}" height="${H-T-B}" fill="rgba(255,179,138,.07)"/><text x="${X(1)}" y="${T+12}" fill="${C.peach}" font-size="10" text-anchor="middle">biggest drop</text>`;
+  cohorts.forEach(([n,v],k)=>{const p=v.map((y,i)=>(i?'L':'M')+X(i)+' '+Y(y)).join(' ');
+    g+=`<path d="${p}" fill="none" stroke="${cols[k]}" stroke-width="${k===2?2.5:1.8}"/><circle cx="${X(5)}" cy="${Y(v[5])}" r="3.5" fill="${cols[k]}"/><text x="${X(5)+8}" y="${Y(v[5])+4}" fill="${cols[k]}" font-size="11">${n} ${v[5]}%</text>`;});
+  document.getElementById('funnelSvg').innerHTML=g;
+})();
+
+/* ---------- forecast ---------- */
+(function(){
+  const act=[42,48,51,57,61,66,70,77],fc=[77,82,87,91,96],W=560,H=230,L=46,R=16,T=14,B=30,n=act.length+fc.length-1;
+  const X=i=>L+i/(n)*(W-L-R),Y=v=>T+(1-(v-30)/(120-30))*(H-T-B);
+  let g='';
+  [30,60,90,120].forEach(v=>g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="${C.line}"/><text x="${L-8}" y="${Y(v)+4}" fill="${C.muted}" font-size="11" text-anchor="end">${v}</text>`);
+  const off=act.length-1,up=fc.map((v,i)=>[X(off+i),Y(v+i*4.5)]),dn=fc.map((v,i)=>[X(off+i),Y(v-i*4.5)]);
+  g+=`<path d="M${up.map(p=>p.join(' ')).join(' L')} L${dn.reverse().map(p=>p.join(' ')).join(' L')} Z" fill="rgba(255,179,138,.14)"/>`;
+  g+=`<path d="${act.map((v,i)=>(i?'L':'M')+X(i)+' '+Y(v)).join(' ')}" fill="none" stroke="${C.aqua}" stroke-width="2.5"/>`;
+  g+=`<path d="${fc.map((v,i)=>(i?'L':'M')+X(off+i)+' '+Y(v)).join(' ')}" fill="none" stroke="${C.peach}" stroke-width="2.2" stroke-dasharray="6 5"/>`;
+  g+=`<line x1="${X(off)}" x2="${X(off)}" y1="${T}" y2="${H-B}" stroke="${C.muted}" stroke-dasharray="3 4" opacity=".6"/>`;
+  g+=`<text x="${X(off)-6}" y="${T+12}" fill="${C.aqua}" font-size="11" text-anchor="end">actual</text><text x="${X(off)+6}" y="${T+12}" fill="${C.peach}" font-size="11">forecast</text>`;
+  ['Q1','Q2','Q3','Q4','Q1','Q2','Q3','Q4','Q1','Q2','Q3','Q4','Q1'].forEach((t,i)=>{if(i%2===0)g+=`<text x="${X(i)}" y="${H-10}" fill="${C.muted}" font-size="11" text-anchor="middle">${t}</text>`;});
+  g+=`<text x="${W-R}" y="${Y(fc[4])-12}" fill="${C.soft}" font-size="11" text-anchor="end">sites enrolled</text>`;
+  document.getElementById('fcSvg').innerHTML=g;
+})();
+
+/* ---------- copy email ---------- */
+document.getElementById('copyMail').addEventListener('click',e=>{
+  const b=e.currentTarget,addr='mindy.ygj@gmail.com';
+  const done=()=>{b.textContent='Copied ✓';setTimeout(()=>b.textContent=addr+' · copy',1600);};
+  try{navigator.clipboard.writeText(addr).then(done,()=>{b.textContent=addr;});}catch(_){b.textContent=addr;}
+});
+
+/* ---------- coverage matrix ---------- */
+(function(){
+  const t=document.getElementById('cov');
+  let h='<thead><tr><th scope="col" style="text-align:left;cursor:default">Project</th>'+KEYS.map(k=>`<th scope="col" data-role="${k}" tabindex="0">${ROLES[k].label}</th>`).join('')+'</tr></thead><tbody>';
+  cards.forEach(c=>{const rs=c.dataset.roles.split(',');
+    h+=`<tr><th scope="row">${PNAME[c.dataset.id]}</th>`+KEYS.map(k=>{const i=rs.indexOf(k);const cls=i===0?'p':i>0?'s':'n';const lab=i===0?'core fit':i>0?'also relevant':'not a focus';return `<td data-role="${k}"><i class="mk ${cls}" role="img" aria-label="${lab}"></i></td>`;}).join('')+'</tr>';});
+  h+='</tbody><tfoot><tr><td>Projects per role</td>'+KEYS.map(k=>`<td>${count(k)}</td>`).join('')+'</tr></tfoot>';
+  t.innerHTML=h;
+  t.querySelectorAll('thead th[data-role]').forEach(th=>{const go=()=>{lockRole(th.dataset.role);document.getElementById('projects').scrollIntoView({behavior:reduce?'auto':'smooth'});};
+    th.addEventListener('click',go);th.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
+})();
+
+/* ---------- constellation ---------- */
+(function(){
+  const cv=document.getElementById('constel'),x=cv.getContext('2d');
+  let W,H,nodes=[],roleN=[],focus=null,hover=null,matched=new Set(),t=0;
+  function build(){
+    const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;x.setTransform(d,0,0,d,0,0);
+    const cx=W/2,cy=H/2-6,R=Math.min(W*0.36,H*0.36),RX=Math.min(W*0.40,H*0.78),RY=H*0.38;
+    roleN=KEYS.map((k,i)=>{const a=-Math.PI/2+i*2*Math.PI/5;return {k,label:ROLES[k].label,x:cx+Math.cos(a)*RX,y:cy+Math.sin(a)*RY,a};});
+    const byRole={},single={};KEYS.forEach(k=>byRole[k]=[]);
+    nodes=[];
+    SK.forEach((s,i)=>{
+      const rs=roleN.filter(n=>s.roles.includes(n.k));
+      let px,py;
+      if(s.roles.length>=3){const ang=i*2.399;const rr=R*0.16+(i%3)*R*0.07;px=cx+Math.cos(ang)*rr;py=cy+Math.sin(ang)*rr;}
+      else if(s.roles.length===2){const a=rs[0],b=rs[1];px=(a.x+b.x)/2*0.78+cx*0.22;py=(a.y+b.y)/2*0.78+cy*0.22;const j=byRole[a.k].length;px+=Math.cos(j*1.7)*18;py+=Math.sin(j*1.7)*18;byRole[a.k].push(1);}
+      else{const a=rs[0];single[a.k]=(single[a.k]||0)+1;const j=single[a.k]-1,tot=SK.filter(z=>z.roles.length===1&&z.roles[0]===a.k).length;const spread=a.a+Math.PI+(tot>1?(j/(tot-1)-.5)*2.4:0);const dist=R*0.5;px=a.x+Math.cos(spread)*dist;py=a.y+Math.sin(spread)*dist;}
+      px=Math.max(40,Math.min(W-40,px));py=Math.max(24,Math.min(H-40,py));
+      nodes.push({s,x:px,y:py,bx:px,by:py,ax:px,ay:py,ph:Math.random()*6.28,rs,w:s.n.length*6.8+12});
+    });
+    // collision relaxation on label boxes (and role pills)
+    const fixed=roleN.map(r=>({x:r.x,y:r.y,w:r.label.length*8.5+34,h:40}));
+    for(let it=0;it<260;it++){
+      for(let i=0;i<nodes.length;i++){const a=nodes[i];
+        for(let j=i+1;j<nodes.length;j++){const b=nodes[j];
+          const ox=(a.w+b.w)/2-Math.abs(a.bx-b.bx),oy=24-Math.abs(a.by-b.by);
+          if(ox>0&&oy>0){if(oy<ox){const d=(a.by<b.by?-1:1)*oy/2;a.by+=d;b.by-=d;}else{const d=(a.bx<b.bx?-1:1)*ox/2;a.bx+=d;b.bx-=d;}}}
+        fixed.forEach(f=>{const ox=(a.w+f.w)/2-Math.abs(a.bx-f.x),oy=(24+f.h)/2-Math.abs(a.by-f.y);
+          if(ox>0&&oy>0){if(oy<ox)a.by+=(a.by<f.y?-1:1)*oy;else a.bx+=(a.bx<f.x?-1:1)*ox;}});
+        a.bx+=(a.ax-a.bx)*0.02;a.by+=(a.ay-a.by)*0.02;
+        a.bx=Math.max(a.w/2+6,Math.min(W-a.w/2-6,a.bx));a.by=Math.max(26,Math.min(H-44,a.by));
+      }
+    }
+    nodes.forEach(n=>{n.x=n.bx;n.y=n.by;});
+  }
+  function draw(){
+    x.clearRect(0,0,W,H);
+    const act=hover||focus;
+    // edges
+    nodes.forEach(n=>n.rs.forEach(r=>{
+      const on=act?(r.k===act&&n.s.roles.includes(act)):false, mt=matched.has(n.s.n);
+      x.strokeStyle=on?'rgba(92,225,214,.55)':mt?'rgba(255,179,138,.35)':'rgba(30,58,69,.9)';
+      x.lineWidth=on?1.4:1;x.beginPath();x.moveTo(n.x,n.y);x.lineTo(r.x,r.y);x.stroke();
+      if(!reduce&&(on||mt)){const f=((t*0.6+n.ph)%1);x.fillStyle=on?C.aqua:C.peach;x.beginPath();x.arc(n.x+(r.x-n.x)*f,n.y+(r.y-n.y)*f,1.8,0,7);x.fill();}
+    }));
+    // skill nodes
+    x.textAlign='center';x.font='11px "JetBrains Mono", monospace';
+    nodes.forEach(n=>{
+      const inAct=act&&n.s.roles.includes(act),mt=matched.has(n.s.n),faded=act&&!inAct&&!mt;
+      const col=mt?C.peach:n.s.p?C.aqua:C.soft;
+      const r=(n.s.roles.length>=3?5.5:4)+(mt?1.5:0);
+      if(mt){x.fillStyle='rgba(255,179,138,.18)';x.beginPath();x.arc(n.x,n.y,r+6+Math.sin(t*3+n.ph)*1.5,0,7);x.fill();}
+      x.globalAlpha=faded?.25:1;
+      x.fillStyle=col;x.beginPath();x.arc(n.x,n.y,r,0,7);x.fill();
+      x.fillStyle=mt?C.peach:inAct?'#E6F1F2':C.muted;x.fillText(n.s.n,n.x,n.y-r-6);
+      x.globalAlpha=1;
+    });
+    // role nodes
+    roleN.forEach(r=>{
+      const on=act===r.k;
+      x.fillStyle=on?'rgba(92,225,214,.16)':'rgba(12,26,33,.95)';x.strokeStyle=on?C.aqua:'#2B5260';x.lineWidth=1.5;
+      x.font='600 14px "Bricolage Grotesque", sans-serif';const w=x.measureText(r.label).width+26;
+      const bx=r.x-w/2,by=r.y-16;x.beginPath();x.roundRect?x.roundRect(bx,by,w,32,16):x.rect(bx,by,w,32);x.fill();x.stroke();
+      x.fillStyle=on?C.aqua:'#E6F1F2';x.fillText(r.label,r.x,r.y+5);r.w=w;
+    });
+    x.font='11px "JetBrains Mono", monospace';x.fillStyle=C.muted;
+  }
+  const R0=()=>Math.min(W*0.36,H*0.36)*0.36;
+  function loop(){t+=0.004;nodes.forEach(n=>{n.x=n.bx+Math.sin(t*2+n.ph)*2.2;n.y=n.by+Math.cos(t*1.7+n.ph)*2.2;});draw();if(!reduce)requestAnimationFrame(loop);}
+  function hit(e){const r=cv.getBoundingClientRect(),mx=e.clientX-r.left,my=e.clientY-r.top;
+    for(const n of roleN){if(Math.abs(mx-n.x)<(n.w||100)/2&&Math.abs(my-n.y)<18)return n.k;}
+    let best=null,bd=900;nodes.forEach(n=>{const d=(n.x-mx)**2+(n.y-my)**2;if(d<bd){bd=d;best=n;}});
+    return best?best.s.roles[0]:null;}
+  cv.addEventListener('pointermove',e=>{const k=hit(e);if(k!==hover){hover=k;if(reduce)draw();}});
+  cv.addEventListener('pointerleave',()=>{hover=null;if(reduce)draw();});
+  cv.addEventListener('click',e=>{const k=hit(e);if(k){locked===k?clearRole():lockRole(k);}});
+  window.constelFocus=k=>{focus=k;if(reduce)draw();};
+  window.constelMatch=list=>{matched=new Set(list);if(reduce)draw();};
+  build();addEventListener('resize',()=>{build();if(reduce)draw();});
+  loop();
+})();
+
+
+/* ---------- portfolio.db ---------- */
+const DB = {
+  projects:{cols:['id','name','type','primary_role','stack'],rows:[
+    ['agent','AI Agentic Analytics Platform','AI application','AI Engineer','Python, SQL, BigQuery, dbt, GCP, LangChain'],
+    ['pipeline','Multi-Source Data Integration','data platform','Data Engineer','Python, SQL, ETL, star schema, Power BI'],
+    ['retail','Retail Pricing Insights','analysis','Data Analyst','SQL, Python, price elasticity'],
+    ['segment','Customer Segmentation & Retention','dashboard','Data Analyst','RFM, Tableau'],
+    ['cohort','Resident Retention Dashboard','dashboard','BI Analyst','SQL, cohort analysis, funnels'],
+    ['pharma','Pharma BI & Forecasting','BI + forecasting','BI Analyst','star schema, ETL, Power BI, forecasting']]},
+  project_roles:{cols:['project_id','role','fit'],rows:[]},
+  roles:{cols:['role','layer','what_i_do'],rows:[
+    ['Data Engineer','1 Ingest','Multi-source ETL, dbt models, quality gates'],
+    ['BI Analyst','2 Model','One definition per KPI, trusted dashboards'],
+    ['Data Analyst','3 Analyze','Messy questions in, recommendations out'],
+    ['Data Scientist','4 Predict','Segmentation, forecasting, price response'],
+    ['AI Engineer','5 Automate','LLM agents grounded in validated data']]},
+  skills:{cols:['skill','layer','evidence'],rows:[]},
+  project_skills:{cols:['project_id','skill'],rows:[]}
+};
+cards.forEach(c=>c.dataset.roles.split(',').forEach((r,i)=>DB.project_roles.rows.push([c.dataset.id,ROLES[r].label,i===0?'core':'also'])));
+const LAYER={engineer:'engineering',bi:'analytics & BI',analyst:'analytics & BI',scientist:'data science',ai:'AI'};
+SK.forEach(s=>{DB.skills.rows.push([s.n,LAYER[s.roles[0]],s.p?'project':'toolkit']);(s.p||[]).forEach(id=>DB.project_skills.rows.push([id,s.n]));});
+
+/* tiny SQL engine: SELECT … FROM … [JOIN … ON …] [WHERE] [GROUP BY] [ORDER BY] [LIMIT] */
+const MiniSQL=(function(){
+  const KW=new Set(['SELECT','FROM','WHERE','JOIN','INNER','LEFT','ON','AS','AND','OR','NOT','GROUP','BY','ORDER','ASC','DESC','LIMIT','LIKE','IN','IS','NULL','DISTINCT','COUNT','SUM','AVG','MIN','MAX','GROUP_CONCAT']);
+  function lex(q){const t=[];let i=0;
+    while(i<q.length){const c=q[i];
+      if(/\s/.test(c)){i++;continue;}
+      if(c==='-'&&q[i+1]==='-'){while(i<q.length&&q[i]!=='\n')i++;continue;}
+      if(c==="'"){let j=i+1,s='';while(j<q.length){if(q[j]==="'"){if(q[j+1]==="'"){s+="'";j+=2;continue;}break;}s+=q[j++];}if(j>=q.length)throw Error('Unclosed string literal');t.push({t:'str',v:s});i=j+1;continue;}
+      if(/[0-9]/.test(c)){let j=i;while(j<q.length&&/[0-9.]/.test(q[j]))j++;t.push({t:'num',v:+q.slice(i,j)});i=j;continue;}
+      if(/[A-Za-z_]/.test(c)){let j=i;while(j<q.length&&/[A-Za-z0-9_]/.test(q[j]))j++;const w=q.slice(i,j);KW.has(w.toUpperCase())?t.push({t:'kw',v:w.toUpperCase()}):t.push({t:'id',v:w});i=j;continue;}
+      const two=q.slice(i,i+2);if(['<=','>=','<>','!='].includes(two)){t.push({t:'op',v:two});i+=2;continue;}
+      if('=<>(),.*;'.includes(c)){t.push({t:'op',v:c});i++;continue;}
+      throw Error('Unexpected character "'+c+'"');}
+    return t;}
+  function parse(q){
+    const T=lex(q);let p=0;
+    const peek=(v)=>T[p]&&(T[p].v===v),eat=v=>{if(!peek(v))throw Error('Expected '+v+(T[p]?' near "'+T[p].v+'"':' at end of query'));return T[p++];},take=v=>peek(v)?T[p++]:null;
+    function ident(){const k=T[p];if(!k||k.t!=='id')throw Error('Expected a name'+(k?' near "'+k.v+'"':''));p++;return k.v;}
+    function primary(){const k=T[p];if(!k)throw Error('Unexpected end of query');
+      if(k.t==='num'||k.t==='str'){p++;return {lit:k.v};}
+      if(k.v==='NULL'){p++;return {lit:null};}
+      if(k.v==='('){p++;const e=expr();eat(')');return e;}
+      if(k.t==='kw'&&['COUNT','SUM','AVG','MIN','MAX','GROUP_CONCAT'].includes(k.v)){p++;eat('(');let arg=null,dist=false;if(take('*'))arg='*';else{dist=!!take('DISTINCT');arg=expr();}eat(')');return {agg:k.v,arg,dist};}
+      if(k.v==='*'){p++;return {star:true};}
+      if(k.t==='id'){p++;if(take('.')){if(take('*'))return {star:true,tbl:k.v};return {col:ident(),tbl:k.v};}return {col:k.v};}
+      throw Error('Unexpected "'+k.v+'"');}
+    function cmp(){let l=primary();
+      if(peek('NOT')&&T[p+1]&&(T[p+1].v==='LIKE'||T[p+1].v==='IN')){p++;const r=cmpTail(l);return {not:r};}
+      return cmpTail(l);}
+    function cmpTail(l){const k=T[p];if(!k)return l;
+      if(k.t==='op'&&['=','<','>','<=','>=','<>','!='].includes(k.v)){p++;return {op:k.v,l,r:primary()};}
+      if(k.v==='LIKE'){p++;return {op:'LIKE',l,r:primary()};}
+      if(k.v==='IN'){p++;eat('(');const list=[primary()];while(take(','))list.push(primary());eat(')');return {op:'IN',l,list};}
+      if(k.v==='IS'){p++;const n=!!take('NOT');eat('NULL');return {op:n?'NOTNULL':'ISNULL',l};}
+      return l;}
+    function notE(){if(take('NOT'))return {not:notE()};return cmp();}
+    function andE(){let l=notE();while(take('AND'))l={op:'AND',l,r:notE()};return l;}
+    function expr(){let l=andE();while(take('OR'))l={op:'OR',l,r:andE()};return l;}
+    eat('SELECT');const distinct=!!take('DISTINCT');
+    const sel=[];do{const s0=p;const e=expr();let as=null;if(take('AS'))as=ident();else if(T[p]&&T[p].t==='id')as=ident();
+      sel.push({e,as,src:T.slice(s0,p-(as?(T[p-2]&&T[p-2].v==='AS'?2:1):0)).map(x=>x.t==='str'?"'"+x.v+"'":x.v).join(' ').replace(/ \. /g,'.').replace(/\( /g,'(').replace(/ \)/g,')').replace(/ \(/g,'(')});}while(take(','));
+    eat('FROM');const from=[{t:ident()}];if(take('AS'))from[0].a=ident();else if(T[p]&&T[p].t==='id')from[0].a=ident();
+    const joins=[];
+    while(peek('JOIN')||peek('INNER')||peek('LEFT')){const left=!!take('LEFT');take('INNER');eat('JOIN');const j={t:ident(),left};if(take('AS'))j.a=ident();else if(T[p]&&T[p].t==='id')j.a=ident();eat('ON');j.on=expr();joins.push(j);}
+    let where=null,group=[],order=[],limit=null;
+    if(take('WHERE'))where=expr();
+    if(take('GROUP')){eat('BY');do group.push(expr());while(take(','));}
+    if(take('ORDER')){eat('BY');do{const e=expr();let dir=1;if(take('DESC'))dir=-1;else take('ASC');order.push({e,dir});}while(take(','));}
+    if(take('LIMIT')){const k=T[p++];if(!k||k.t!=='num')throw Error('LIMIT needs a number');limit=k.v;}
+    take(';');if(p<T.length)throw Error('Unexpected "'+T[p].v+'"');
+    return {distinct,sel,from:from[0],joins,where,group,order,limit};
+  }
+  function tableRows(name,alias){const tb=DB[name.toLowerCase()];if(!tb)throw Error('No table named "'+name+'". Try: '+Object.keys(DB).join(', '));
+    const a=alias||name;return tb.rows.map(r=>{const o={__t:[a]};tb.cols.forEach((c,i)=>{o[a+'.'+c]=r[i];});return o;});}
+  function colsOf(name,alias){return DB[name.toLowerCase()].cols.map(c=>(alias||name)+'.'+c);}
+  function get(row,e){
+    if(e.tbl){const k=e.tbl+'.'+e.col;if(!(k in row))throw Error('Unknown column '+e.tbl+'.'+e.col);return row[k];}
+    const hits=Object.keys(row).filter(k=>k.endsWith('.'+e.col));
+    if(!hits.length){if(row.__out&&e.col in row.__out)return row.__out[e.col];throw Error('Unknown column "'+e.col+'"');}
+    if(hits.length>1)throw Error('Column "'+e.col+'" is ambiguous. Prefix it with a table alias.');return row[hits[0]];}
+  function ev(e,row,grp){
+    if('lit' in e)return e.lit;
+    if(e.col)return get(row,e);
+    if(e.agg){if(!grp)throw Error(e.agg+'() needs GROUP BY or a whole-table aggregate');
+      let vals=e.arg==='*'?grp.map(()=>1):grp.map(r=>ev(e.arg,r)).filter(v=>v!==null&&v!==undefined);
+      if(e.dist)vals=[...new Set(vals)];
+      switch(e.agg){case 'COUNT':return vals.length;case 'SUM':return vals.reduce((a,b)=>a+(+b),0);case 'AVG':return vals.length?+(vals.reduce((a,b)=>a+(+b),0)/vals.length).toFixed(2):null;
+        case 'MIN':return vals.reduce((a,b)=>b<a?b:a);case 'MAX':return vals.reduce((a,b)=>b>a?b:a);case 'GROUP_CONCAT':return vals.join(', ');}}
+    if(e.not!==undefined)return !ev(e.not,row,grp);
+    switch(e.op){
+      case 'AND':return ev(e.l,row,grp)&&ev(e.r,row,grp);
+      case 'OR':return ev(e.l,row,grp)||ev(e.r,row,grp);
+      case 'ISNULL':return ev(e.l,row,grp)==null;case 'NOTNULL':return ev(e.l,row,grp)!=null;
+      case 'IN':{const v=ev(e.l,row,grp);return e.list.some(x=>String(ev(x,row,grp)).toLowerCase()===String(v).toLowerCase());}
+      case 'LIKE':{const v=String(ev(e.l,row,grp)??''),pat=String(ev(e.r,row,grp)).replace(/[.+?^${}()|[\]\\]/g,'\\$&').replace(/%/g,'.*').replace(/_/g,'.');return new RegExp('^'+pat+'$','i').test(v);}
+      default:{let a=ev(e.l,row,grp),b=ev(e.r,row,grp);if(typeof a==='string'&&typeof b==='string'){a=a.toLowerCase();b=b.toLowerCase();}
+        switch(e.op){case '=':return a==b;case '<>':case '!=':return a!=b;case '<':return a<b;case '>':return a>b;case '<=':return a<=b;case '>=':return a>=b;}}
+    }
+    throw Error('Could not evaluate expression');}
+  const hasAgg=e=>!!e&&(e.agg||['l','r','not','arg'].some(k=>e[k]&&typeof e[k]==='object'&&hasAgg(e[k]))||(e.list||[]).some(hasAgg));
+  function run(q){
+    const Q=parse(q);
+    let rows=tableRows(Q.from.t,Q.from.a),allCols=colsOf(Q.from.t,Q.from.a);
+    Q.joins.forEach(j=>{const R=tableRows(j.t,j.a);allCols=allCols.concat(colsOf(j.t,j.a));const out=[];
+      rows.forEach(l=>{let hit=false;R.forEach(r=>{const m=Object.assign({},l,r);if(ev(j.on,m)){out.push(m);hit=true;}});
+        if(!hit&&j.left){const m=Object.assign({},l);colsOf(j.t,j.a).forEach(c=>m[c]=null);out.push(m);}});rows=out;});
+    if(Q.where)rows=rows.filter(r=>ev(Q.where,r));
+    // expand stars
+    const sel=[];Q.sel.forEach(s=>{if(s.e.star){allCols.filter(c=>!s.e.tbl||c.startsWith(s.e.tbl+'.')).forEach(c=>{const [t,col]=c.split('.');sel.push({e:{tbl:t,col},as:col});});}else sel.push({e:s.e,as:s.as||(s.e.col&&!s.e.agg?s.e.col:s.src)});});
+    const agg=Q.group.length||sel.some(s=>hasAgg(s.e));
+    let out;
+    if(agg){const g=new Map();rows.forEach(r=>{const k=JSON.stringify(Q.group.map(e=>ev(e,r)));if(!g.has(k))g.set(k,[]);g.get(k).push(r);});
+      if(!Q.group.length&&!g.size)g.set('[]',[]);
+      out=[...g.values()].map(grp=>{const o={};sel.forEach(s=>{o[s.as]=hasAgg(s.e)?ev(s.e,grp[0]||{},grp):(grp[0]?ev(s.e,grp[0]):null);});return {o,src:grp[0]||{}};});}
+    else out=rows.map(r=>{const o={};sel.forEach(s=>o[s.as]=ev(s.e,r));return {o,src:r};});
+    if(Q.distinct){const seen=new Set();out=out.filter(x=>{const k=JSON.stringify(x.o);if(seen.has(k))return false;seen.add(k);return true;});}
+    if(Q.order.length){const key=(x,e)=>{if(e.col&&!e.tbl&&e.col in x.o)return x.o[e.col];const m=sel.find(s=>JSON.stringify(s.e)===JSON.stringify(e));if(m)return x.o[m.as];if(hasAgg(e))throw Error('ORDER BY an aggregate: give it an alias and order by the alias');return ev(e,Object.assign({__out:x.o},x.src));};
+      out.sort((a,b)=>{for(const {e,dir} of Q.order){let u=key(a,e),v=key(b,e);if(typeof u==='string')u=u.toLowerCase();if(typeof v==='string')v=v.toLowerCase();if(u<v)return -dir;if(u>v)return dir;}return 0;});}
+    if(Q.limit!=null)out=out.slice(0,Q.limit);
+    return {cols:sel.map(s=>s.as),rows:out.map(x=>sel.map(s=>x.o[s.as]))};
+  }
+  return {run};
+})();
+
+(function(){
+  const PRE={
+    'AI Engineer projects':"SELECT p.name, p.type, r.fit\nFROM projects p\nJOIN project_roles r ON p.id = r.project_id\nWHERE r.role = 'AI Engineer'\nORDER BY r.fit DESC;",
+    'Projects per role':"SELECT role, COUNT(*) AS projects\nFROM project_roles\nGROUP BY role\nORDER BY projects DESC;",
+    'Most-used skills':"SELECT skill, COUNT(*) AS projects\nFROM project_skills\nGROUP BY skill\nORDER BY projects DESC\nLIMIT 8;",
+    'Everything with dbt':"SELECT name, stack\nFROM projects\nWHERE stack LIKE '%dbt%';",
+    'Skills per layer':"SELECT layer, COUNT(*) AS skills, GROUP_CONCAT(skill) AS examples\nFROM skills\nGROUP BY layer\nORDER BY skills DESC;"
+  };
+  const inp=document.getElementById('sqlIn'),out=document.getElementById('sqlOut'),pb=document.getElementById('presets');
+  const esc=v=>String(v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function exec(){
+    const t0=performance.now();
+    try{const r=MiniSQL.run(inp.value);const ms=(performance.now()-t0).toFixed(1);
+      if(!r.rows.length){out.innerHTML=`<div class="msg">0 rows · ${ms} ms</div>`;return;}
+      out.innerHTML=`<div class="msg">${r.rows.length} row${r.rows.length>1?'s':''} · ${ms} ms</div><div class="tbl-wrap"><table class="qt"><thead><tr>${r.cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${r.rows.map((row,i)=>`<tr style="animation-delay:${reduce?0:i*30}ms">${row.map(v=>`<td${typeof v==='number'?' class="num"':''}>${v==null?'<span style="color:var(--muted)">NULL</span>':esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    }catch(e){out.innerHTML=`<div class="msg err">Error: ${esc(e.message)}</div>`;}
+  }
+  Object.keys(PRE).forEach((k,i)=>{const b=document.createElement('button');b.type='button';b.textContent=k;b.addEventListener('click',()=>{inp.value=PRE[k];pb.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));exec();});pb.appendChild(b);if(i===0)b.classList.add('on');});
+  inp.addEventListener('input',()=>pb.querySelectorAll('button').forEach(x=>x.classList.remove('on')));
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.metaKey||e.ctrlKey)){e.preventDefault();exec();}});
+  document.getElementById('sqlRun').addEventListener('click',exec);
+  const sc=document.getElementById('schema');
+  sc.innerHTML=Object.entries(DB).map(([n,t])=>`<div><button type="button" class="tn" data-t="${n}">${n}</button><div class="cols">${t.cols.join('<br>')}</div></div>`).join('')+'<div style="color:var(--muted)">Click a table to preview it.</div>';
+  sc.querySelectorAll('.tn').forEach(b=>b.addEventListener('click',()=>{inp.value='SELECT *\nFROM '+b.dataset.t+'\nLIMIT 10;';pb.querySelectorAll('button').forEach(x=>x.classList.remove('on'));exec();}));
+  inp.value=PRE['AI Engineer projects'];exec();
+})();
+
+/* ---------- 30-second view ---------- */
+(function(){
+  const qv=document.getElementById('qv'),open=document.getElementById('quickOpen'),close=document.getElementById('quickClose');
+  let last=null;
+  const show=()=>{last=document.activeElement;qv.hidden=false;close.focus();window.qvPlay&&window.qvPlay();};
+  const hide=()=>{qv.hidden=true;last&&last.focus&&last.focus();};
+  open.addEventListener('click',show);close.addEventListener('click',hide);
+  qv.addEventListener('click',e=>{if(e.target===qv)hide();const dc=e.target.closest('[data-close]');if(dc){qv.hidden=true;if(dc.dataset.case&&window.openCase){e.preventDefault();window.openCase(dc.dataset.case);}}});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&!qv.hidden)hide();});
+  document.getElementById('qvMail').addEventListener('click',e=>{const b=e.currentTarget,a='mindy.ygj@gmail.com';try{navigator.clipboard.writeText(a).then(()=>{b.textContent='Copied ✓';setTimeout(()=>b.textContent=a+' · copy',1600);},()=>{b.textContent=a;});}catch(_){b.textContent=a;}});
+  if(location.hash==='#quick')show();
+})();
+
+
+
+/* ---------- 30-second view: animated skills snapshot ---------- */
+(function(){
+  const NSv='http://www.w3.org/2000/svg';
+  const cardsAll=[...document.querySelectorAll('.proj[data-id]')];
+  const roleN=KEYS.map(k=>[k,ROLES[k].label,SK.filter(s=>s.roles.includes(k)).length]);
+  const top=SK.filter(s=>s.p).map(s=>[s.n,s.p.length]).sort((a,b)=>b[1]-a[1]).slice(0,9);
+  document.getElementById('qvRoles2').innerHTML=KEYS.map(k=>`<span>${ROLES[k].label}</span>`).join('')+'<span>and titles in between</span>';
+  const K=[[cardsAll.length,'projects with visuals'],[SK.length,'skills mapped'],[KEYS.length,'role paths'],[3,'degrees']];
+  document.getElementById('qvKpis').innerHTML=K.map(([n,l])=>`<div><b data-to="${n}">0</b><span>${l}</span></div>`).join('');
+  // radar
+  function radar(){const svg=document.getElementById('qvRadar'),cx=230,cy=140,R=92,n=roleN.length,max=Math.max(...roleN.map(r=>r[2]));
+    const pt=(i,f)=>{const a=-Math.PI/2+i*2*Math.PI/n;return [cx+Math.cos(a)*R*f,cy+Math.sin(a)*R*f];};
+    let g='<defs><radialGradient id="qvRg"><stop offset="0" stop-color="#5CE1D6" stop-opacity=".45"/><stop offset="1" stop-color="#5CE1D6" stop-opacity=".08"/></radialGradient><linearGradient id="qvSw" x1="0" x2="1"><stop offset="0" stop-color="#5CE1D6" stop-opacity="0"/><stop offset="1" stop-color="#5CE1D6" stop-opacity=".35"/></linearGradient></defs>';
+    [.25,.5,.75,1].forEach(f=>g+=`<polygon points="${roleN.map((_,i)=>pt(i,f).join(',')).join(' ')}" fill="none" stroke="rgba(255,255,255,${f===1?.16:.07})"/>`);
+    roleN.forEach((_,i)=>{const [x,y]=pt(i,1);g+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.07)"/>`;});
+    g+=`<g class="qv-sweep"><path d="M${cx} ${cy} L${cx} ${cy-R} A${R} ${R} 0 0 1 ${cx+R*Math.sin(.7)} ${cy-R*Math.cos(.7)} Z" fill="url(#qvSw)" opacity=".5"/></g>`;
+    const poly=roleN.map((r,i)=>pt(i,r[2]/max).join(',')).join(' ');
+    g+=`<polygon class="qv-poly" points="${poly}" fill="url(#qvRg)" stroke="#5CE1D6" stroke-width="2" style="transform-origin:${cx}px ${cy}px"/>`;
+    roleN.forEach((r,i)=>{const [x,y]=pt(i,r[2]/max),[lx,ly]=pt(i,1.22),an=Math.abs(lx-cx)<8?'middle':lx>cx?'start':'end';
+      g+=`<circle class="qv-dot" cx="${x}" cy="${y}" r="4.5" fill="#EFFFFC" stroke="#5CE1D6" stroke-width="2" style="animation-delay:${700+i*90}ms"><title>${r[1]}: ${r[2]} skills</title></circle>`;
+      g+=`<text x="${lx}" y="${ly}" text-anchor="${an}" fill="#EEF4F6" font-size="12.5" font-weight="600" class="qv-lbl" style="animation-delay:${500+i*90}ms">${r[1]}</text><text x="${lx}" y="${ly+15}" text-anchor="${an}" fill="#86A3AA" font-size="11" class="qv-lbl" style="animation-delay:${600+i*90}ms">${r[2]} skills</text>`;});
+    svg.innerHTML=g;svg.setAttribute('aria-label','Skills per role: '+roleN.map(r=>r[1]+' '+r[2]).join(', '));}
+  function bars(){const box=document.getElementById('qvBars'),max=cardsAll.length;
+    box.innerHTML=top.map(([n,v],i)=>`<div class="qb" title="${n}: used in ${v} of ${max} projects"><span class="qn">${n}</span><span class="qt"><i style="--w:${v/max*100}%;animation-delay:${300+i*80}ms"></i></span><span class="qv2n">${v}</span></div>`).join('');}
+  function projs(){const a=(typeof SEG!=='undefined'&&SEG.avg_ret)||[100,30,28,27,26,25,24];
+    const W=220,H=54,X=i=>i/(a.length-1)*W,Y=v=>H-4-(v/100)*(H-8);
+    const spark=`<svg viewBox="0 0 ${W} ${H}" width="100%" class="qv-spark"><path d="${a.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)).join(' ')}" fill="none" stroke="#5CE1D6" stroke-width="2" pathLength="1"/></svg>`;
+    const barsMini=`<svg viewBox="0 0 220 54" width="100%" class="qv-spark">${[[-6.1],[-3.4],[-2.2],[1.8],[2.9]].map(([v],i)=>{const w=Math.abs(v)*12,x=v<0?130-w:130;return `<rect x="${x}" y="${4+i*10}" width="${w}" height="7" rx="2" fill="${v<0?'#E68E47':'#2CC4B6'}" class="qvb" style="transform-origin:130px 0;animation-delay:${400+i*90}ms"/>`;}).join('')}<line x1="130" x2="130" y1="0" y2="54" stroke="rgba(255,255,255,.25)"/></svg>`;
+    const dots=`<svg viewBox="0 0 220 54" width="100%" class="qv-spark">${[0,1,2].map(i=>`<circle cx="${30+i*44}" cy="27" r="15" fill="none" stroke="#F4A45F" stroke-width="3" pathLength="1" class="qvc" style="animation-delay:${400+i*200}ms"/><text x="${30+i*44}" y="32" text-anchor="middle" fill="#F7C38F" font-size="13" font-weight="700">✓</text>`).join('')}<text x="158" y="32" fill="#C4D6D9" font-size="11.5">approved</text></svg>`;
+    const P=[['agent','AI Engineer','Ask a question, get a checked chart','LLM · RAG · agents',barsMini],
+             ['segment','Data Analyst','74,817 events · 1,000 users','30-day cohort retention, live on Tableau',spark],
+             ['retail','Data Scientist','3 of 3 recommendations approved','pricing analysis · 50% less analysis time',dots]];
+    document.getElementById('qvProjs').innerHTML=P.map(([id,r,h,s,viz])=>`<a class="qvp" href="#p-${id}" data-close data-case="${id}"><span class="qr">${r}</span><b>${h}</b><span class="qs">${s}</span>${viz}<span class="qgo">Open case study →</span></a>`).join('');}
+  function count(){document.querySelectorAll('#qvKpis b').forEach(el=>{const to=+el.dataset.to;if(reduce){el.textContent=to;return;}const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/900);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f);})(t0);});}
+  window.qvPlay=()=>{const c=document.querySelector('.qv2');c.classList.remove('play');radar();bars();projs();void c.offsetWidth;c.classList.add('play');count();};
+})();
+
+/* ---------- case studies ---------- */
+const SEG={"events": 74817, "users": 1000, "by_type": {"page_view": 10819, "add_to_cart": 10735, "product_view": 10696, "logout": 10685, "purchase": 10682, "click": 10632, "login": 10568}, "dau_mean": 305.4, "dau_min": 168, "dau_max": 347, "wau": [928, 911, 918, 916, 936, 915, 939, 905, 925, 922, 932, 929, 921, 919, 919, 915, 929, 934, 938, 916, 925, 942, 908, 927, 926, 932, 914, 920, 921, 613], "rev_month": {"2024-01": 402126, "2024-02": 376520, "2024-03": 394058, "2024-04": 408236, "2024-05": 426324, "2024-06": 402153, "2024-07": 295157}, "revenue_total": 2704573, "avg_ret": [100.0, 30.4, 34.1, 30.1, 24.1, 32.1, 28.2, 37.6, 42.2, 36.3, 31.3, 31.7, 31.1, 23.1, 38.2, 46.4, 38.8, 23.9, 43.9, 37.3, 28.3, 36.9, 29.9, 35.2, 34.3, 40.0, 35.6, 27.6, 23.6, 24.2], "heat": [[100, 31, 31, 35, 29, 30, 33, 28, 27, 33, 29, 24, 30, 28, 29, 30, 29, 29, 32, 32, 26, 30, 28, 25, 33, 25, 26, 26, 32, 36], [100, 31, 25, 24, 31, 32, 31, 39, 36, 29, 28, 31, 25, 30, 27, 30, 31, 33, 31, 29, 30, 32, 29, 30, 27, 31, 35, 26, 33, 31], [100, 28, 30, 32, 29, 24, 25, 26, 37, 30, 35, 28, 24, 30, 30, 32, 35, 32, 28, 31, 36, 32, 35, 32, 32, 30, 28, 26, 34, 33], [100, 24, 29, 35, 35, 25, 28, 33, 34, 28, 21, 33, 35, 32, 33, 34, 31, 33, 24, 31, 32, 24, 31, 34, 34, 36, 35, 35, 38, 32], [100, 25, 29, 30, 22, 28, 28, 36, 33, 34, 33, 33, 27, 37, 28, 38, 25, 34, 27, 27, 26, 36, 24, 34, 27, 33, 27, 40, 30, 30], [100, 26, 23, 34, 17, 40, 29, 31, 43, 49, 40, 29, 31, 31, 26, 29, 31, 31, 26, 31, 31, 37, 26, 31, 17, 20, 40, 26, 40, 43], [100, 35, 25, 35, 25, 35, 40, 25, 25, 40, 30, 20, 15, 30, 15, 30, 45, 25, 35, 35, 15, 10, 30, 50, 50, 40, 40, 30, 40, 30], [100, 44, 33, 30, 26, 33, 37, 33, 30, 19, 22, 26, 30, 15, 41, 30, 30, 22, 37, 19, 37, 48, 22, 44, 33, 33, 30, 33, 37, 37], [100, 27, 20, 40, 20, 33, 40, 60, 33, 33, 27, 27, 33, 20, 33, 33, 20, 27, 53, 20, 27, 27, 13, 33, 20, 33, 27, 33, 40, 40], [100, 67, 11, 67, 11, 22, 0, 33, 56, 44, 22, 33, 11, 22, 44, 56, 11, 22, 44, 22, 33, 56, 78, 33, 22, 44, 11, 22, 44, 56], [100, 20, 40, 40, 20, 40, 40, 40, 40, 20, 40, 0, 60, 20, 40, 20, 40, 40, 40, 20, 40, 40, 0, 40, 40, 40, 80, 20, 20, 0], [100, 33, 33, 33, 33, 33, 0, 0, 67, 67, 33, 0, 0, 0, 33, 0, 33, 0, 33, 33, 0, 67, 33, 33, 67, 33, 0, 0, 0, 33], [100, 0, 67, 33, 0, 33, 0, 33, 100, 67, 0, 0, 67, 67, 67, 67, 33, 100, 0, 0, 0, 0, 33, 0, 0, 33, 0, 33, 0, 33], [100, 0, 0, 0, 0, 100, 0, 100, 100, 100, 100, 0, 0, 0, 0, 100, 100, 0, 100, 100, 0, 0, 0, 0, 100, 0, 100, 0, 0, 0]], "heat_rows": ["2024-01-01", "2024-01-02", "2024-01-03", "2024-01-04", "2024-01-05", "2024-01-06", "2024-01-07", "2024-01-08", "2024-01-09", "2024-01-10", "2024-01-11", "2024-01-12", "2024-01-13", "2024-01-14"], "summary_mean": {"Day 1": 30.4, "Day 7": 37.6, "Day 30": 24.2}};
+const CASES={
+ agent:{status:'In progress',title:'AI-Powered E-Commerce Agentic Analytics Platform',
+  pitch:'An end-to-end platform where business users ask questions in plain English and an AI agent answers from validated, analytics-ready data.',
+  problem:'Business teams wait on analysts for simple questions about customers, products and orders, and generic chatbots make up numbers because they are not grounded in trusted data.',
+  steps:[
+   ['Ingest and validate','Built an end-to-end pipeline that ingests structured e-commerce customer, product and order data and validates it on the way in.',['Python','SQL']],
+   ['Model for analytics','Transformed raw tables into analytics-ready datasets in BigQuery with dbt.',['BigQuery','dbt','GCP']],
+   ['Make text retrievable','Combined structured commerce data with unstructured product and customer content to create retrieval-ready components for LLM question answering.',['RAG','LLM']],
+   ['Build the agent','Developed an AI agent that turns a business question into retrieval plus analytical workflows.',['LangChain','agents']],
+   ['Keep it trustworthy','Grounded every answer in validated data, with automated quality checks and human-validation checkpoints for low-confidence results.',['data quality','Git']]],
+  viz:'agent',flow:['Question','Retrieve context','Analyze validated data','Quality check','Human check','Answer + chart'],
+  results:['A working design for question → retrieval → SQL → validated answer.','Quality checks and human review built into the agent loop, not added afterwards.']},
+ pipeline:{status:'In progress',title:'Multi-Source Data Integration Platform',
+  pitch:'One warehouse fed by APIs, databases and flat files, with a quality gate that stops bad data before it reaches a dashboard.',
+  problem:'Operational data lives in APIs, databases and flat files that disagree with each other, so every report starts with manual reconciliation.',
+  steps:[
+   ['Integrate sources','Designed and implemented an ETL pipeline that pulls from APIs, databases and flat files into a centralized warehouse.',['Python','SQL','ETL']],
+   ['Automate data quality','Built a validation framework that checks every load, targeting 99.5% accuracy for downstream analytics and reporting.',['data quality','validation']],
+   ['Serve self-service BI','Created a Power BI layer so business stakeholders get answers without waiting on engineering.',['Power BI','star schema']],
+   ['Document for the next engineer','Documented pipeline architecture and data lineage for cross-team collaboration and maintenance.',['lineage','documentation']]],
+  tiles:[['99.5','%','accuracy target for downstream reporting'],['3','','source types: APIs, databases, flat files']],
+  flow:['APIs','Databases','Flat files','ETL (Python + SQL)','Quality gate','Warehouse','Power BI'],
+  results:['A single source of truth that analysts and dashboards read from.','Bad rows are caught at load time instead of in a meeting.']},
+ retail:{status:'Completed',title:'Retail Analytics & Pricing Insights',
+  pitch:'A pricing analysis on simulated POS data that ended in three approved recommendations and a reusable toolkit.',
+  problem:'Which products can take a price change without losing too much volume, and how do we make the next analysis faster?',
+  steps:[
+   ['Clean the data','Wrote Python scripts to clean and prepare large-scale simulated POS datasets.',['Python','pandas']],
+   ['Find the trends','Wrote complex SQL with window functions to track product-level price and sales trends.',['SQL','window functions']],
+   ['Size the opportunities','Identified 3 pricing optimization opportunities from the trend analysis.',['pricing','elasticity']],
+   ['Tell the story','Built presentation-style recommendations with clear visuals and next steps for non-technical stakeholders.',['storytelling','PowerPoint']],
+   ['Make it reusable','Documented SQL patterns, Python functions and evaluation frameworks as templates for the team.',['templates','documentation']]],
+  tiles:[['3','','pricing opportunities identified'],['3','/3','recommendations approved'],['50','%','less time on future analyses']],
+  flow:['POS data','Python cleaning','SQL trends','Pricing opportunities','Recommendations','Reusable templates'],
+  results:['All 3 recommendations approved by stakeholders.','Reusable templates cut future analysis time by 50%.'],
+  note:'Built on simulated POS data. The pricing chart on the project card uses illustrative numbers.'},
+ segment:{status:'Live on Tableau',title:'E-Commerce Segmentation & Retention',
+  pitch:'Clickstream data turned into funnel, activity and 30-day cohort retention analysis in Python, with RFM segments and revenue contribution in a Tableau story.',
+  problem:'Which customers keep coming back, how fast do new users drop off, and which segments actually carry revenue?',
+  steps:[
+   ['Load and inspect','Loaded '+SEG.events.toLocaleString('en-US')+' events from '+SEG.users.toLocaleString('en-US')+' users (Jan to Jul 2024) and profiled columns, types and nulls.',['pandas']],
+   ['Clean and enrich','Converted timestamps, extracted date, hour and weekday features, filled missing product and amount fields, and removed invalid timestamps.',['Python','data cleaning']],
+   ['Explore behavior','Charted event mix, daily volume, and activity by weekday and hour.',['EDA','seaborn']],
+   ['Measure activity','Built the purchase funnel and DAU, WAU and MAU. Daily active users averaged '+SEG.dau_mean+'.',['funnel','KPIs']],
+   ['Cohort retention','Tagged each user with a first-visit cohort, computed days since first visit, and built a 30-day retention table and heatmap.',['cohort analysis']],
+   ['Segment and publish','Exported cleaned data and retention tables to Tableau and built the RFM segmentation and revenue contribution story.',['Tableau','RFM']]],
+  tiles:[[String(SEG.events),'','clickstream events analyzed'],[String(SEG.users),'','users in 20 daily cohorts'],[String(SEG.summary_mean['Day 1']),'%','average Day-1 retention'],[String(SEG.summary_mean['Day 30']),'%','average Day-30 retention']],
+  viz:'segment',
+  code:"<span class=\"c\"># Tag each user's first visit, then measure return days</span>\nfirst_visit = df.groupby(<span class=\"s\">'UserID'</span>)[<span class=\"s\">'date'</span>].min().reset_index()\nfirst_visit.rename(columns={<span class=\"s\">'date'</span>: <span class=\"s\">'first_visit_date'</span>}, inplace=<span class=\"k\">True</span>)\ndf = df.merge(first_visit, on=<span class=\"s\">'UserID'</span>, how=<span class=\"s\">'left'</span>)\n\ndf[<span class=\"s\">'days_since_first'</span>] = (\n    pd.to_datetime(df[<span class=\"s\">'date'</span>]) - pd.to_datetime(df[<span class=\"s\">'first_visit_date'</span>])\n).dt.days\n\n<span class=\"c\"># Unique returning users per cohort per day, as % of Day 0</span>\nretention_table = (df.groupby([<span class=\"s\">'first_visit_date'</span>, <span class=\"s\">'days_since_first'</span>])[<span class=\"s\">'UserID'</span>]\n                     .nunique().unstack(fill_value=0))\nretention_rate = retention_table.divide(retention_table[0], axis=0) * 100",
+  codeCap:'From Project.ipynb, Stage 5: Retention Analysis',
+  results:['Day-1 retention averages 30.4%: most new users do not come back the next day.','Retention holds in a 25–40% band after the first week, then settles near 24% by Day 30.','In Tableau, Loyal Customers account for 67.3% of revenue, making Potential Loyalists the clearest growth segment.'],
+  note:'The dataset is synthetic with evenly distributed events, so patterns are cleaner than real traffic. Every number on this page comes from the project notebook and its exported tables.',
+  links:[['Tableau story','https://public.tableau.com/app/profile/mindy.chen3731/viz/CustomerSegmentationRetentionDashboard/Story1'],['Code on GitHub','https://github.com/mindyc-gl/segmentation-uplift-retention-2025']]},
+ cohort:{status:'Completed',title:'Resident Experience Analytics & Retention Dashboard',
+  pitch:'A cohort dashboard that follows residents from activation to engagement to retention, backed by a playbook anyone can pick up.',
+  problem:'There was raw usage data, but no agreed definition of an active resident and no view of where people drop off.',
+  steps:[
+   ['Agree on definitions','Partnered with mock product stakeholders to validate metric definitions for activation, engagement and retention.',['KPI design','stakeholders']],
+   ['Build the funnel','Transformed raw usage data into a cohort analysis dashboard tracking activation → engagement → retention.',['SQL','cohort analysis']],
+   ['Find the drivers','Identified the top 3 churn risk factors from the cohort patterns.',['churn analysis']],
+   ['Make it repeatable','Documented 100% of the logic and assumptions in a shareable playbook with data dictionaries, validation checklists and troubleshooting guides.',['data dictionary','documentation']]],
+  tiles:[['3','','churn risk factors identified'],['100','%','of logic documented'],['3','','funnel stages tracked']],
+  flow:['Raw usage data','Metric definitions','Cohort funnel','Churn drivers','Playbook'],
+  results:['The team knows where residents drop off and which factors predict churn.','Future BI analysts can rerun and troubleshoot the analysis from the playbook.'],
+  note:'The retention chart on the project card uses illustrative numbers.'},
+ pharma:{status:'Completed',title:'Pharmaceutical BI & Forecasting Analytics',
+  pitch:'A dimensional model for clinical trial data feeding dashboards on enrollment, safety and site performance, plus a forecast for planning.',
+  problem:'Clinical operations needed one trusted view of enrollment, safety and site performance, and a forward look for quarterly planning.',
+  steps:[
+   ['Model the data','Designed a star-schema dimensional model for clinical trial analytics.',['star schema','data modeling']],
+   ['Load it','Implemented ETL pipelines that feed the model and the dashboards.',['ETL','SQL']],
+   ['Monitor the trial','Built dashboard views for patient enrollment, safety metrics and site performance KPIs.',['Power BI','KPIs']],
+   ['Look ahead','Developed a forecasting dashboard in Power BI and SQL with predictive indicators for quarterly planning and resource allocation.',['forecasting','Power BI']]],
+  flow:['Trial data','ETL','Star schema','KPI dashboards','Forecast','Quarterly plan'],
+  results:['One model serves enrollment, safety and site performance reporting.','Planning uses a forecast instead of last quarter’s actuals.'],
+  note:'The forecast chart on the project card uses illustrative numbers.'}
+};
+
+(function(){
+  const cs=document.getElementById('cs'),card=document.getElementById('csCard');let last=null,timers=[];
+  const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  function roleTags(id){const c=cards.find(x=>x.dataset.id===id);return c.dataset.roles.split(',').map(r=>`<span class="chip pr">${ROLES[r].label}</span>`).join('');}
+  function open(id){
+    const C=CASES[id];if(!C)return;last=document.activeElement;timers.forEach(clearTimeout);timers=[];
+    
+    let h=`<div class="cs-hero"><button class="qv-close cs-x" type="button" data-x>Close ✕</button>
+      <div class="meta"><span class="eyebrow">Case study</span></div>
+      <h2 id="csTitle">${esc(C.title)}</h2><p>${esc(C.pitch)}</p>
+      <div class="chips" style="margin-top:14px">${roleTags(id)}</div>
+      ${C.links?`<div class="cs-links">${C.links.map(l=>`<a class="btn" href="${l[1]}" target="_blank" rel="noopener">${esc(l[0])} ↗</a>`).join('')}</div>`:''}</div><div class="cs-body">`;
+    if(C.tiles)h+=`<div class="cs-sec"><h3>At a glance</h3><div class="tiles">${C.tiles.map(t=>`<div class="tile"><div class="n" data-to="${t[0]}" data-suf="${t[1]}">${t[0]}${t[1]}</div><div class="l">${esc(t[2])}</div></div>`).join('')}</div></div>`;
+    h+=`<div class="cs-sec"><h3>The problem</h3><p style="margin:0;color:var(--soft);max-width:70ch">${esc(C.problem)}</p></div>`;
+    h+=`<div class="cs-sec"><h3>What I did</h3><ol class="steps2">${C.steps.map((s,i)=>`<li><span class="k">${String(i+1).padStart(2,'0')}</span><div><b>${esc(s[0])}</b><span>${esc(s[1])}</span><div class="tl2">${s[2].map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div></div></li>`).join('')}</ol></div>`;
+    if(C.viz==='segment'){
+      h+=`<div class="cs-sec"><h3>The data, visualized</h3><div class="cs-2">
+        <div class="cs-viz"><div class="cap">Cohort retention heatmap · first 14 cohorts × 30 days</div><div class="hm" id="hm"></div></div>
+        <div class="cs-viz"><div class="cap">Average retention across cohorts · days since first visit</div><svg id="avgRet" viewBox="0 0 420 240" width="100%" role="img" aria-label="Average retention curve over 30 days"></svg></div>
+      </div><div class="cs-2">
+        <div class="cs-viz"><div class="cap">Purchase revenue by month (2024) · July is a partial month</div><svg id="revM" viewBox="0 0 420 200" width="100%" role="img" aria-label="Monthly purchase revenue"></svg></div>
+        <div class="cs-viz"><div class="cap">Event mix · ${SEG.events.toLocaleString('en-US')} events</div><svg id="evMix" viewBox="0 0 420 200" width="100%" role="img" aria-label="Count of events by type"></svg></div>
+      </div></div>`;
+    } else if(C.viz==='agent'){
+      h+=`<div class="cs-sec"><h3>What the agent answers</h3><div class="cap" style="font:12px var(--mono);color:var(--muted);margin-bottom:10px">Illustrative output · demo data</div><div class="cs-2">${window.agentQs.map((q,i)=>`<div class="cs-viz"><div class="cap">${esc(q.q)}</div><div class="ag-kpi"><b>${esc(q.k)}</b><span>${esc(q.kl)}</span></div><svg class="agcs" data-i="${i}" viewBox="0 0 380 176" width="100%" role="img"></svg></div>`).join('')}</div></div>`;
+      h+=`<div class="cs-sec"><h3>How the pieces connect</h3><div class="cs-viz"><div class="flow" id="flow2">${C.flow.map((f,i)=>(i?'<span class="ar">→</span>':'')+`<span class="fn">${esc(f)}</span>`).join('')}</div></div></div>`;
+    } else if(C.flow){
+      h+=`<div class="cs-sec"><h3>How the pieces connect</h3><div class="cs-viz"><div class="flow" id="flow2">${C.flow.map((f,i)=>(i?'<span class="ar">→</span>':'')+`<span class="fn">${esc(f)}</span>`).join('')}</div></div></div>`;
+    }
+    if(C.code)h+=`<div class="cs-sec"><h3>Real code</h3><div class="cap" style="font:12px var(--mono);color:var(--muted)">${esc(C.codeCap)}</div><div class="code">${C.code}</div></div>`;
+    h+=`<div class="cs-sec"><h3>Results</h3><ul class="res">${C.results.map(r=>`<li>${esc(r)}</li>`).join('')}</ul></div>`;
+    if(C.note)h+=`<div class="honest">${esc(C.note)}</div>`;
+    const ids=cards.map(c=>c.dataset.id),i=ids.indexOf(id),nx=ids[(i+1)%ids.length];
+    h+=`</div><div class="cs-foot"><button class="btn" type="button" data-x>← Back to projects</button><button class="btn primary" type="button" data-next="${nx}">Next: ${esc(CASES[nx].title)} →</button></div>`;
+    card.innerHTML=h;cs.hidden=false;cs.scrollTop=0;document.body.style.overflow='hidden';
+    card.querySelector('[data-x]').focus();
+    animate(C);
+  }
+  const later=(fn,ms)=>timers.push(setTimeout(fn,reduce?0:ms));
+  function animate(C){
+    card.querySelectorAll('.steps2 li').forEach((li,i)=>later(()=>li.classList.add('in'),250+i*220));
+    card.querySelectorAll('.tile .n').forEach(el=>{const to=parseFloat(el.dataset.to),suf=el.dataset.suf,dec=(el.dataset.to.split('.')[1]||'').length;
+      if(reduce){el.textContent=(dec?to.toFixed(dec):Math.round(to).toLocaleString('en-US'))+suf;return;}
+      const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-p,3),v=to*e;el.textContent=(dec?v.toFixed(dec):Math.round(v).toLocaleString('en-US'))+suf;if(p<1)requestAnimationFrame(f);})(t0);});
+    const fl=card.querySelectorAll('#flow2 .fn, #flow2 .ar');fl.forEach((n,i)=>later(()=>n.classList.add('on'),400+i*160));
+    if(C.viz==='segment')drawSeg();
+    if(C.viz==='agent')card.querySelectorAll('svg.agcs').forEach(s=>later(()=>window.agentChart(s,+s.dataset.i),300+ +s.dataset.i*250));
+  }
+  function drawSeg(){
+    // heatmap
+    const hm=document.getElementById('hm');let hh='';
+    SEG.heat.forEach((row,r)=>{hh+=`<div class="row"><span class="rl">${SEG.heat_rows[r].slice(5)}</span>${row.map(v=>`<span class="cell" data-v="${v==null?'':v}" title="${v==null?'no data':v+'%'}"></span>`).join('')}</div>`;});
+    hh+=`<div class="row"><span></span>${Array.from({length:30},(_,i)=>`<span class="ax" style="text-align:center">${i%5===0?i:''}</span>`).join('')}</div>`;
+    hm.innerHTML=hh;
+    const col=v=>{if(v==='')return 'transparent';v=+v;if(v>=99)return C.aqua;const a=Math.max(.08,Math.min(1,(v-10)/45));return `rgba(92,225,214,${a.toFixed(2)})`;};
+    hm.querySelectorAll('.row').forEach((row,r)=>row.querySelectorAll('.cell').forEach((c,i)=>later(()=>{c.style.background=col(c.dataset.v);},200+i*35+r*25)));
+    // avg retention line
+    const a=SEG.avg_ret,W=420,H=240,L=40,R=12,T=12,B=28,X=i=>L+i/29*(W-L-R),Y=v=>T+(1-v/100)*(H-T-B);
+    let g='';[0,25,50,75,100].forEach(v=>g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="${C.line}"/><text x="${L-6}" y="${Y(v)+4}" fill="${C.muted}" font-size="10" text-anchor="end">${v}%</text>`);
+    [0,7,14,21,29].forEach(i=>g+=`<text x="${X(i)}" y="${H-8}" fill="${C.muted}" font-size="10" text-anchor="middle">D${i===29?30:i}</text>`);
+    const d=a.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)).join(' ');
+    g+=`<path d="${d} L${X(29)} ${Y(0)} L${X(0)} ${Y(0)} Z" fill="rgba(92,225,214,.10)"/><path id="retPath" d="${d}" fill="none" stroke="${C.aqua}" stroke-width="2.5"/>`;
+    [[1,'D1','start',8],[7,'D7','middle',0],[29,'D30','end',-4]].forEach(([i,l,an,dx])=>g+=`<circle cx="${X(i)}" cy="${Y(a[i])}" r="4" fill="${C.peach}"/><text x="${X(i)+dx}" y="${Y(a[i])+(i===1?18:-10)}" fill="${C.peach}" font-size="10" text-anchor="${an}">${l} ${a[i]}%</text>`);
+    const sv=document.getElementById('avgRet');sv.innerHTML=g;
+    const p=document.getElementById('retPath');if(!reduce){const Lp=p.getTotalLength();p.style.strokeDasharray=Lp;p.style.strokeDashoffset=Lp;p.getBoundingClientRect();p.style.transition='stroke-dashoffset 1.6s ease';p.style.strokeDashoffset=0;}
+    // revenue by month
+    const rm=Object.entries(SEG.rev_month),mx=Math.max(...rm.map(x=>x[1])),W2=420,H2=200,B2=26,T2=18,bw=(W2-20)/rm.length;
+    let g2='';rm.forEach(([m,v],i)=>{const h2=(v/mx)*(H2-T2-B2),x=10+i*bw+6,y=H2-B2-h2;const mon=['Jan','Feb','Mar','Apr','May','Jun','Jul'][+m.slice(5)-1];
+      g2+=`<rect class="gb" x="${x}" y="${H2-B2}" width="${bw-12}" height="0" rx="4" fill="${i===rm.length-1?C.muted:C.aqua}" data-y="${y}" data-h="${h2}"/><text x="${x+(bw-12)/2}" y="${H2-8}" fill="${C.muted}" font-size="10" text-anchor="middle">${mon}</text><text x="${x+(bw-12)/2}" y="${y-5}" fill="${C.soft}" font-size="10" text-anchor="middle">$${Math.round(v/1000)}k</text>`;});
+    
+    const rv=document.getElementById('revM');rv.innerHTML=g2;
+    // event mix
+    const ev=Object.entries(SEG.by_type),m2=Math.max(...ev.map(x=>x[1])),rowH=(200-10)/ev.length;
+    let g3='';ev.forEach(([k,v],i)=>{const y=6+i*rowH,w=(v/m2)*(420-150);g3+=`<text x="100" y="${y+rowH/2+4}" fill="${C.soft}" font-size="11" text-anchor="end">${k}</text><rect class="gb2" x="110" y="${y+4}" width="0" data-w="${w}" height="${rowH-9}" rx="3" fill="${k==='purchase'?C.peach:C.aqua}"/><text class="gl2" x="${116+w}" y="${y+rowH/2+4}" fill="${C.muted}" font-size="10" opacity="0">${v.toLocaleString('en-US')}</text>`;});
+    const em=document.getElementById('evMix');em.innerHTML=g3;
+    later(()=>{rv.querySelectorAll('.gb').forEach((b,i)=>{b.style.transition=`y .8s ${i*90}ms ease, height .8s ${i*90}ms ease`;b.setAttribute('y',b.dataset.y);b.setAttribute('height',b.dataset.h);});
+      em.querySelectorAll('.gb2').forEach((b,i)=>{b.style.transition=`width .8s ${i*80}ms ease`;b.setAttribute('width',b.dataset.w);});
+      em.querySelectorAll('.gl2').forEach((t,i)=>{t.style.transition=`opacity .4s ${600+i*80}ms`;t.setAttribute('opacity',1);});},300);
+  }
+  function close(){cs.hidden=true;document.body.style.overflow='';timers.forEach(clearTimeout);last&&last.focus&&last.focus();}
+  cs.addEventListener('click',e=>{if(e.target===cs||e.target.closest('[data-x]'))close();const n=e.target.closest('[data-next]');if(n)open(n.dataset.next);});
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&!cs.hidden)close();});
+  document.querySelectorAll('.cs-open').forEach(b=>b.addEventListener('click',()=>open(b.closest('.proj').dataset.id)));
+  window.openCase=open;
+  const hc=location.hash.match(/^#case-([a-z]+)$/);if(hc&&CASES[hc[1]])setTimeout(()=>open(hc[1]),300);
+})();
+
+/* ---------- v8: segment card uses real retention data ---------- */
+(function(){const svg=document.getElementById('rfmSvg');if(!svg)return;
+  const a=SEG.avg_ret,W=560,H=230,L=44,R=70,T=16,B=28,X=i=>L+i/29*(W-L-R),Y=v=>T+(1-v/100)*(H-T-B);
+  let g='';[0,25,50,75,100].forEach(v=>g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="${C.line}"/><text x="${L-8}" y="${Y(v)+4}" fill="${C.muted}" font-size="11" text-anchor="end">${v}%</text>`);
+  [0,7,14,21,29].forEach(i=>g+=`<text x="${X(i)}" y="${H-8}" fill="${C.muted}" font-size="11" text-anchor="middle">D${i===29?30:i}</text>`);
+  const d=a.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)).join(' ');
+  g+=`<path class="anim-fade" d="${d} L${X(29)} ${Y(0)} L${X(0)} ${Y(0)} Z" fill="rgba(92,225,214,.10)" stroke="none"/><path d="${d}" fill="none" stroke="${C.aqua}" stroke-width="2.5"/>`;
+  [[1,'Day 1','start',8],[7,'Day 7','start',8],[29,'Day 30','end',-4]].forEach(([i,l,an,dx])=>g+=`<circle cx="${X(i)}" cy="${Y(a[i])}" r="4.5" fill="${C.peach}"/><text x="${X(i)+dx}" y="${Y(a[i])+(i===1?18:-10)}" fill="${C.peach}" font-size="11" text-anchor="${an}">${l}: ${a[i]}%</text>`);
+  svg.innerHTML=g;svg.setAttribute('aria-label','Average retention across 20 cohorts: 30.4% on day 1, 37.6% on day 7, 24.2% on day 30');
+  const card=svg.closest('.viz');card.querySelector('.viz-bar span:last-child').textContent='avg_retention · real data';
+  card.querySelector('.note').textContent='Real data from the project notebook · 20 daily cohorts, 1,000 users';
+})();
+
+
+/* ---------- ambient motion: every project chart stays alive ---------- */
+(function(){if(reduce)return;
+  const NS='http://www.w3.org/2000/svg';
+  const mk=(tag,attrs,parent)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent&&parent.appendChild(e);return e;};
+  function comets(svg,delay){svg.querySelectorAll('path').forEach((p,i)=>{const f=p.getAttribute('fill'),sw=+p.getAttribute('stroke-width')||0;if((f&&f!=='none')||sw<1.8||p.closest('defs'))return;
+      const d=p.getAttribute('d'),col=p.getAttribute('stroke'),dur=(4.2+i*.6).toFixed(1)+'s';
+      const g=mk('g',{class:'alive'},svg);
+      [[9,.22],[3.6,1]].forEach(([r,o])=>{const c=mk('circle',{r,fill:r>5?col:'#fff',opacity:o},g);mk('animateMotion',{dur,repeatCount:'indefinite',begin:(delay+i*.5)+'s',path:d},c);});});}
+  function pulses(svg){svg.querySelectorAll('circle[r]').forEach(c=>{if(c.closest('.alive')||+c.getAttribute('r')<3)return;const r=+c.getAttribute('r');
+      const ring=mk('circle',{cx:c.getAttribute('cx'),cy:c.getAttribute('cy'),r,fill:'none',stroke:c.getAttribute('fill'),'stroke-width':1.5,class:'alive'},svg);
+      mk('animate',{attributeName:'r',values:`${r};${r+11}`,dur:'2.4s',repeatCount:'indefinite'},ring);mk('animate',{attributeName:'opacity',values:'.8;0',dur:'2.4s',repeatCount:'indefinite'},ring);});}
+  function scan(svg,x0,x1,y0,y1){const id='sg'+Math.random().toString(36).slice(2,7);
+      const defs=mk('defs',{},svg);const lg=mk('linearGradient',{id,x1:0,x2:1,y1:0,y2:0},defs);
+      mk('stop',{offset:0,'stop-color':'#5CE1D6','stop-opacity':0},lg);mk('stop',{offset:.5,'stop-color':'#5CE1D6','stop-opacity':.16},lg);mk('stop',{offset:1,'stop-color':'#5CE1D6','stop-opacity':0},lg);
+      const r=mk('rect',{x:x0-40,y:y0,width:40,height:y1-y0,fill:`url(#${id})`,class:'alive'},svg);
+      mk('animateTransform',{attributeName:'transform',type:'translate',values:`0 0;${x1-x0+40} 0`,dur:'5.5s',repeatCount:'indefinite'},r);}
+  const setup={
+    rfmSvg:s=>{comets(s,1.6);pulses(s);scan(s,44,490,16,202);},
+    funnelSvg:s=>{comets(s,1.6);pulses(s);scan(s,46,490,14,200);},
+    fcSvg:s=>{comets(s,1.8);const band=s.querySelector('path[fill^="rgba(255,179,138"]');if(band)mk('animate',{attributeName:'opacity',values:'1;.45;1',dur:'3.2s',repeatCount:'indefinite'},band);scan(s,46,544,14,200);},
+    archSvg:s=>{const q=[...s.querySelectorAll('rect')].find(r=>r.getAttribute('stroke')===C.aqua);if(q){mk('animate',{attributeName:'stroke-width',values:'1;3;1',dur:'2s',repeatCount:'indefinite'},q);}}
+  };
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;const s=en.target;io.unobserve(s);setTimeout(()=>setup[s.id](s),400);}),{threshold:.3});
+  Object.keys(setup).forEach(id=>{const s=document.getElementById(id);if(s)io.observe(s);});
+  // pricing chart plays itself until the visitor takes over
+  const range=document.getElementById('price'),skus=document.getElementById('skus');
+  if(range&&skus){let user=false,t=0,vis=false,sku=0;
+    const stop=()=>{user=true;};['pointerdown','keydown','touchstart'].forEach(ev=>{range.addEventListener(ev,stop);skus.addEventListener(ev,stop);});
+    new IntersectionObserver(es=>{vis=es[0].isIntersecting;}).observe(range);
+    setInterval(()=>{if(user||!vis)return;t+=.045;const v=Math.round(Math.sin(t)*20);if(+range.value!==v){range.value=v;range.dispatchEvent(new Event('input'));}
+      if(t>2*Math.PI){t=0;const bs=[...skus.children];sku=(sku+1)%bs.length;bs[sku].click();user=false;}},80);}
+})();
+
+
+/* ---------- See the proof: jump to the project on this page ---------- */
+document.getElementById('result').addEventListener('click',e=>{const a=e.target.closest('.proof a');if(!a)return;e.preventDefault();
+  const c=document.getElementById(a.getAttribute('href').slice(1));if(!c)return;
+  c.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});c.classList.remove('flash');void c.offsetWidth;c.classList.add('flash');});
+
+/* ---------- v8: project tilt, glare and chart draw-in ---------- */
+(function(){
+  const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  document.querySelectorAll('.proj').forEach(p=>{
+    if(fine&&!reduce){p.addEventListener('pointermove',e=>{const r=p.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+        p.style.transform=`perspective(1400px) rotateX(${(.5-py)*3}deg) rotateY(${(px-.5)*4}deg) translateY(-3px)`;p.style.setProperty('--gx',px*100+'%');p.style.setProperty('--gy',py*100+'%');});
+      p.addEventListener('pointerleave',()=>{p.style.transform='';});}
+  });
+  function prep(svg){svg.querySelectorAll('path').forEach(pth=>{const f=pth.getAttribute('fill');if(f&&f!=='none')return;if(pth.closest('defs'))return;try{const L=pth.getTotalLength();if(!L)return;pth.style.strokeDasharray=L;pth.style.strokeDashoffset=L;pth.classList.add('anim-path');}catch(_){}});
+    svg.querySelectorAll('rect').forEach(r=>{if(+r.getAttribute('width')>6&&+r.getAttribute('height')<40){r.classList.add('anim-bar');r.style.transformOrigin='left center';r.style.transform='scaleX(0)';}});
+    svg.querySelectorAll('.anim-fade, text, circle').forEach(el=>{if(el.closest('animateMotion'))return;el.style.opacity=0;el.style.transition='opacity .6s ease .5s';});}
+  function play(svg){svg.querySelectorAll('.anim-path').forEach(p=>p.style.strokeDashoffset=0);svg.querySelectorAll('.anim-bar').forEach((r,i)=>{r.style.transitionDelay=(i*60)+'ms';r.style.transform='scaleX(1)';});svg.querySelectorAll('text, circle, .anim-fade').forEach(el=>el.style.opacity=1);}
+  if(reduce||!('IntersectionObserver' in window))return;
+  const targets=['rfmSvg','funnelSvg','fcSvg'].map(id=>document.getElementById(id)).filter(Boolean);
+  targets.forEach(prep);
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){play(en.target);io.unobserve(en.target);}}),{threshold:.35});
+  targets.forEach(s=>io.observe(s));
+  document.querySelectorAll('.proj').forEach(p=>{if(p.getBoundingClientRect().top>innerHeight){p.classList.add('pre');}});
+  const io2=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.remove('pre');en.target.classList.add('in');io2.unobserve(en.target);}}),{rootMargin:'0px 0px -10% 0px'});
+  document.querySelectorAll('.proj.pre').forEach(p=>io2.observe(p));
+})();
+
+/* ---------- v8: SQL playground collapsed ---------- */
+(function(){const sec=document.getElementById('sql'),btn=document.getElementById('sqlToggle'),tz=document.getElementById('tzType');
+  btn.addEventListener('click',()=>{const open=sec.classList.toggle('sql-collapsed')===false;btn.setAttribute('aria-expanded',open);btn.textContent=open?'Close SQL playground ↑':'Open SQL playground ↓';if(open)document.getElementById('sqlIn').focus({preventScroll:true});});
+  const Q=["SELECT role, COUNT(*) FROM project_roles GROUP BY role;","SELECT name FROM projects WHERE stack LIKE '%dbt%';","SELECT skill FROM skills WHERE evidence = 'project';"];let qi=0,ci=0,del=false;
+  if(reduce){tz.textContent=Q[0];return;}
+  (function tick(){const q=Q[qi];if(!del){ci++;tz.textContent=q.slice(0,ci);if(ci>=q.length){del=true;return setTimeout(tick,1600);}}else{ci-=2;tz.textContent=q.slice(0,Math.max(0,ci));if(ci<=0){del=false;qi=(qi+1)%Q.length;}}setTimeout(tick,del?18:45);})();
+})();
+
+/* ---------- v8: Mindyverse band ---------- */
+const MV_URL='';  // set to the Mindyverse site URL when it is live
+(function(){
+  document.getElementById('mvGo').innerHTML=MV_URL?`<a class="mvb-btn" href="${MV_URL}" target="_blank" rel="noopener">Enter Mindyverse ↗</a>`:`<span class="mvb-btn" aria-disabled="true">Enter Mindyverse ↗</span><span class="mvb-soon">Coming soon</span>`;
+  const card=document.getElementById('mvCard'),moon=card.querySelector('.mvb-moon'),cv=document.getElementById('mvCanvas'),x=cv.getContext('2d');
+  let w,h,P=[],vis=false,mx=-999,my=-999;
+  function size(){const r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);w=r.width;h=r.height;cv.width=w*d;cv.height=h*d;x.setTransform(d,0,0,d,0,0);
+    P=Array.from({length:Math.round(w*h/3800)},()=>({x:Math.random()*w,y:Math.random()*h,r:.5+Math.random()*1.8,vy:-.1-Math.random()*.3,ph:Math.random()*6.3}));draw1();}
+  function draw1(){x.clearRect(0,0,w,h);for(const p of P){p.ph+=.012;p.y+=p.vy;p.x+=Math.sin(p.ph)*.2;const dx=p.x-mx,dy=p.y-my;if(dx*dx+dy*dy<16000){p.x+=dx/40;p.y+=dy/40;}
+      if(p.y<-4){p.y=h+4;p.x=Math.random()*w;}const a=.35+.45*Math.sin(p.ph*2);
+      x.fillStyle=`rgba(255,250,238,${a.toFixed(2)})`;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill();
+      if(p.r>1.9){x.fillStyle=`rgba(212,176,112,${(a*.35).toFixed(2)})`;x.beginPath();x.arc(p.x,p.y,p.r*3,0,7);x.fill();}}}
+  function loop(){draw1();if(vis&&!reduce)requestAnimationFrame(loop);}
+  card.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;if(!reduce){moon.style.transform=`translate(${(mx/w-.5)*-30}px,${(my/h-.5)*-20}px)`;card.style.transform=`perspective(1600px) rotateX(${(.5-my/h)*2}deg) rotateY(${(mx/w-.5)*3}deg)`;}});
+  card.addEventListener('pointerleave',()=>{mx=my=-999;moon.style.transform='';card.style.transform='';});
+  new IntersectionObserver(es=>{const v=es[0].isIntersecting;if(v&&!vis&&!reduce){vis=true;loop();}vis=v;}).observe(cv);
+  size();addEventListener('resize',size);
+})();
+
+/* ---------- v7 hero wiring ---------- */
+
+document.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>document.getElementById('quickOpen').click()));
+
+
+
+/* ---------- init ---------- */
+function roleFromHash(){const h=location.hash.replace('#','');return ROLES[h]?h:null;}
+addEventListener('hashchange',()=>{const r=roleFromHash();if(r)lockRole(r,true);});
+const initRole=roleFromHash();
+applyFilter(null);
+jd.value=SAMPLES['Analytics Engineer'];sampBox.querySelector('button').classList.add('on');
+runMatch();
+if(initRole)lockRole(initRole,true);else{clearRole();}
+
+</script>
+
+</body>
 </html>
-
